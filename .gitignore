@@ -1,0 +1,9 @@
+.idea
+.idea/*
+
+tensorspacejs.egg-info
+tensorspacejs.egg-info/*
+build
+build/*
+dist
+dist/*
