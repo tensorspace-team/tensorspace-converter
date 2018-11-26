@@ -7,3 +7,6 @@ build
 build/*
 dist
 dist/*
+
+tensorspacejs/converters/tfjs/node_modules/*
+tensorspacejs/converters/tfjs/package-lock.json
