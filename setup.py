@@ -1,4 +1,11 @@
+import os
 import setuptools
+
+def _get_requirements(requirements_file_name):
+    "Collect required packages from provided file"
+    with open(os.path.join(os.path.dirname(__file__), requirements_file_name), 'r') as requirements:
+        return requirements.readlines()
+
 
 with open("README.md", "r") as fh:
     long_description = fh.read()
@@ -9,7 +16,7 @@ CONSOLE_SCRIPTS = [
 
 setuptools.setup(
     name="tensorspacejs",
-    version="0.0.2",
+    version="0.0.3",
     author="Chenhua Zhu",
     author_email="zchholmes@gmail.com",
     description="TensorSpace.js Python tool package",
@@ -34,6 +41,7 @@ setuptools.setup(
         "Topic :: Software Development :: Libraries :: Python Modules"
     ],
 
+    install_requires=_get_requirements('requirements.txt'),
     entry_points={
         "console_scripts": CONSOLE_SCRIPTS
     },
