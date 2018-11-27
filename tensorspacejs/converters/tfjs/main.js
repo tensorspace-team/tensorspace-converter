@@ -11,7 +11,7 @@ for ( let i = 2; i < options.length - 2; i ++ ) {
 	let option = options[ i ];
 	let parameters = option.split("=");
 
-	if ( parameters[ 0 ] ===  "output_layer_names" ) {
+	if ( parameters[ 0 ] ===  "--output_layer_names" ) {
 
 		output_layer_names = getOutputLayerNames( parameters[ 1 ] );
 
