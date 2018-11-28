@@ -10,3 +10,5 @@ dist/*
 
 tensorspacejs/converters/tfjs/node_modules/*
 tensorspacejs/converters/tfjs/package-lock.json
+tensorspacejs/converters/tfjs/test/model.json
+tensorspacejs/converters/tfjs/test/weights.bin
