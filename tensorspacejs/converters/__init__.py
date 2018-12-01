@@ -1,1 +1,0 @@
-name = "tensorspace_converter"
