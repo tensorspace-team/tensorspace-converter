@@ -1,5 +1,6 @@
 const tf = require( '@tensorflow/tfjs' );
 require( '@tensorflow/tfjs-node' );
+const Utils = require( "./utils/Utils" );
 
 let options = process.argv;
 let output_layer_names = undefined;
@@ -13,43 +14,16 @@ for ( let i = 2; i < options.length - 2; i ++ ) {
 
 	if ( parameters[ 0 ] ===  "--output_layer_names" ) {
 
-		output_layer_names = getOutputLayerNames( parameters[ 1 ] );
+		output_layer_names = Utils.getOutputLayerNames( parameters[ 1 ] );
 
 	}
 
 }
 
-input_path = getInputPath( options[ options.length - 2 ] );
-output_path = getOutputPath( options[ options.length - 1 ] );
+input_path = Utils.getInputPath( options[ options.length - 2 ] );
+output_path = Utils.getOutputPath( options[ options.length - 1 ] );
 
 encapsulateModel();
-
-function getOutputLayerNames( names ) {
-
-	let output_layer_names = [];
-	let nameInArray = names.split('/');
-
-	for ( let i = 0; i < nameInArray.length; i ++ ) {
-
-		output_layer_names.push( nameInArray[ i ] );
-
-	}
-
-	return output_layer_names;
-
-}
-
-function getInputPath( path ) {
-
-	return 'file://' + path;
-
-}
-
-function getOutputPath( path ) {
-
-	return 'file://' + path;
-
-}
 
 async function encapsulateModel () {
 
