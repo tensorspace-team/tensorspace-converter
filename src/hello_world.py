@@ -1,14 +1,15 @@
-# import numpy as np
+import sys
+
+from keras_conversion import process_keras_model
+
 
 def print_hello_world():
     print("Hello World from converter")
 
-    # a = np.array([[1,2,3,4], [5,6,7,8], [9,10,11,12]])
-    # print(a)
-
 
 def main():
     print_hello_world()
+    process_keras_model(sys.argv[1])
 
 
 if __name__ == '__main__':
