@@ -11,14 +11,14 @@ with open("README.md", "r") as fh:
     long_description = fh.read()
 
 CONSOLE_SCRIPTS = [
-    "tensorspace_converter = tensorspacejs.converters.hello_world:main"
+    "tensorspace_converter = src.hello_world:main"
 ]
 
 setuptools.setup(
     name="tensorspacejs",
-    version="0.0.3",
-    author="Chenhua Zhu",
-    author_email="zchholmes@gmail.com",
+    version="0.0.5",
+    author="TensorSpace Team",
+    author_email="tensorspaceteam@gmail.com",
     description="TensorSpace.js Python tool package",
     long_description=long_description,
     long_description_content_type="text/markdown",
