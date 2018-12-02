@@ -1,7 +1,8 @@
-from keras.models import load_model
+
 
 
 def load_from_model(name_path):
+    from keras.models import load_model
     model = load_model(name_path)
     return model
 

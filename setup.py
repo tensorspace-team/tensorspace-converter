@@ -1,6 +1,8 @@
 import os
 import setuptools
 
+from src import version
+
 def _get_requirements(requirements_file_name):
     "Collect required packages from provided file"
     with open(os.path.join(os.path.dirname(__file__), requirements_file_name), 'r') as requirements:
@@ -11,12 +13,12 @@ with open("README.md", "r") as fh:
     long_description = fh.read()
 
 CONSOLE_SCRIPTS = [
-    "tensorspace_converter = src.hello_world:main"
+    "tensorspace_converter = src.tsp_converters:main"
 ]
 
 setuptools.setup(
     name="tensorspacejs",
-    version="0.0.5",
+    version=version.version,
     author="TensorSpace Team",
     author_email="tensorspaceteam@gmail.com",
     description="TensorSpace.js Python tool package",
