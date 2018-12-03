@@ -1,8 +1,7 @@
 const tf = require( '@tensorflow/tfjs' );
 require( '@tensorflow/tfjs-node' );
 const Utils = require( "./utils/Utils" );
-const SequentialConverter = require( "./encapsulation/Sequential" );
-const FunctionalConverter = require( "./encapsulation/Functional" );
+const Wrapper = require( "./encapsulation/Model" );
 
 let options = process.argv;
 let output_layer_names = undefined;
@@ -31,8 +30,7 @@ async function encapsulateModel () {
 
 	const model = await tf.loadModel( input_path );
 
-	let encModel = SequentialConverter.encapsulate( model, output_layer_names );
-	// let encModel = FunctionalConverter.encapsulate( model, output_layer_names );
+	let encModel = Wrapper.encapsulate( model, output_layer_names );
 
 	await encModel.save( output_path );
 
