@@ -10,6 +10,8 @@ build
 build/*
 dist
 dist/*
+models
+models/*
 
 src/tfjs/node_modules/*
 src/tfjs/package-lock.json

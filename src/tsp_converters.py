@@ -1,8 +1,7 @@
-import sys
 import argparse
 
 
-# from keras_conversion import process_keras_model
+from keras_conversion import show_summary_model, preprocess_from_model
 from version import version
 
 
@@ -37,11 +36,16 @@ def main():
         type=str,
         required=False,
         default='keras_saved_model',
-        choices=set(['keras_saved_model, keras_saved_weight']),
+        choices=set(['keras_saved_model', 'keras_saved_weight']),
         help='Input format.\n'
              'For "keras_saved_model", input is .h5 saved by .save().\n'
              'For "keras_saved_weight", inputs are topology+weights.'
-     )
+    )
+    parser.add_argument(
+        '--output_node_names',
+        type=str,
+        help='The names of the output nodes, separated by slash. '
+             'E.g., "logits/activations".')
     parser.add_argument(
         '--version',
         '-v',
@@ -67,13 +71,33 @@ def main():
         # print('  tensorflow %s' % tf.__version__)
         return
 
-    if FLAGS.input_path is None:
+    if flags.input_path is None:
         raise ValueError(
             'Error: The input_path argument must be set. '
             'Run with --help flag for usage information.')
 
-    print_hello_world()
-    process_keras_model(sys.argv[1])
+    if flags.input_type not in ('keras'):
+        raise ValueError(
+            'The --input_type flag can only be set to '
+            '"keras" '
+            'but the current input type is "%s".' % flags.input_type)
+
+    if flags.input_type == 'keras' and flags.input_format not in ('keras_saved_model', 'keras_saved_weight'):
+        raise ValueError(
+            'For input_type == "keras", the --input_format flag can only be set to'
+            '"keras_saved_model" and "keras_saved_weight" '
+            'but the current input format is "%s".' % flags.input_format)
+
+    if flags.show_model_summary:
+        if flags.input_type == 'keras':
+            show_summary_model(flags.input_path)
+            return
+
+    if flags.input_type == 'keras' and flags.input_format == 'keras_saved_model':
+        preprocess_from_model(flags.input_path, flags.output_path, flags.output_node_names)
+        return
+
+    print("Nothing happened...")
 
 
 if __name__ == '__main__':
