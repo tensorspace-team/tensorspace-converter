@@ -1,3 +1,4 @@
+from file_utility import remove_temp_file
 
 def show_summary(model):
     model.summary()
@@ -15,10 +16,16 @@ def show_summary_weights(path_topology, path_weights):
     show_summary(model)
 
 
-def preprocess_from_model(path_model, path_enc_model, output_node_names):
+def preprocess_from_model(path_model, path_output_dir, output_node_names):
     model = load_from_saved_model(path_model)
     enc_model = generate_encapsulate_model_with_output_layer_names(model, split_layer_name_list(output_node_names))
-    save_enc_model(path_enc_model, enc_model)
+    print("Saving enc_model...")
+    save_enc_model(path_output_dir, enc_model)
+    print("Saving converted tfjs model...")
+    convert_tfjs(path_output_dir)
+    print("Remove enc_model file...")
+    remove_temp_file(path_output_dir+"/enc_model.h5")
+    print("Mission Complete!!!")
 
 
 def load_from_saved_model(path_model):
@@ -48,6 +55,14 @@ def split_layer_name_list(output_node_names):
     return output_node_names.split("/")
 
 
-def save_enc_model(path_enc_model, enc_model):
+def save_enc_model(path_output_dir, enc_model):
     from keras.models import save_model
-    save_model(enc_model, path_enc_model)
+    save_model(enc_model, path_output_dir+"/enc_model.h5")
+
+
+def convert_tfjs(path_output_dir):
+    from tensorflowjs.converters.converter import dispatch_keras_h5_to_tensorflowjs_conversion
+    dispatch_keras_h5_to_tensorflowjs_conversion(
+        path_output_dir+"/enc_model.h5",
+        path_output_dir
+    )
