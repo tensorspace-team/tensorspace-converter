@@ -1,5 +1,1 @@
-
-
-
-
 name="tensorspacejs_converter"

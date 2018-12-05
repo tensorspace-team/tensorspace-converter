@@ -1,4 +1,7 @@
-from file_utility import remove_temp_file
+
+from file_utility import remove_temp_file, valid_file, valid_directory
+from keras import Model
+
 
 def show_summary(model):
     model.summary()
@@ -17,8 +20,17 @@ def show_summary_weights(path_topology, path_weights):
 
 
 def preprocess_from_model(path_model, path_output_dir, output_node_names):
+    if (not valid_file(path_model)):
+        print('Aboard converting... INVALID input file.')
+        return
+    if (not valid_directory(path_output_dir)):
+        print('Aboard converting... INVALID output directory.')
+        return
+
     model = load_from_saved_model(path_model)
-    enc_model = generate_encapsulate_model_with_output_layer_names(model, split_layer_name_list(output_node_names))
+    enc_model: Model = generate_encapsulate_model_with_output_layer_names(model, split_layer_name_list(output_node_names))
+
+    # Generate temp Keras enc_model for further processing
     print("Saving enc_model...")
     save_enc_model(path_output_dir, enc_model)
     print("Saving converted tfjs model...")
