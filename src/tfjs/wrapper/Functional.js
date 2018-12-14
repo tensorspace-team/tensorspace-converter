@@ -1,7 +1,7 @@
 const tf = require( '@tensorflow/tfjs' );
 require( '@tensorflow/tfjs-node' );
 
-function encapsulate( model, output_layer_names ) {
+function wrap( model, output_layer_names ) {
 
 	const input = model.inputs;
 	let outputList = [];
@@ -27,4 +27,4 @@ function encapsulate( model, output_layer_names ) {
 
 }
 
-exports.encapsulate = encapsulate;
+exports.wrap = wrap;

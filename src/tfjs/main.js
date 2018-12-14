@@ -1,12 +1,15 @@
 const tf = require( '@tensorflow/tfjs' );
 require( '@tensorflow/tfjs-node' );
 const Utils = require( "./utils/Utils" );
-const Wrapper = require( "./encapsulation/Model" );
+const FunctionalWrapper = require( "./wrapper/Functional" );
+const SequentialWrapper = require( "./wrapper/Sequential" );
 
 let options = process.argv;
 let output_layer_names = undefined;
 let input_path = undefined;
 let output_path = undefined;
+
+let exclude_input = false;
 
 for ( let i = 2; i < options.length - 2; i ++ ) {
 
@@ -16,6 +19,10 @@ for ( let i = 2; i < options.length - 2; i ++ ) {
 	if ( parameters[ 0 ] ===  "--output_layer_names" ) {
 
 		output_layer_names = Utils.getOutputLayerNames( parameters[ 1 ] );
+
+	} else if ( parameters[ 0 ] === "--exclude_input" ) {
+
+		exclude_input = true;
 
 	}
 
@@ -30,7 +37,21 @@ async function encapsulateModel () {
 
 	const model = await tf.loadModel( input_path );
 
-	let encModel = Wrapper.encapsulate( model, output_layer_names );
+	let modelType = model.toJSON(null, false).class_name;
+
+	console.log( modelType );
+
+	let encModel;
+
+	if ( modelType === "Model" ) {
+
+		encModel = FunctionalWrapper.wrap( model, output_layer_names );
+
+	} else {
+
+		encModel = SequentialWrapper.wrap( model, output_layer_names, exclude_input );
+
+	}
 
 	await encModel.save( output_path );
 
