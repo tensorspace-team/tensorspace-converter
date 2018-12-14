@@ -1,4 +1,12 @@
+## sequential model, automatically add input layer to output
 node ./src/tfjs/main.js \
 --output_layer_names='myPadding/myConv1/myMaxPooling1/myConv2/myMaxPooling2/myDense1/myDense2/myDense3' \
+./test/tfjs/sequential/mnist.json \
+./test/tfjs
+
+## sequential model, user use --exclude_input to exclude input from output
+node ./src/tfjs/main.js \
+--output_layer_names='myPadding/myConv1/myMaxPooling1/myConv2/myMaxPooling2/myDense1/myDense2/myDense3' \
+--exclude_input \
 ./test/tfjs/sequential/mnist.json \
 ./test/tfjs
