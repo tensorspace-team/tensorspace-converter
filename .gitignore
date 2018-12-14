@@ -4,6 +4,8 @@
 __pycache__/
 __pycache__/*
 
+*.pyc
+
 tensorspacejs.egg-info
 tensorspacejs.egg-info/*
 build

@@ -19,27 +19,6 @@ def show_summary_weights(path_topology, path_weights):
     show_summary(model)
 
 
-def preprocess_from_model(path_model, path_output_dir, output_node_names):
-    if (not valid_file(path_model)):
-        print('Aboard converting... INVALID input file.')
-        return
-    if (not valid_directory(path_output_dir)):
-        print('Aboard converting... INVALID output directory.')
-        return
-
-    model = load_from_saved_model(path_model)
-    enc_model = generate_encapsulate_model_with_output_layer_names(model, split_layer_name_list(output_node_names))
-
-    # Generate temp Keras enc_model for further processing
-    print("Saving enc_model...")
-    save_enc_model(path_output_dir, enc_model)
-    print("Saving converted tfjs model...")
-    convert_tfjs(path_output_dir)
-    print("Remove enc_model file...")
-    remove_temp_file(path_output_dir+"/enc_model.h5")
-    print("Mission Complete!!!")
-
-
 def load_from_saved_model(path_model):
     from keras.models import load_model
     model = load_model(path_model)
@@ -54,11 +33,22 @@ def load_from_saved_weights(path_topology, path_weights):
     return model
 
 
+def generate_encapsulate_model(model):
+    from keras.models import Model
+    enc_model = Model(
+        inputs=model.inputs,
+        # Outputs include ALL input tensors AND output tensors
+        outputs=(model.inputs + list(map(lambda layer: layer.output, model.layers[1:])))
+    )
+    return enc_model
+
+
 def generate_encapsulate_model_with_output_layer_names(model, output_layer_names):
     from keras.models import Model
     enc_model = Model(
-        inputs=model.input,
-        outputs=list(map(lambda oln: model.get_layer(oln).output, output_layer_names))
+        inputs=model.inputs,
+        # Outputs are forced to include ALL input tensors AND required output tensors
+        outputs=(model.inputs + list(map(lambda oln: model.get_layer(oln).output, output_layer_names)))
     )
     return enc_model
 
@@ -78,3 +68,27 @@ def convert_tfjs(path_output_dir):
         path_output_dir+"/enc_model.h5",
         path_output_dir
     )
+
+
+def preprocess_from_model(path_model, path_output_dir, output_node_names=None):
+    if (not valid_file(path_model)):
+        print('Aboard converting... INVALID input file.')
+        return
+    if (not valid_directory(path_output_dir)):
+        print('Aboard converting... INVALID output directory.')
+        return
+
+    model = load_from_saved_model(path_model)
+    if output_node_names is not None:
+        enc_model = generate_encapsulate_model_with_output_layer_names(model, split_layer_name_list(output_node_names))
+    else:
+        enc_model = generate_encapsulate_model(model)
+
+    # Generate temp Keras enc_model for further processing
+    print("Saving enc_model...")
+    save_enc_model(path_output_dir, enc_model)
+    print("Saving converted tfjs model...")
+    convert_tfjs(path_output_dir)
+    print("Remove enc_model file...")
+    remove_temp_file(path_output_dir+"/enc_model.h5")
+    print("Mission Complete!!!")
