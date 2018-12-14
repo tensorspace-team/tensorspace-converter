@@ -28,7 +28,7 @@ def preprocess_from_model(path_model, path_output_dir, output_node_names):
         return
 
     model = load_from_saved_model(path_model)
-    enc_model: Model = generate_encapsulate_model_with_output_layer_names(model, split_layer_name_list(output_node_names))
+    enc_model = generate_encapsulate_model_with_output_layer_names(model, split_layer_name_list(output_node_names))
 
     # Generate temp Keras enc_model for further processing
     print("Saving enc_model...")
