@@ -1,7 +1,7 @@
 from file_utility import remove_file, valid_file, valid_directory, show_invalid_message
 
 
-def process_tfjs_model(output_names, path_input, path_output):
+def process_tfjs_model(path_input, path_output, output_names):
     import subprocess
     if (not valid_file(path_input)):
         show_invalid_message('input model file', path_input)

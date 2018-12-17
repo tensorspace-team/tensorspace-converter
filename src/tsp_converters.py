@@ -1,7 +1,7 @@
 import argparse
 
-
 from keras_conversion import show_summary_model, preprocess_from_model
+from tfjs_conversion import process_tfjs_model
 from version import version
 
 
@@ -27,9 +27,9 @@ def main():
         type=str,
         required=False,
         default='keras',
-        choices=set(['keras']),
+        choices=set(['keras', 'tfjs']),
         help='Input model type.\n'
-             'It could be "keras", ... for now.'
+             'It could be "keras", "tfjs", ... for now.'
     )
     parser.add_argument(
         '--input_format',
@@ -76,10 +76,10 @@ def main():
             'Error: The input_path argument must be set. '
             'Run with --help flag for usage information.')
 
-    if flags.input_type not in ('keras'):
+    if flags.input_type not in ('keras', 'tfjs'):
         raise ValueError(
             'The --input_type flag can only be set to '
-            '"keras" '
+            '"keras", "tfjs" '
             'but the current input type is "%s".' % flags.input_type)
 
     if flags.input_type == 'keras' and flags.input_format not in ('keras_saved_model', 'keras_saved_weight'):
@@ -95,6 +95,10 @@ def main():
 
     if flags.input_type == 'keras' and flags.input_format == 'keras_saved_model':
         preprocess_from_model(flags.input_path, flags.output_path, flags.output_node_names)
+        return
+
+    if flags.input_type == 'tfjs':
+        process_tfjs_model(flags.input_path, flags.output_path, flags.output_node_names)
         return
 
     print("Nothing happened...")
