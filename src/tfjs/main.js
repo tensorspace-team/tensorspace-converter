@@ -8,6 +8,8 @@ let output_layer_names = undefined;
 let input_path = undefined;
 let output_path = undefined;
 
+let hasOutputConfig = false;
+
 for ( let i = 2; i < options.length - 2; i ++ ) {
 
 	let option = options[ i ];
@@ -15,6 +17,7 @@ for ( let i = 2; i < options.length - 2; i ++ ) {
 
 	if ( parameters[ 0 ] ===  "--output_layer_names" ) {
 
+		hasOutputConfig = true;
 		output_layer_names = Utils.getOutputLayerNames( parameters[ 1 ] );
 
 	}
@@ -30,7 +33,17 @@ async function encapsulateModel () {
 
 	const model = await tf.loadModel( input_path );
 
-	let encModel = Wrapper.wrap( model, output_layer_names );
+	let encModel;
+
+	if ( hasOutputConfig ) {
+
+		encModel = Wrapper.wrapWithName( model, output_layer_names );
+
+	} else {
+
+		encModel = Wrapper.wrapWithoutName( model );
+
+	}
 
 	await encModel.save( output_path );
 

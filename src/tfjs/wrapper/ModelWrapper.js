@@ -1,7 +1,7 @@
 const tf = require( '@tensorflow/tfjs' );
 require( '@tensorflow/tfjs-node' );
 
-function wrap( model, output_layer_names ) {
+function wrapWithName( model, output_layer_names ) {
 
 	const input = model.inputs;
 	let outputList = [];
@@ -27,4 +27,31 @@ function wrap( model, output_layer_names ) {
 
 }
 
-exports.wrap = wrap;
+function wrapWithoutName( model ) {
+
+	const input = model.inputs;
+	let outputList = [];
+
+	let layers = model.layers;
+
+	for ( let i = 0; i < layers.length; i ++ ) {
+
+		let outputTensor = layers[ i ].output;
+
+		outputList.push( outputTensor );
+
+	}
+
+	const encModel = tf.model( {
+
+		inputs: input,
+		outputs: outputList
+
+	} );
+
+	return encModel;
+
+}
+
+exports.wrapWithName = wrapWithName;
+exports.wrapWithoutName = wrapWithoutName;
