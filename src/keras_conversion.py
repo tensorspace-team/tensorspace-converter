@@ -1,5 +1,5 @@
 
-from file_utility import remove_file, valid_file, valid_directory
+from file_utility import remove_file, valid_file, valid_directory, show_invalid_message
 
 
 def load_from_saved_model(path_model):
@@ -76,7 +76,7 @@ def show_summary_model(path_model):
     :return: should not return anything
     """
     if (not valid_file(path_model)):
-        print('Aboard converting... INVALID input file.')
+        show_invalid_message('input file', path_model)
         return
     print("show summary of keras saved model...")
     model = load_from_saved_model(path_model)
@@ -93,10 +93,10 @@ def show_summary_weights(path_topology, path_weights):
     :return: should not return anything
     """
     if (not valid_file(path_topology)):
-        print('Aboard converting... INVALID model topology file.')
+        show_invalid_message('model topology file', path_topology)
         return
     if (not valid_file(path_weights)):
-        print('Aboard converting... INVALID model weights file.')
+        show_invalid_message('model weights file', path_weights)
         return
     print("show summary of keras saved topology + weights...")
     model = load_from_saved_weights(path_topology, path_weights)
@@ -112,10 +112,10 @@ def preprocess_from_model(path_model, path_output_dir, output_node_names=None):
     :return: should not return anything
     """
     if (not valid_file(path_model)):
-        print('Aboard converting... INVALID input file.')
+        show_invalid_message('input file', path_model)
         return
     if (not valid_directory(path_output_dir)):
-        print('Aboard converting... INVALID output directory.')
+        show_invalid_message('output directory', path_output_dir)
         return
 
     model = load_from_saved_model(path_model)
@@ -138,13 +138,13 @@ def preprocess_from_weights(path_topology, path_weights, path_output_dir, output
     :return:
     """
     if (not valid_file(path_topology)):
-        print('Aboard converting... INVALID model topology file.')
+        show_invalid_message('model topology file', path_topology)
         return
     if (not valid_file(path_weights)):
-        print('Aboard converting... INVALID model weights file.')
+        show_invalid_message('model weights file', path_weights)
         return
     if (not valid_directory(path_output_dir)):
-        print('Aboard converting... INVALID output directory.')
+        show_invalid_message('output directory', path_output_dir)
         return
 
     model = load_from_saved_weights(path_topology, path_weights)

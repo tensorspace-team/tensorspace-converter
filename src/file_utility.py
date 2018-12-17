@@ -25,3 +25,7 @@ def valid_directory(dir_path):
         print(dir_path + ' is not a directory.')
         return False
     return True
+
+
+def show_invalid_message(msg, invalid_parameter):
+    print('Aboard converting... INVALID ' + ': ' + invalid_parameter)
