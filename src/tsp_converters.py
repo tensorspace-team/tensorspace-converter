@@ -1,4 +1,7 @@
 import argparse
+import sys
+
+sys.path.insert(0, "./src")
 
 from krs.keras_conversion import show_summary_model, preprocess_from_model
 from tfjs.tfjs_conversion import process_tfjs_model
