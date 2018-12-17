@@ -1,7 +1,7 @@
 import argparse
 
-from keras_conversion import show_summary_model, preprocess_from_model
-from tfjs_conversion import process_tfjs_model
+from krs.keras_conversion import show_summary_model, preprocess_from_model
+from tfjs.tfjs_conversion import process_tfjs_model
 from version import version
 
 

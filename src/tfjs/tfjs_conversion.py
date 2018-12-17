@@ -1,4 +1,4 @@
-from file_utility import remove_file, valid_file, valid_directory, show_invalid_message
+from utility.file_utility import valid_file, valid_directory, show_invalid_message
 
 
 def process_tfjs_model(path_input, path_output, output_names):

@@ -1,5 +1,4 @@
-
-from file_utility import remove_file, valid_file, valid_directory, show_invalid_message
+from utility.file_utility import remove_file, valid_file, valid_directory, show_invalid_message
 
 
 def load_from_saved_model(path_model):
