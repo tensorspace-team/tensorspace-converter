@@ -1,7 +1,7 @@
 from utility.file_utility import valid_file, valid_directory, show_invalid_message
 
 
-def process_tfjs_model(path_input, path_output, output_names):
+def process_tfjs_model(path_input, path_output, output_names=None):
     import subprocess
     if (not valid_file(path_input)):
         show_invalid_message('input model file', path_input)
@@ -11,7 +11,9 @@ def process_tfjs_model(path_input, path_output, output_names):
         return
 
     MAIN_JS_PATH = "./src/tfjs/main.js"
-    output_names = "--output_layer_names=" + output_names
-
-    subprocess.check_call(["node", MAIN_JS_PATH, output_names, path_input, path_output])
+    if output_names is None:
+        subprocess.check_call(["node", MAIN_JS_PATH, path_input, path_output])
+    else:
+        output_names = "--output_layer_names=" + output_names
+        subprocess.check_call(["node", MAIN_JS_PATH, output_names, path_input, path_output])
 
