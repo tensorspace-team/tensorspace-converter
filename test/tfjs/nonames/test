@@ -1,3 +1,0 @@
-node ./src/tfjs/main.js \
-./test/tfjs/sequential/mnist.json \
-./test/tfjs
