@@ -43,7 +43,7 @@ def split_layer_name_list(output_node_names):
     if output_node_names is None:
         return None
     else:
-        return output_node_names.split("/")
+        return output_node_names.split(",")
 
 
 def save_enc_model(path_output_dir, enc_model):

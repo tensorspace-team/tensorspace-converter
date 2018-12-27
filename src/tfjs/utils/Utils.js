@@ -13,7 +13,7 @@ function getOutputPath( path ) {
 function getOutputLayerNames( names ) {
 
 	let output_layer_names = [];
-	let nameInArray = names.split('/');
+	let nameInArray = names.split(',');
 
 	for ( let i = 0; i < nameInArray.length; i ++ ) {
 
