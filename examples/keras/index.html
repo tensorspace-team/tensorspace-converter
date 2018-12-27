@@ -49,13 +49,6 @@
 
             } ) );
 
-            model.add( new TSP.layers.Padding2d( {
-
-                padding: [ 2, 2 ],
-                name: "padding"
-
-            } ) );
-
             model.add( new TSP.layers.Conv2d( {
 
              	kernelSize: 5,
@@ -114,7 +107,7 @@
 
             model.load( {
 
-                type: "tfjs",
+                type: "keras",
                 url: './generatedModel/model.json'
 
             } );
@@ -130,6 +123,7 @@
 			        success: function ( data ) {
 
 				        model.predict( data );
+
                     }
 
 		        } );
