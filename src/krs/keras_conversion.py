@@ -122,7 +122,12 @@ def preprocess_from_model(path_model, path_output_dir, output_node_names=None):
 
     # Generate temp Keras enc_model for further processing
     save_enc_model(path_output_dir, enc_model)
-    convert_tfjs(path_output_dir)
+
+    def split_layer_name_list(output_node_names):
+        if output_node_names is None:
+            return None
+        else:
+            return output_node_names.split(",")(path_output_dir)
     clean_temp_file(path_output_dir)
     print("Mission Complete!!!")
 
@@ -151,6 +156,11 @@ def preprocess_from_weights(path_topology, path_weights, path_output_dir, output
 
     # Generate temp Keras enc_model for further processing
     save_enc_model(path_output_dir, enc_model)
-    convert_tfjs(path_output_dir)
+
+    def split_layer_name_list(output_node_names):
+        if output_node_names is None:
+            return None
+        else:
+            return output_node_names.split(",")(path_output_dir)
     clean_temp_file(path_output_dir)
     print("Mission Complete!!!")

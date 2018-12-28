@@ -3,8 +3,9 @@ import sys
 
 sys.path.insert(0, "./src")
 
+from tf.tensorflow_conversion import show_tf_model_summary, preprocess_tensorflow_model
 from krs.keras_conversion import show_summary_model, preprocess_from_model
-from tfjs.tfjs_conversion import process_tfjs_model
+from tfjs.tfjs_conversion import show_tfjs_model_summary, process_tfjs_model
 from version import version
 
 
@@ -23,14 +24,14 @@ def main():
              'is expected.'
     )
     parser.add_argument(
-        'output_path', nargs='?', type=str, help='Path for all output artifacts.'
+        'output_path', nargs= '?', type=str, help='Path for all output artifacts.'
     )
     parser.add_argument(
         '--input_type',
         type=str,
         required=False,
         default='keras',
-        choices=set(['keras', 'tfjs']),
+        choices=set(['tensorflow', 'keras', 'tfjs']),
         help='Input model type.\n'
              'It could be "keras", "tfjs", ... for now.'
     )
@@ -79,7 +80,7 @@ def main():
             'Error: The input_path argument must be set. '
             'Run with --help flag for usage information.')
 
-    if flags.input_type not in ('keras', 'tfjs'):
+    if flags.input_type not in ('tensorflow', 'keras', 'tfjs'):
         raise ValueError(
             'The --input_type flag can only be set to '
             '"keras", "tfjs" '
@@ -95,6 +96,17 @@ def main():
         if flags.input_type == 'keras':
             show_summary_model(flags.input_path)
             return
+        if flags.input_type == 'tensorflow':
+            show_tf_model_summary(flags.input_path)
+            return
+        if flags.input_type == "tfjs":
+            show_tfjs_model_summary(flags.input_path)
+            return
+        return
+
+    if flags.input_type == 'tensorflow':
+        preprocess_tensorflow_model(flags.input_format, flags.input_path, flags.output_path, flags.output_node_names)
+        return
 
     if flags.input_type == 'keras' and flags.input_format == 'keras_saved_model':
         preprocess_from_model(flags.input_path, flags.output_path, flags.output_node_names)
