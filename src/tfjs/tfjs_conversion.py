@@ -18,6 +18,13 @@ def process_tfjs_model(path_input, path_output, output_names=None):
         subprocess.check_call(["node", MAIN_JS_PATH, output_names, path_input, path_output])
 
 
-def show_tfjs_model_summary(path_model):
-    print(path_model)
+def show_tfjs_model_summary(path_input):
+    print(path_input)
     print("tfjs Model Summary...")
+    import subprocess
+    if not valid_file(path_input):
+        show_invalid_message('input model file', path_input)
+        return
+
+    MAIN_JS_PATH = "./src/tfjs/main.js"
+    subprocess.check_call(["node", MAIN_JS_PATH, "--summary", path_input])

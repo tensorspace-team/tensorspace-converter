@@ -1,16 +1,14 @@
-const tf = require( '@tensorflow/tfjs' );
-require( '@tensorflow/tfjs-node' );
 const Utils = require( "./utils/Utils" );
-const Wrapper = require( "./wrapper/ModelWrapper" );
+const Converter = require( "./app/Converter" );
+const Summary = require( "./app/Summary" );
 
 let options = process.argv;
-let output_layer_names = undefined;
-let input_path = undefined;
-let output_path = undefined;
 
+let output_layer_names = undefined;
+let summary = false;
 let hasOutputConfig = false;
 
-for ( let i = 2; i < options.length - 2; i ++ ) {
+for ( let i = 2; i <= options.length - 2; i ++ ) {
 
 	let option = options[ i ];
 	let parameters = option.split("=");
@@ -20,31 +18,31 @@ for ( let i = 2; i < options.length - 2; i ++ ) {
 		hasOutputConfig = true;
 		output_layer_names = Utils.getOutputLayerNames( parameters[ 1 ] );
 
+	} else if ( parameters[ 0 ] === "--summary" ) {
+
+		summary = true;
+
 	}
 
 }
 
-input_path = Utils.getInputPath( options[ options.length - 2 ] );
-output_path = Utils.getOutputPath( options[ options.length - 1 ] );
+if ( summary ) {
 
-encapsulateModel();
+	Summary.showSummary(
 
-async function encapsulateModel () {
+		Utils.getInputPath( options[ options.length - 1 ] )
 
-	const model = await tf.loadModel( input_path );
+	);
 
-	let encModel;
+} else {
 
-	if ( hasOutputConfig ) {
+	Converter.encapsulateModel(
 
-		encModel = Wrapper.wrapWithName( model, output_layer_names );
+		Utils.getInputPath( options[ options.length - 2 ] ),
+		Utils.getOutputPath( options[ options.length - 1 ] ),
+		output_layer_names,
+		hasOutputConfig
 
-	} else {
-
-		encModel = Wrapper.wrapWithoutName( model );
-
-	}
-
-	await encModel.save( output_path );
+	);
 
 }
