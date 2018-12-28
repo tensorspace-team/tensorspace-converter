@@ -47,8 +47,13 @@ def main():
                      'tf_hdf5_model',
                      'tf_hdf5_separated_model']),
         help='Input format.\n'
-             'For "keras_saved_model", input is .h5 saved by .save().\n'
-             'For "keras_saved_weight", inputs are topology+weights.'
+             'For "topology_weights_combined", config for Keras model, input is .h5 saved by .save().\n'
+             'For "topology_weights_separated", config for Keras model, inputs are topology+weights.\n'
+             'For "tf_saved_model", config for TensorFlow model, input is TensorFlow saved model.\n'
+             'For "tf_frozen_model", config for TensorFlow model, input is TensorFlow frozen model.\n'
+             'For "tf_checkpoint_model", config for TensorFlow model, input is TensorFlow checkout point model.\n'
+             'For "tf_hdf5_model", config for TensorFlow model, input is .h5 model.\n'
+             'For "tf_hdf5_separated_model", config for TensorFlow model, input is topology+weights.'
     )
     parser.add_argument(
         '--output_layer_names',
