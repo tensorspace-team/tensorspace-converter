@@ -19,3 +19,5 @@ src/tfjs/node_modules/*
 src/tfjs/package-lock.json
 src/tfjs/test/model.json
 src/tfjs/test/weights.bin
+
+package-lock.json
