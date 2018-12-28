@@ -40,7 +40,7 @@ def main():
         type=str,
         required=False,
         default='keras_saved_model',
-        choices=set(['keras_saved_model', 'keras_saved_weight']),
+        choices=set(['keras_saved_model', 'keras_saved_weight', 'tf_saved_model']),
         help='Input format.\n'
              'For "keras_saved_model", input is .h5 saved by .save().\n'
              'For "keras_saved_weight", inputs are topology+weights.'

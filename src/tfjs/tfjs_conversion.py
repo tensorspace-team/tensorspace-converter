@@ -19,8 +19,6 @@ def process_tfjs_model(path_input, path_output, output_names=None):
 
 
 def show_tfjs_model_summary(path_input):
-    print(path_input)
-    print("tfjs Model Summary...")
     import subprocess
     if not valid_file(path_input):
         show_invalid_message('input model file', path_input)
