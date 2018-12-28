@@ -1,6 +1,23 @@
 from utility.file_utility import remove_file, valid_file, valid_directory, show_invalid_message
 
 
+def preprocess_keras_model(input_format, path_model, path_output_dir, output_node_names=None):
+    if input_format == "topology_weights_combined":
+        preprocess_from_model(
+            path_model,
+            path_output_dir,
+            output_node_names
+        )
+    elif input_format == "topology_weights_separated":
+        model_paths = path_model.split(",")
+        preprocess_from_weights(
+            model_paths[0],
+            model_paths[1],
+            path_output_dir,
+            output_node_names
+        )
+
+
 def load_from_saved_model(path_model):
     from keras.models import load_model
     model = load_model(path_model)
@@ -66,7 +83,7 @@ def clean_temp_file(path_output_dir):
     remove_file(path_output_dir + "/enc_model.h5")
 
 
-def show_summary_model(path_model):
+def show_keras_model_summary(path_model):
     """Present model summary by single model file
 
     Load the model from a single model file, then present model summary
@@ -122,12 +139,7 @@ def preprocess_from_model(path_model, path_output_dir, output_node_names=None):
 
     # Generate temp Keras enc_model for further processing
     save_enc_model(path_output_dir, enc_model)
-
-    def split_layer_name_list(output_node_names):
-        if output_node_names is None:
-            return None
-        else:
-            return output_node_names.split(",")(path_output_dir)
+    convert_tfjs(path_output_dir)
     clean_temp_file(path_output_dir)
     print("Mission Complete!!!")
 
@@ -156,11 +168,6 @@ def preprocess_from_weights(path_topology, path_weights, path_output_dir, output
 
     # Generate temp Keras enc_model for further processing
     save_enc_model(path_output_dir, enc_model)
-
-    def split_layer_name_list(output_node_names):
-        if output_node_names is None:
-            return None
-        else:
-            return output_node_names.split(",")(path_output_dir)
+    convert_tfjs(path_output_dir)
     clean_temp_file(path_output_dir)
     print("Mission Complete!!!")

@@ -4,7 +4,7 @@ import sys
 sys.path.insert(0, "./src")
 
 from tf.tensorflow_conversion import show_tf_model_summary, preprocess_tensorflow_model
-from krs.keras_conversion import show_summary_model, preprocess_from_model
+from krs.keras_conversion import show_keras_model_summary, preprocess_keras_model
 from tfjs.tfjs_conversion import show_tfjs_model_summary, process_tfjs_model
 from version import version
 
@@ -24,35 +24,41 @@ def main():
              'is expected.'
     )
     parser.add_argument(
-        'output_path', nargs= '?', type=str, help='Path for all output artifacts.'
+        'output_path', nargs='?', type=str, help='Path for all output artifacts.'
     )
     parser.add_argument(
-        '--input_type',
+        '--input_model_from',
         type=str,
         required=False,
         default='keras',
         choices=set(['tensorflow', 'keras', 'tfjs']),
         help='Input model type.\n'
-             'It could be "keras", "tfjs", ... for now.'
+             'It could be "tensorflow", "keras", "tfjs"'
     )
     parser.add_argument(
-        '--input_format',
+        '--input_model_format',
         type=str,
         required=False,
-        default='keras_saved_model',
-        choices=set(['keras_saved_model', 'keras_saved_weight', 'tf_saved_model']),
+        choices=set(['topology_weights_combined',
+                     'topology_weights_separated',
+                     'tf_saved_model',
+                     'tf_frozen_model',
+                     'tf_checkpoint_model',
+                     'tf_hdf5_model',
+                     'tf_hdf5_separated_model']),
         help='Input format.\n'
              'For "keras_saved_model", input is .h5 saved by .save().\n'
              'For "keras_saved_weight", inputs are topology+weights.'
     )
     parser.add_argument(
-        '--output_node_names',
+        '--output_layer_names',
         type=str,
         help='The names of the output nodes, separated by slash. '
              'E.g., "logits/activations".')
     parser.add_argument(
         '--version',
         '-v',
+        '-V',
         dest='show_version',
         action='store_true',
         help='Show versions of tensorspacejs and its dependencies'
@@ -80,40 +86,69 @@ def main():
             'Error: The input_path argument must be set. '
             'Run with --help flag for usage information.')
 
-    if flags.input_type not in ('tensorflow', 'keras', 'tfjs'):
+    if flags.input_model_from not in ('tensorflow', 'keras', 'tfjs'):
         raise ValueError(
-            'The --input_type flag can only be set to '
-            '"keras", "tfjs" '
-            'but the current input type is "%s".' % flags.input_type)
+            'The --input_model_from flag can only be set to '
+            '"tensorflow", "keras", "tfjs" '
+            'but the current input type is "%s".' % flags.input_model_from)
 
-    if flags.input_type == 'keras' and flags.input_format not in ('keras_saved_model', 'keras_saved_weight'):
+    if flags.input_model_from == 'keras'\
+            and flags.input_model_format not in (
+            'topology_weights_combined',
+            'topology_weights_separated'):
         raise ValueError(
-            'For input_type == "keras", the --input_format flag can only be set to'
-            '"keras_saved_model" and "keras_saved_weight" '
-            'but the current input format is "%s".' % flags.input_format)
+            'For input_model_from == "keras", the --input_model_format flag can only be set to'
+            '"topology_weights_combined" and "topology_weights_separated" '
+            'but the current input model format is "%s".' % flags.input_model_format)
+
+    if flags.input_model_from == 'tensorflow'\
+            and flags.input_model_format not in (
+            'tf_saved_model',
+            'tf_frozen_model',
+            'tf_checkpoint_model',
+            'tf_hdf5_model',
+            'tf_hdf5_separated_model'):
+        raise ValueError(
+            'For input_model_from == "tensorflow", the --input_model_format flag can only be set to'
+            '"tf_saved_model", "tf_frozen_model", "tf_checkpoint_model", "tf_hdf5_model", "tf_hdf5_separated_model" '
+            'but the current input model format is "%s".' % flags.input_model_format)
 
     if flags.show_model_summary:
-        if flags.input_type == 'keras':
-            show_summary_model(flags.input_path)
+        if flags.input_model_from == 'keras':
+            show_keras_model_summary(flags.input_path)
             return
-        if flags.input_type == 'tensorflow':
+        if flags.input_model_from == 'tensorflow':
             show_tf_model_summary(flags.input_path)
             return
-        if flags.input_type == "tfjs":
+        if flags.input_model_from == "tfjs":
             show_tfjs_model_summary(flags.input_path)
             return
         return
 
-    if flags.input_type == 'tensorflow':
-        preprocess_tensorflow_model(flags.input_format, flags.input_path, flags.output_path, flags.output_node_names)
+    if flags.input_model_from == 'tensorflow':
+        preprocess_tensorflow_model(
+            flags.input_model_format,
+            flags.input_path,
+            flags.output_path,
+            flags.output_layer_names
+        )
         return
 
-    if flags.input_type == 'keras' and flags.input_format == 'keras_saved_model':
-        preprocess_from_model(flags.input_path, flags.output_path, flags.output_node_names)
+    if flags.input_model_from == 'keras':
+        preprocess_keras_model(
+            flags.input_model_format,
+            flags.input_path,
+            flags.output_path,
+            flags.output_layer_names
+        )
         return
 
-    if flags.input_type == 'tfjs':
-        process_tfjs_model(flags.input_path, flags.output_path, flags.output_node_names)
+    if flags.input_model_from == 'tfjs':
+        process_tfjs_model(
+            flags.input_path,
+            flags.output_path,
+            flags.output_layer_names
+        )
         return
 
     print("Nothing happened...")

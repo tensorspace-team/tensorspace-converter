@@ -8,12 +8,18 @@ def show_tf_model_summary(path_model):
 
 def preprocess_tensorflow_model(input_format, path_model, path_output_dir, output_node_names=None):
     if input_format == "tf_saved_model":
-        preprocess_saved_model(path_model, path_output_dir, output_node_names)
-    elif input_format == "frozen_model":
+        preprocess_saved_model(
+            path_model,
+            path_output_dir,
+            output_node_names
+        )
+    elif input_format == "tf_frozen_model":
         preprocess_frozen_model()
-    elif input_format == "tf_keras_saved_model":
+    elif input_format == "tf_checkpoint_model":
+        preprocess_checkpoint_model()
+    elif input_format == "tf_hdf5_model":
         preprocess_tf_keras_saved_model()
-    elif input_format == "tf_keras_saved_weight":
+    elif input_format == "tf_hdf5_separated_model":
         preprocess_tf_keras_weights_model()
     else:
         print("Preprocess nothing for tensorflow model.")
@@ -34,6 +40,10 @@ def preprocess_saved_model(input_path, output_path, output_node_names):
 
 def preprocess_frozen_model():
     print("preprocess frozen model")
+
+
+def preprocess_checkpoint_model():
+    print("preprocess checkpoint model")
 
 
 def preprocess_tf_keras_saved_model():
