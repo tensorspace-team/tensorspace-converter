@@ -1,4 +1,12 @@
-import subprocess
+import sys
+
+sys.path.insert(0, "./src/tf")
+
+from saved_model import preprocess_saved_model
+from frozen_model import preprocess_frozen_model
+from checkpoint_model import preprocess_checkpoint_model
+from hdf5_combined_model import preprocess_hdf5_combined_model
+from hdf5_separated_model import preprocess_hdf5_separated_model
 
 
 def show_tf_model_summary(path_model):
@@ -18,37 +26,10 @@ def preprocess_tensorflow_model(input_format, path_model, path_output_dir, outpu
     elif input_format == "tf_checkpoint_model":
         preprocess_checkpoint_model()
     elif input_format == "tf_hdf5_model":
-        preprocess_tf_keras_saved_model()
+        preprocess_hdf5_combined_model()
     elif input_format == "tf_hdf5_separated_model":
-        preprocess_tf_keras_weights_model()
+        preprocess_hdf5_separated_model()
     else:
         print("Preprocess nothing for tensorflow model.")
 
-
-def preprocess_saved_model(input_path, output_path, output_node_names):
-    print("preprocess tensorflow saved model...")
-    input_format_config = '--input_format=tf_saved_model'
-    subprocess.check_call([
-        "tensorflowjs_converter",
-        input_format_config,
-        "--output_node_names=" + output_node_names,
-        "--saved_model_tags=serve",
-        input_path,
-        output_path
-    ])
-
-
-def preprocess_frozen_model():
-    print("preprocess frozen model")
-
-
-def preprocess_checkpoint_model():
-    print("preprocess checkpoint model")
-
-
-def preprocess_tf_keras_saved_model():
-    print("preprocess tf.keras saved model")
-
-
-def preprocess_tf_keras_weights_model():
-    print("preprocess tf.keras weights model")
+    print("Mission Complete!!!")
