@@ -21,3 +21,4 @@ src/tfjs/test/model.json
 src/tfjs/test/weights.bin
 
 package-lock.json
+node_modules/*
