@@ -26,8 +26,8 @@ def load_from_saved_model(path_model):
 
 def load_from_saved_weights(path_topology, path_weights):
     from keras.models import model_from_json
-    structure = open(path_topology, "r")
-    model = model_from_json(structure)
+    with open(path_topology, 'r') as f:
+        model = model_from_json(f.read())
     model.load_weights(path_weights)
     return model
 
