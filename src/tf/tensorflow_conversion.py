@@ -22,7 +22,11 @@ def preprocess_tensorflow_model(input_format, path_model, path_output_dir, outpu
             output_node_names
         )
     elif input_format == "tf_frozen_model":
-        preprocess_frozen_model()
+        preprocess_frozen_model(
+            path_model,
+            path_output_dir,
+            output_node_names
+        )
     elif input_format == "tf_checkpoint_model":
         preprocess_checkpoint_model()
     elif input_format == "tf_hdf5_model":
