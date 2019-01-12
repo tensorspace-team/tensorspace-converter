@@ -1,5 +1,5 @@
 <p align="center">
-<img width=150 src="https://raw.githack.com/tensorspace-team/tensorspace/master/assets/logo_christmasHat.png">
+<img width=150 src="https://raw.githack.com/tensorspace-team/tensorspace/master/assets/logo_tsConverter.png">
 </p>
 <h1 align="center">TensorSpace Converter</h1>
 
