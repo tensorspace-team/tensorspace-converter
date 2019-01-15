@@ -18,7 +18,7 @@
   <a href="https://gitter.im/tensorspacejs/Lobby#"><img src="https://img.shields.io/badge/gitter-join%20chat%20%E2%86%92-brightgreen.svg" alt="gitter"></a>
 </p>
 
-TensorSpace-Converter is a TensorSpace preprocess tool for pre-trained model from TensorFlow, Keras, TensorFlow.js. TensorSpace-Converter can extract hidden layer value from a pre-trained model and generate a new multi-output model for TensorSpace 3D visualization. TensorSpace-Converter steeps the learning curve of TensorSpace preprocessing. Using TensorSpace-Converter in development, it is possible to separate the work of model training and model visualization.
+TensorSpace-Converter is a tool used to generate a TensorSpace compatible model from a pre-trained model built by TensorFlow, Keras and TensorFlow.js. TensorSpace-Converter includes the functions of: extracting information from hidden layers, matching intermediate data based on the configurations and exporting preprocessed TensorSpace compatible model. TensorSpace simplifies the preprocess and helps developers to focus on the development of model visualization.
 
 ## Table of Content
 
