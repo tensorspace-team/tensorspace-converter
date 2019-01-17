@@ -1,3 +1,7 @@
+"""
+@author syt123450 / https://github.com/syt123450
+"""
+
 import subprocess
 
 input_format_config = '--input_format=tf_saved_model'

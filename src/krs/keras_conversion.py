@@ -1,3 +1,8 @@
+"""
+@author zchholmes / https://github.com/zchholmes
+@author syt123450 / https://github.com/syt123450
+"""
+
 from utility.file_utility import remove_file, valid_file, valid_directory, show_invalid_message
 
 

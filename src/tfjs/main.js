@@ -1,3 +1,7 @@
+/**
+ * @author syt123450 / https://github.com/syt123450
+ */
+
 const Utils = require( "./utils/Utils" );
 const Converter = require( "./app/Converter" );
 const Summary = require( "./app/Summary" );

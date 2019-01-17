@@ -1,3 +1,7 @@
+"""
+@author zchholmes / https://github.com/zchholmes
+"""
+
 import os
 
 
