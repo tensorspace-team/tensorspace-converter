@@ -74,7 +74,7 @@ $ tensorspacejs_converter -v
 
 * **Note**
 
-TensorSpace-Converter must run under Python 3.6, Node 11.3+. If you have other pre-installed Python version in your local environment, we suggest you to create a new virtual environment. For example, the conda commands is like:
+TensorSpace-Converter requires to run under Python 3.6, Node 11.3+. If you have other pre-installed Python version in your local environment, we suggest you to create a new virtual environment. For example, the conda commands is like:
 ```shell
 $ conda create -n envname python=3.6
 ```
@@ -137,9 +137,9 @@ This section introduces the usage of TensorSpace-Converter for different types o
 
 ### <div id="tensorflow">TensorFlow</div>
 
-A pre-trained model built with TensorFlow, may be saved as saved model, frozen model, checkpoint model, combined HDF5 model or separated HDF5 model. Use different TensorSpace-Converter commands for different kinds of TensorFlow model formats. A TensorFlow graph may not have `layer` concept, however, a specific `tensor` can be corresponding a `layer` for TensorSpace visualization, collect all these tensor names and set the name list to `output_layer_names`.
+A pre-trained model built by TensorFlow can be saved as saved model, frozen model, checkpoint (.ckpt), combined HDF5 model or separated HDF5 model. Use different TensorSpace-Converter commands for different kinds of TensorFlow model formats. TensorSpace-Converter collects the data from `tensor`, then use the outputs as the inputs of `layer` of TensorSpace visualization. The developer can collect all necessary tensor names and set the name list as `output_layer_names`.
 
-For a TensorFlow saved model. Set `input_model_format` to be `tf_saved_model`. Demo converter script:
+For a TensorFlow saved model. Set `input_model_format` to be `tf_saved_model`. The sample command script should be like:
 ```shell
 $ tensorspacejs_converter \
     --input_model_from="tensorflow" \
@@ -149,7 +149,7 @@ $ tensorspacejs_converter \
     ./PATH/TO/SAVE/DIR
 ```
 
-For a TensorFlow frozen model. Set `input_model_format` to be `tf_frozen_model`. Demo converter script:
+For a TensorFlow frozen model. Set `input_model_format` to be `tf_frozen_model`. The sample command script should be like:
 ```shell
 $ tensorspacejs_converter \
     --input_model_from="tensorflow" \
@@ -159,7 +159,7 @@ $ tensorspacejs_converter \
     ./PATH/TO/SAVE/DIR
 ```
 
-For a TensorFlow checkpoint model. Set `input_model_format` to be `tf_checkpoint_model`. Demo converter script:
+For a TensorFlow checkpoint model. Set `input_model_format` to be `tf_checkpoint_model`. The sample command script should be like:
 ```shell
 $ tensorspacejs_converter \
     --input_model_from="tensorflow" \
@@ -169,7 +169,7 @@ $ tensorspacejs_converter \
     ./PATH/TO/SAVE/DIR
 ```
 
-For a combined HDF5 model, topology and weights are saved in a combined HDF5 file `xxx.h5`. Set `input_model_format` to be `tf_hdf5_model`. Demo converter script:
+For a combined HDF5 model, topology and weights are saved in a combined HDF5 file `xxx.h5`. Set `input_model_format` to be `tf_hdf5_model`. The sample command script should be like:
 ```shell
 $ tensorspacejs_converter \
     --input_model_from="tensorflow" \
@@ -179,7 +179,7 @@ $ tensorspacejs_converter \
     ./PATH/TO/SAVE/DIR
 ```
 
-For a separated HDF5 model, topology and weights are saved in separate files, topology file `xxx.json` and weights file `xxx.hdf5`. Set `input_model_format` to be `tf_hdf5_separated_model`. In this case, the model have two input files, merge two file's paths and separate them with comma (.json first, .hdf5 last), and then set the combined path to positional argument `input_path`. Demo converter script:
+For a separated HDF5 model, topology and weights are saved in separate files, topology file `xxx.json` and weights file `xxx.hdf5`. Set `input_model_format` to be `tf_hdf5_separated_model`. In this case, the model have two input files, merge two file's paths and separate them with comma (.json first, .hdf5 last), and then set the combined path to positional argument `input_path`. The sample command script should be like:
 ```shell
 $ tensorspacejs_converter \
     --input_model_from="tensorflow" \
@@ -192,9 +192,9 @@ Checkout this [TensorFlow Tutorial](https://github.com/tensorspace-team/tensorsp
 
 ### <div id="keras">Keras</div>
 
-A pre-trained model built with Keras, may have two formats: topology and weights in a combined HDF5 file or topology and weights in separated files. Use different TensorSpace-Converter commands for these two keras model formats.
+A pre-trained model built by Keras, may have two formats: topology and weights are saved in a single HDF5 file, or topology and weights are saved in separated files. Use different TensorSpace-Converter commands for these two saved Keras models.
 
-For a Keras model, topology and weights are saved in a combined HDF5 file `xxx.h5`. Set `input_model_format` to be `topology_weights_combined`. Demo converter script:
+For a Keras model, topology and weights are saved in a single HDF5 file, i.e. `xxx.h5`. Set `input_model_format` to be `topology_weights_combined`. The sample command script should be like:
 ```shell
 $ tensorspacejs_converter \
     --input_model_from="keras" \
@@ -204,7 +204,7 @@ $ tensorspacejs_converter \
     ./PATH/TO/SAVE/DIR
 ```
 
-For a Keras model, topology and weights are saved in separated files, a topology file `xxx.json` and a weights file `xxx.hdf5`. Set `input_model_format` to be `topology_weights_separated`, in this case, the model have two input files, merge two file's paths and separate them with comma (.json first, .hdf5 last), and then set the combined path to positional argument `input_path`. Demo converter script:
+For a Keras model, topology and weights are saved in separated files, i.e. a topology file `xxx.json` and a weights file `xxx.hdf5`. Set `input_model_format` to be `topology_weights_separated`. In this case, the model have two input files, merge two file's paths and separate them with comma (.json first, .hdf5 last), and then set the combined path to positional argument `input_path`. The sample command script should be like:
 ```shell
 $ tensorspacejs_converter \
     --input_model_from="keras" \
@@ -217,7 +217,7 @@ Checkout this [Keras Tutorial](https://github.com/tensorspace-team/tensorspace-c
 
 ### <div id="tensorflowjs">TensorFlow.js</div>
 
-A pre-trained model built with TensorFlow.js, may have a topology file `xxx.json` and a weights file `xxx.weight.bin`. To converter the model with TensorSpace-Converter, put two files in the same folder and set topology file's path to `input_path`. Demo converter script:
+A pre-trained model built by TensorFlow.js, may have a topology file `xxx.json` and a weights file `xxx.weight.bin`. To converter the model with TensorSpace-Converter, the two files should be put in the same folder and set topology file's path to `input_path`. The sample command script should be like:
 
 ```shell
 $ tensorspacejs_converter \
