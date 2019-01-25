@@ -39,9 +39,9 @@ TensorSpace-Converter is a tool used to generate a TensorSpace compatible model 
 
 TensorSpace is a JavaScript framework used to 3D visualize pre-trained deep learning models built by TensorFlow, Keras and TensorFlow.js. Before applying TensorSpace to the pre-trained model, there is an important pipeline - TensorSpace model preprocessing ( Checkout this [article](https://tensorspace.org/html/docs/preIntro.html) for more information about TensorSpace preprocessing ). TensorSpace-Converter is designed to simplify the model preprocessing and generate a TensorSpace compatible model easily and quickly.
 
-TensorSpace-Converter out-of-the-box supports preprocessing different formats of pre-trained model from TensorFlow, Keras, TensorFlow.js. It only takes several lines of TensorSpace-Converter codes to preprocess a pre-trained model. Before TensorSpace-Converter, to preprocess a pre-trained model for TensorSpace, developers shall master some frameworks, such as TensorFlow, Keras, tfjs-converter. For example, before TensorSpace-Converter, when preprocessing a Keras model, developers need to prepare a pre-trained Keras model, write some Keras codes to get a new multi-output model, and then use tfjs-converter to convert the multi-output model to a TensorSpace compatible format. By applying TensorSpace-Converter, it just takes [6 lines](#keras) of TensorSpace-Converter commands to do the same thing.
+Without TensorSpace-Converter, the developer needs to be expert on the pre-trained model and machine learning library the model used. For example, if the developer has an LeNet pre-trained model built by Keras, it is required to know the structure of the LeNet network as well as how to implement a new multi-output model by Keras. Now, with TensorSpace-Converter, it only needs some commands to complete the preprocessing process. For example, the developer only needs to use the [commands](#keras) to preprocess a Keras pre-trained model.
 
-As a component of TensorSpace ecosystem, TensorSpace-Converter simplify the TensorSpace preprocessing, steeps the learning curve of TensorSpace. As a development tool, TensorSpace-Converter makes it possible to separate the work of `backend model training` and `frontend model visualization`.
+As a component of TensorSpace ecosystem, TensorSpace-Converter simplifies the TensorSpace preprocess, release the workloads from learning how to generate TensorSpace compatible model. As a development tool, TensorSpace-Converter helps to separate the work of `model training` and `model visuailization`.
 
 <p align="center">
 <img width="100%" src="https://raw.githack.com/tensorspace-team/tensorspace/master/assets/tensorspace_lenet.gif">
@@ -67,26 +67,26 @@ Install the tensorspacejs pip package:
 $ pip install tensorspacejs
 ```
 
-If successfully downloading `tensorspacejs`, you can check the TensorSpace-Converter version in command line:
+If `tensorspacejs` is installed successfully, you can check the TensorSpace-Converter version by using the command:
 ```shell
 $ tensorspacejs_converter -v
 ```
 
 * **Note**
 
-TensorSpace-Converter must run under Python 3.6, Node 11.3+. If you have other pre-installed Python version in your local environment, we suggest you to use `Conda` to create a pure Python 3.6 virtual environment.
-
+TensorSpace-Converter must run under Python 3.6, Node 11.3+. If you have other pre-installed Python version in your local environment, we suggest you to create a new virtual environment. For example, the conda commands is like:
 ```shell
 $ conda create -n envname python=3.6
 ```
 
 ### <div id="usage">Usage</div>
+The following part introduces the usage and workflow on:
+* how to use TensorSpace-Converter to convert a pre-trained model;
+* how to apply TensorSpace to the converted model for model visualization.
 
-Then we will introduce the usage and workflow of using TensorSpace and TensorSpace-Converter to convert a pre-trained model and visualizing pre-processed model with TensorSpace. And we will preprocess and visualize a MNIST-digit Keras model.
+An MNIST-digit Keras model is used as an example in the tutorial. The sample files used in the tutorial includes [pre-trained Keras model](), [TensorSpace-Converter script]() and [TensorSpace visualization code]().
 
-The sample files used in this tutorial includes [pre-trained Keras model](), [TensorSpace-Converter script]() and [TensorSpace visualization code]().
-
-#### Step 1: Use TensorSpace-Converter preprocess pre-trained model
+#### Step 1: Use TensorSpace-Converter to preprocess pre-trained model
 
 ```shell
 $ tensorspacejs_converter \
@@ -96,8 +96,7 @@ $ tensorspacejs_converter \
     ./PATH/TO/MODEL/keras_MNIST_model.h5 \
     ./PATH/TO/SAVE/DIR
 ```
-
-#### Step 2: Load preprocessed into TensorSpace visualization model
+#### Step 2: Apply TensorSpace for model visualization
 
 ```javascript
 model.load({
