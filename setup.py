@@ -13,7 +13,7 @@ with open("README.md", "r") as fh:
     long_description = fh.read()
 
 CONSOLE_SCRIPTS = [
-    "tensorspace_converter = src.tsp_converters:main"
+    "tensorspacejs_converter = src.tsp_converters:main"
 ]
 
 setuptools.setup(
