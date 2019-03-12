@@ -1,0 +1,10 @@
+{
+  "name": "pbtojson",
+  "version": "0.0.1",
+  "description": "",
+  "devDependencies": {
+    "protobufjs": "~6.8.6",
+    "ts-node": "~4.1.0",
+    "typescript": "~2.9.2"
+  }
+}
