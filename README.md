@@ -4,7 +4,7 @@
 <h1 align="center">TensorSpace Converter</h1>
 
 <p align="center">
-<strong>English</strong> | <a href="https://github.com/tensorspace-team/tensorspace/blob/master/README_zh.md"><strong>中文</strong></a>
+<strong>English</strong> | <a href="https://github.com/tensorspace-team/tensorspace-converter/blob/master/README_zh.md"><strong>中文</strong></a>
 </p>
 
 <p align="center">
@@ -74,9 +74,11 @@ $ tensorspacejs_converter -v
 
 * **Note**
 
-TensorSpace-Converter requires to run under Python 3.6, Node 11.3+. If you have other pre-installed Python version in your local environment, we suggest you to create a new virtual environment. For example, the conda commands is like:
+TensorSpace-Converter requires to run under Python 3.6, Node 11.3+. If you have other pre-installed Python version in your local environment, we suggest you to create a new virtual environment. For example, the <a href="https://anaconda.org/anaconda/conda">conda</a> commands is like:
 ```shell
 $ conda create -n envname python=3.6
+$ source activate envname
+$ pip install tensorspacejs
 ```
 
 ### <div id="usage">Usage</div>
@@ -139,36 +141,6 @@ This section introduces the usage of TensorSpace-Converter for different types o
 
 A pre-trained model built by TensorFlow can be saved as saved model, frozen model, checkpoint (.ckpt), combined HDF5 model or separated HDF5 model. Use different TensorSpace-Converter commands for different kinds of TensorFlow model formats. TensorSpace-Converter collects the data from `tensor`, then use the outputs as the inputs of `layer` of TensorSpace visualization. The developer can collect all necessary tensor names and set the name list as `output_layer_names`.
 
-For a TensorFlow saved model. Set `input_model_format` to be `tf_saved_model`. The sample command script should be like:
-```shell
-$ tensorspacejs_converter \
-    --input_model_from="tensorflow" \
-    --input_model_format="tf_saved_model" \
-    --output_layer_names="layer1Name,layer2Name,layer3Name" \
-    input_path \
-    ./PATH/TO/SAVE/DIR
-```
-
-For a TensorFlow frozen model. Set `input_model_format` to be `tf_frozen_model`. The sample command script should be like:
-```shell
-$ tensorspacejs_converter \
-    --input_model_from="tensorflow" \
-    --input_model_format="tf_frozen_model" \
-    --output_layer_names="layer1Name,layer2Name,layer3Name" \
-    input_path \
-    ./PATH/TO/SAVE/DIR
-```
-
-For a TensorFlow checkpoint model. Set `input_model_format` to be `tf_checkpoint_model`. The sample command script should be like:
-```shell
-$ tensorspacejs_converter \
-    --input_model_from="tensorflow" \
-    --input_model_format="tf_checkpoint_model" \
-    --output_layer_names="layer1Name,layer2Name,layer3Name" \
-    input_path \
-    ./PATH/TO/SAVE/DIR
-```
-
 For a combined HDF5 model, topology and weights are saved in a combined HDF5 file `xxx.h5`. Set `input_model_format` to be `tf_hdf5_model`. The sample command script should be like:
 ```shell
 $ tensorspacejs_converter \
@@ -185,9 +157,30 @@ $ tensorspacejs_converter \
     --input_model_from="tensorflow" \
     --input_model_format="tf_hdf5_separated_model" \
     --output_layer_names="layer1Name,layer2Name,layer3Name" \
-    ./PATH/TO/MODEL/xxx.json,./PATH/TO/MODEL/eee.hdf5 \
+    ./PATH/TO/MODEL/xxx.json,./PATH/TO/MODEL/eee.h5 \
     ./PATH/TO/SAVE/DIR
 ```
+
+For a TensorFlow saved model. Set `input_model_format` to be `tf_saved_model`. The sample command script should be like:
+```shell
+$ tensorspacejs_converter \
+    --input_model_from="tensorflow" \
+    --input_model_format="tf_saved_model" \
+    --output_layer_names="layer1Name,layer2Name,layer3Name" \
+    ./PATH/TO/SAVED/MODEL/FOLDER \
+    ./PATH/TO/SAVE/DIR
+```
+
+For a TensorFlow frozen model. Set `input_model_format` to be `tf_frozen_model`. The sample command script should be like:
+```shell
+$ tensorspacejs_converter \
+    --input_model_from="tensorflow" \
+    --input_model_format="tf_frozen_model" \
+    --output_layer_names="layer1Name,layer2Name,layer3Name" \
+    ./PATH/TO/MODEL/xxx.pb \
+    ./PATH/TO/SAVE/DIR
+```
+
 Checkout this [TensorFlow Tutorial](https://github.com/tensorspace-team/tensorspace-converter/tree/master/examples/tensorflow) for more practical usage of TensorSpace-Converter for TensorFlow models.
 
 ### <div id="keras">Keras</div>
@@ -210,7 +203,7 @@ $ tensorspacejs_converter \
     --input_model_from="keras" \
     --input_model_format="topology_weights_separated" \
     --output_layer_names="layer1Name,layer2Name,layer3Name" \
-    ./PATH/TO/MODEL/xxx.json,./PATH/TO/MODEL/eee.hdf5 \
+    ./PATH/TO/MODEL/xxx.json,./PATH/TO/MODEL/eee.h5 \
     ./PATH/TO/SAVE/DIR
 ```
 Checkout this [Keras Tutorial](https://github.com/tensorspace-team/tensorspace-converter/tree/master/examples/keras) for more practical usage of TensorSpace-Converter for Keras models.
