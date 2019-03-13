@@ -139,7 +139,7 @@ This section introduces the usage of TensorSpace-Converter for different types o
 
 ### <div id="tensorflow">TensorFlow</div>
 
-A pre-trained model built by TensorFlow can be saved as saved model, frozen model, checkpoint (.ckpt), combined HDF5 model or separated HDF5 model. Use different TensorSpace-Converter commands for different kinds of TensorFlow model formats. TensorSpace-Converter collects the data from `tensor`, then use the outputs as the inputs of `layer` of TensorSpace visualization. The developer can collect all necessary tensor names and set the name list as `output_layer_names`.
+A pre-trained model built by TensorFlow can be saved as saved model, frozen model, combined HDF5 model or separated HDF5 model. Use different TensorSpace-Converter commands for different kinds of TensorFlow model formats. TensorSpace-Converter collects the data from `tensor`, then use the outputs as the inputs of `layer` of TensorSpace visualization. The developer can collect all necessary tensor names and set the name list as `output_layer_names`.
 
 For a combined HDF5 model, topology and weights are saved in a combined HDF5 file `xxx.h5`. Set `input_model_format` to be `tf_hdf5_model`. The sample command script should be like:
 ```shell

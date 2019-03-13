@@ -48,7 +48,6 @@ def main():
                      'topology_weights_separated',
                      'tf_saved_model',
                      'tf_frozen_model',
-                     'tf_checkpoint_model',
                      'tf_hdf5_model',
                      'tf_hdf5_separated_model']),
         help='Input format.\n'
@@ -56,7 +55,6 @@ def main():
              'For "topology_weights_separated", config for Keras model, inputs are topology+weights.\n'
              'For "tf_saved_model", config for TensorFlow model, input is TensorFlow saved model.\n'
              'For "tf_frozen_model", config for TensorFlow model, input is TensorFlow frozen model.\n'
-             'For "tf_checkpoint_model", config for TensorFlow model, input is TensorFlow checkout point model.\n'
              'For "tf_hdf5_model", config for TensorFlow model, input is .h5 model.\n'
              'For "tf_hdf5_separated_model", config for TensorFlow model, input is topology+weights.'
     )
@@ -115,7 +113,6 @@ def main():
             and flags.input_model_format not in (
             'tf_saved_model',
             'tf_frozen_model',
-            'tf_checkpoint_model',
             'tf_hdf5_model',
             'tf_hdf5_separated_model'):
         raise ValueError(
