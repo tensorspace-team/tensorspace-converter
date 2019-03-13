@@ -1,2 +1,2 @@
-numpy==1.15.4
-tensorflowjs==0.6.7
+numpy==1.16.2
+tensorflowjs==1.0.1
