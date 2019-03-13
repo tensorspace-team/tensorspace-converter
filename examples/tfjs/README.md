@@ -1,9 +1,14 @@
+<p align="center">
+<img width=400 src="./img/tfjs.png">
+</p>
 <h1 align=center>TensorFlow.js Tutorial</h1>
 <p align=center><b>Visualize pre-trained TensorFlow.js model using TensorSpace and TensorSpace-Converter</b></p>
 
 ## Introduction
 
-This is a tutorial to show the usage and workflow of visualizing TensorSpace.js model using TensorSpace and TensorSpace-Converter. In this tutorial, we try to convert a TensorSpace.js model of LeNet with MNIST dataset and visualize the model using TensorSpace as an example.
+In the following chapter, we will introduce the usage and workflow of visualizing TensorFlow.js model using TensorSpace and TensorSpace-Converter. In this tutorial, we will convert a TensorFlow.js model with TensorSpace-Converter and visualize the converted model with TensorSpace.
+
+This example uses LeNet trained with MNIST dataset. If you do not have any existed model in hands, you can use this <a href="https://github.com/tensorspace-team/tensorspace-converter/blob/master/examples/tfjs/train/createModel.html">script</a> to train a LeNet TensorFlow.js model. We also provide [pre-trained LeNet model](https://github.com/tensorspace-team/tensorspace-converter/tree/master/examples/tfjs/originalModel) for this example.
 
 ## Sample files
 
@@ -17,18 +22,29 @@ The sample files that are used in this tutorial are listed below:
 
 First we will use TensorSpace-Converter to preprocess pre-trained TensorFlow.js model:
 ```shell
-tensorspace_converter \
---input_type="tfjs" \
---output_node_names='myPadding,myConv1,myMaxPooling1,myConv2,myMaxPooling2,myDense1,myDense2,myDense3' \
-../originalModel/mnist.json \
-../generatedModel/
+$ tensorspace_converter \
+    --input_model_from="tfjs" \
+    --output_layer_names='myPadding,myConv1,myMaxPooling1,myConv2,myMaxPooling2,myDense1,myDense2,myDense3' \
+    ../originalModel/mnist.json \
+    ../generatedModel/
 ```
 
-TensorSpace-Converter will generate preprocessed model into `generatedModel` folder, for tutorial propose, we have already generated a model which can be found in [this folder](https://github.com/tensorspace-team/tensorspace-converter/tree/master/examples/tfjs/generatedModel)
+TensorSpace-Converter will generate preprocessed model into `generatedModel` folder, for tutorial propose, we have already generated a model which can be found in [this folder](https://github.com/tensorspace-team/tensorspace-converter/tree/master/examples/tfjs/generatedModel).
 
-## load and visualize
+After converting, we shall have the following preprocessed model:
+<p align="center">
+<img src="./img/tfjs_created_model.png" alt="models" width="400" >
+<br/>
+<b>Fig. 1</b> - Preprocessed model
+</p>
 
-Use TensorSpace API to construct visualization model, for more information about TensorSpace API, checkout [TensorSpace Documentation](https://tensorspace.org/html/docs/startIntro.html).
+* There are two types of files created:
+  * `.json` is for the model structure
+  * `.bin` is the trained weights
+
+## Load and Visualize
+
+Apply TensorSpace API to construct visualization model.
 ```javascript
 let model = new TSP.models.Sequential( modelContainer );
 
@@ -58,5 +74,9 @@ model.init();
 
 ## Result
 
-If everything goes well, open the `index.html` file in browser, the model will display in your browser like this:
-![prediction5](https://github.com/tensorspace-team/tensorspace/blob/master/assets/HelloWorld_5.jpg)
+If everything goes well, open the `index.html` file in browser, the model will display in the browser:
+<p align="center">
+<img src="https://github.com/tensorspace-team/tensorspace/blob/master/assets/HelloWorld_5.jpg" alt="models" width="100%" >
+<br/>
+<b>Fig. 2</b> - TensorSpace LeNet with prediction data "5"
+</p>
