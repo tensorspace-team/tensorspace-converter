@@ -15,7 +15,7 @@ async function encapsulateModel(
 
 ) {
 
-    const model = await tf.loadModel( input_path );
+    const model = await tf.loadLayersModel( input_path );
 
 	let encModel;
 

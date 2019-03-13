@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "description": "convert tfjs model into TensorSpace compatible",
   "dependencies": {
-    "@tensorflow/tfjs": "^0.13.5",
-    "@tensorflow/tfjs-node": "^0.1.21"
+    "@tensorflow/tfjs": "^1.0.0",
+    "@tensorflow/tfjs-node": "^1.0.0-alpha2"
   }
 }
