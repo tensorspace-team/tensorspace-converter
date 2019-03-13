@@ -34,9 +34,17 @@ def preprocess_tensorflow_model(input_format, path_model, path_output_dir, outpu
     elif input_format == "tf_checkpoint_model":
         preprocess_checkpoint_model()
     elif input_format == "tf_hdf5_model":
-        preprocess_hdf5_combined_model()
+        preprocess_hdf5_combined_model(
+            path_model,
+            path_output_dir,
+            output_node_names
+        )
     elif input_format == "tf_hdf5_separated_model":
-        preprocess_hdf5_separated_model()
+        preprocess_hdf5_separated_model(
+            path_model,
+            path_output_dir,
+            output_node_names
+        )
     else:
         print("Preprocess nothing for tensorflow model.")
 
