@@ -32,22 +32,22 @@ $ tensorspace_converter \
 
 **Note:**
 
-* Configure `input_model_from` to be `tfjs`.
+* Set `input_model_from` to be `tfjs`.
 * A pre-trained model built by TensorFlow.js, may have a topology file `xxx.json` and a weights file `xxx.weight.bin`, the two files should be put in the same folder and set topology file's path to `input_path`.
 * Get out the layer names of model, and set to `output_layer_names` like `Fig. 1`.
 * TensorSpace-Converter will generate preprocessed model into `generatedModel` folder, for tutorial propose, we have already generated a model which can be found in [this folder](https://github.com/tensorspace-team/tensorspace-converter/tree/master/examples/tfjs/generatedModel).
 
 <p align="center">
-<img src="https://github.com/tensorspace-team/tensorspace-converter/blob/master/examples/tfjs/img/output_layer_names.png" alt="layernames" width="100%" >
+<img src="./img/output_layer_names.png" alt="layernames" width="100%" >
 <br/>
-<b>Fig. 1</b> - Set layer names to output_layer_names
+<b>Fig. 1</b> - Set TensorFlow.js layer names to output_layer_names
 </p>
 
 After converting, we shall have the following preprocessed model:
 <p align="center">
 <img src="./img/tfjs_created_model.png" alt="models" width="400" >
 <br/>
-<b>Fig. 2</b> - Preprocessed model
+<b>Fig. 2</b> - Preprocessed TensorFlow.js model
 </p>
 
 **Note:**
@@ -90,7 +90,7 @@ model.init();
 
 If everything goes well, open the `index.html` file in browser, the model will display in the browser:
 <p align="center">
-<img src="https://github.com/tensorspace-team/tensorspace/blob/master/assets/HelloWorld_5.jpg" alt="models" width="100%" >
+<img src="./img/data5.jpg" alt="prediction" width="100%" >
 <br/>
 <b>Fig. 3</b> - TensorSpace LeNet with prediction data "5"
 </p>

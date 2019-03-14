@@ -38,7 +38,7 @@ $ tensorspacejs_converter \
 * 以上 TensorSpace-Converter 预处理脚本将会在 `generatedModel` 文件夹中生成经过预处理的模型。在本教程中，我们已经生成了经过预处理的模型，模型文件可以在 [这个文件夹](https://github.com/tensorspace-team/tensorspace-converter/tree/master/examples/tfjs/generatedModel) 中找到。
 
 <p align="center">
-<img src="https://github.com/tensorspace-team/tensorspace-converter/blob/master/examples/tfjs/img/output_layer_names.png" alt="layernames" width="100%" >
+<img src="./img/output_layer_names.png" alt="layernames" width="100%" >
 <br/>
 <b>图1</b> - 将模型 Layer 名取出并设置 output_layer_names
 </p>
@@ -47,7 +47,7 @@ $ tensorspacejs_converter \
 <p align="center">
 <img src="./img/tfjs_created_model.png" alt="models" width="400" >
 <br/>
-<b>图2</b> - 经过预处理的模型
+<b>图2</b> - 经过预处理的 TensorFlow.js 模型
 </p>
 
 **❗ 注意** 
@@ -90,7 +90,7 @@ model.init();
 
 若至此一切顺利，在浏览器中打开 `index.html`，将会看到以下模型：
 <p align="center">
-<img src="https://github.com/tensorspace-team/tensorspace/blob/master/assets/HelloWorld_5.jpg" alt="models" width="100%" >
+<img src="./img/data5.jpg" alt="prediction" width="100%" >
 <br/>
 <b>图3</b> - TensorSpace LeNet 预测 "5"
 </p>

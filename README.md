@@ -151,7 +151,7 @@ $ tensorspacejs_converter \
     ./PATH/TO/SAVE/DIR
 ```
 
-For a separated HDF5 model, topology and weights are saved in separate files, topology file `xxx.json` and weights file `xxx.hdf5`. Set `input_model_format` to be `tf_hdf5_separated_model`. In this case, the model have two input files, merge two file's paths and separate them with comma (.json first, .hdf5 last), and then set the combined path to positional argument `input_path`. The sample command script should be like:
+For a separated HDF5 model, topology and weights are saved in separate files, topology file `xxx.json` and weights file `xxx.h5`. Set `input_model_format` to be `tf_hdf5_separated_model`. In this case, the model have two input files, merge two file's paths and separate them with comma (.json first, .h5 last), and then set the combined path to positional argument `input_path`. The sample command script should be like:
 ```shell
 $ tensorspacejs_converter \
     --input_model_from="tensorflow" \
@@ -197,7 +197,7 @@ $ tensorspacejs_converter \
     ./PATH/TO/SAVE/DIR
 ```
 
-For a Keras model, topology and weights are saved in separated files, i.e. a topology file `xxx.json` and a weights file `xxx.hdf5`. Set `input_model_format` to be `topology_weights_separated`. In this case, the model have two input files, merge two file's paths and separate them with comma (.json first, .hdf5 last), and then set the combined path to positional argument `input_path`. The sample command script should be like:
+For a Keras model, topology and weights are saved in separated files, i.e. a topology file `xxx.json` and a weights file `xxx.h5`. Set `input_model_format` to be `topology_weights_separated`. In this case, the model have two input files, merge two file's paths and separate them with comma (.json first, .h5 last), and then set the combined path to positional argument `input_path`. The sample command script should be like:
 ```shell
 $ tensorspacejs_converter \
     --input_model_from="keras" \
