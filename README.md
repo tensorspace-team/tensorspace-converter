@@ -86,23 +86,23 @@ The following part introduces the usage and workflow on:
 * how to use TensorSpace-Converter to convert a pre-trained model;
 * how to apply TensorSpace to the converted model for model visualization.
 
-An MNIST-digit Keras model is used as an example in the tutorial. The sample files used in the tutorial includes [pre-trained Keras model](), [TensorSpace-Converter script]() and [TensorSpace visualization code]().
+An MNIST-digit tf.keras model is used as an example in the tutorial. The sample files used in the tutorial includes [pre-trained tf.keras model](https://github.com/tensorspace-team/tensorspace-converter/tree/master/examples/tensorflow/rawModel/keras), [TensorSpace-Converter script](https://github.com/tensorspace-team/tensorspace-converter/blob/master/examples/tensorflow/script/convertKeras.sh) and [TensorSpace visualization code](https://github.com/tensorspace-team/tensorspace-converter/blob/master/examples/tensorflow/index.html).
 
 #### Step 1: Use TensorSpace-Converter to preprocess pre-trained model
 
 ```shell
 $ tensorspacejs_converter \
-    --input_model_from="keras" \
-    --input_model_format="topology_weights_combined" \
-    --output_layer_names="Conv2D_1,MaxPooling2D_1,Conv2D_2,MaxPooling2D_2,Dense_1,Dense_2,Softmax" \
-    ./PATH/TO/MODEL/keras_MNIST_model.h5 \
+    --input_model_from="tensorflow" \
+    --input_model_format="tf_keras" \
+    --output_layer_names="conv_1,maxpool_1,conv_2,maxpool_2,dense_1,dense_2,softmax" \
+    ./PATH/TO/MODEL/tf_keras_model.h5 \
     ./PATH/TO/SAVE/DIR
 ```
 #### Step 2: Apply TensorSpace for model visualization
 
 ```javascript
 model.load({
-    type: "keras",
+    type: "tensorflow",
     url: "/PATH/TO/MODEL/model.json"
 });
 ```

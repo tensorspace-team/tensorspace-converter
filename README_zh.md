@@ -83,18 +83,18 @@ $ pip install tensorspacejs
 
 ### <div id="usage">使用</div>
 
-接下来将使用 TensorSpace-Converter 预处理一个预训练模型（该模型是使用keras训练的lenet），然后使用 TensorSpace 载入经过预处理的模型。
+接下来将使用 TensorSpace-Converter 预处理一个预训练模型（该模型是使用 tf.keras 训练的 lenet），然后使用 TensorSpace 载入经过预处理的模型。
 
-以下为使用的代码及文件：[预处理的 Keras 模型](), [TensorSpace-Converter 脚本]() and [TensorSpace 可视化代码]().
+以下为使用的代码及文件：[tf.keras 模型](https://github.com/tensorspace-team/tensorspace-converter/tree/master/examples/tensorflow/rawModel/keras), [TensorSpace-Converter 脚本](https://github.com/tensorspace-team/tensorspace-converter/blob/master/examples/tensorflow/script/convertKeras.sh) and [TensorSpace 可视化代码](https://github.com/tensorspace-team/tensorspace-converter/blob/master/examples/tensorflow/index.html).
 
 #### 第一步：使用 TensorSpace-Converter 处理预训练的模型
 
 ```shell
 $ tensorspacejs_converter \
-    --input_model_from="keras" \
-    --input_model_format="topology_weights_combined" \
-    --output_layer_names="Conv2D_1,MaxPooling2D_1,Conv2D_2,MaxPooling2D_2,Dense_1,Dense_2,Softmax" \
-    ./PATH/TO/MODEL/keras_MNIST_model.h5 \
+    --input_model_from="tensorflow" \
+    --input_model_format="tf_keras" \
+    --output_layer_names="conv_1,maxpool_1,conv_2,maxpool_2,dense_1,dense_2,softmax" \
+    ./PATH/TO/MODEL/tf_keras_model.h5 \
     ./PATH/TO/SAVE/DIR
 ```
 
@@ -102,7 +102,7 @@ $ tensorspacejs_converter \
 
 ```javascript
 model.load({
-    type: "keras",
+    type: "tensorflow",
     url: "/PATH/TO/MODEL/model.json"
 });
 ```
