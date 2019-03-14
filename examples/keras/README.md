@@ -6,15 +6,15 @@
 
 ## Introduction
 
-In the following chapter, we will introduce the usage and workflow of visualizing Keras model using TensorSpace and TensorSpace-Converter. In this tutorial, we will convert a Keras model with TensorSpace-Converter and visualize the converted model with TensorSpace.
+In the following chapter, we will introduce the usage and workflow of visualizing Keras model using TensorSpace and TensorSpace-Converter. In this tutorial, we will convert Keras models with TensorSpace-Converter and visualize the converted models with TensorSpace.
 
-This example uses LeNet trained with MNIST dataset. If you do not have any existed model in hands, you can use this <a href="https://github.com/tensorspace-team/tensorspace-converter/tree/master/examples/keras/train/mnist.py">script</a> to train a LeNet TensorFlow.js model. We also provide [pre-trained Keras LeNet model](https://github.com/tensorspace-team/tensorspace-converter/tree/master/examples/keras/rawModel) for this example.
+This example uses LeNet trained with MNIST dataset. If you do not have any existed model in hands, you can use this <a href="https://github.com/tensorspace-team/tensorspace-converter/tree/master/examples/keras/train/mnist.py">script</a> to train a LeNet TensorFlow.js model. We also provide [pre-trained Keras LeNet models](https://github.com/tensorspace-team/tensorspace-converter/tree/master/examples/keras/rawModel) for this example.
 
 ## Sample files
 
 The sample files that are used in this tutorial are listed below:
 
-* pre-trained [Keras model](https://github.com/tensorspace-team/tensorspace-converter/tree/master/examples/keras/rawModel)
+* pre-trained [Keras models](https://github.com/tensorspace-team/tensorspace-converter/tree/master/examples/keras/rawModel)
 * [TensorSpace-Converter preprocess script](https://github.com/tensorspace-team/tensorspace-converter/blob/master/examples/keras/script)
 * [TensorSpace visualization code](https://github.com/tensorspace-team/tensorspace-converter/blob/master/examples/keras/index.html)
 
@@ -39,7 +39,7 @@ $ tensorspacejs_converter \
 
 * Set `input_model_from` to be `keras`.
 * Set `input_model_format` to be `topology_weights_combined`.
-* Set `.h5` file's path to `input_path`.
+* Set `.h5` file's path to positional argument `input_path`.
 * Get out the `Keras layer names` of model, and set to `output_layer_names` like `Fig. 1`.
 * TensorSpace-Converter will generate preprocessed model into `convertedModel` folder, for tutorial propose, we have already generated a model which can be found in [this folder](https://github.com/tensorspace-team/tensorspace-converter/tree/master/examples/keras/convertedModel).
 

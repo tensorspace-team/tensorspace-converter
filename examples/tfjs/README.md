@@ -33,7 +33,7 @@ $ tensorspace_converter \
 **Note:**
 
 * Set `input_model_from` to be `tfjs`.
-* A pre-trained model built by TensorFlow.js, may have a topology file `xxx.json` and a weights file `xxx.weight.bin`, the two files should be put in the same folder and set topology file's path to `input_path`.
+* A pre-trained model built by TensorFlow.js, may have a topology file `xxx.json` and a weights file `xxx.weight.bin`, the two files should be put in the same folder and set topology file's path to positional argument `input_path`.
 * Get out the layer names of model, and set to `output_layer_names` like `Fig. 1`.
 * TensorSpace-Converter will generate preprocessed model into `convertedModel` folder, for tutorial propose, we have already generated a model which can be found in [this folder](https://github.com/tensorspace-team/tensorspace-converter/tree/master/examples/tfjs/convertedModel).
 
