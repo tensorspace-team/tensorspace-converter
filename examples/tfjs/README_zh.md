@@ -32,9 +32,9 @@ $ tensorspacejs_converter \
 
 **❗ 注意** 
 
-* 将 `input_model_from` 设置成 `tfjs`.
+* 将 `input_model_from` 设置成 `tfjs`。
 * 当使用 TensorFlow.js 训练并保存一个模型后，会得到一个模型结构文件 `xxx.json` 和一些权重文件 `xxx.weight.bin`。将模型结构文件（xxx.json）和权重文件（xxx.weight.bin）放在同一个目录下，然后将模型结构文件的路径设置为 `input_path`。
-* 取出模型的, and set to `output_layer_names`，如 `图1` 所示.
+* 取出 `TensorFlow.js` 模型的 `Layer` 名称 , 然后设置到 `output_layer_names` 中，如 `图1` 所示。
 * 以上 TensorSpace-Converter 预处理脚本将会在 `generatedModel` 文件夹中生成经过预处理的模型。在本教程中，我们已经生成了经过预处理的模型，模型文件可以在 [这个文件夹](https://github.com/tensorspace-team/tensorspace-converter/tree/master/examples/tfjs/generatedModel) 中找到。
 
 <p align="center">

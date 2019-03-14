@@ -41,7 +41,7 @@ $ tensorspacejs_converter \
 * Set `input_model_format` to be `topology_weights_combined`.
 * Set `.h5` file's path to `input_path`.
 * Get out the `Keras layer names` of model, and set to `output_layer_names` like `Fig. 1`.
-* TensorSpace-Converter will generate preprocessed model into `generatedModel` folder, for tutorial propose, we have already generated a model which can be found in [this folder](https://github.com/tensorspace-team/tensorspace-converter/tree/master/examples/tfjs/generatedModel).
+* TensorSpace-Converter will generate preprocessed model into `generatedModel` folder, for tutorial propose, we have already generated a model which can be found in [this folder](https://github.com/tensorspace-team/tensorspace-converter/tree/master/examples/keras/generatedModel).
 
 ### Separated .json & .h5
 
@@ -62,17 +62,17 @@ $ tensorspacejs_converter \
 * Set `input_model_format` to be `topology_weights_separated`.
 * In this case, the model have two input files, merge two file's paths and separate them with comma (`.json` first, `.h5` last), and then set the combined path to positional argument `input_path`.
 * Get out the `Keras layer names` of model, and set to `output_layer_names` like `Fig. 1`.
-* TensorSpace-Converter will generate preprocessed model into `generatedModel` folder, for tutorial propose, we have already generated a model which can be found in [this folder](https://github.com/tensorspace-team/tensorspace-converter/tree/master/examples/tfjs/generatedModel).
+* TensorSpace-Converter will generate preprocessed model into `generatedModel` folder, for tutorial propose, we have already generated a model which can be found in [this folder](https://github.com/tensorspace-team/tensorspace-converter/tree/master/examples/keras/generatedModel).
 
 <p align="center">
-<img src="https://github.com/tensorspace-team/tensorspace-converter/blob/master/examples/tfjs/img/output_layer_names.png" alt="layernames" width="100%" >
+<img src="https://github.com/tensorspace-team/tensorspace-converter/blob/master/examples/keras/img/output_layer_names.png" alt="layernames" width="100%" >
 <br/>
 <b>Fig. 1</b> - Set Keras layer names to output_layer_names
 </p>
 
 After converting, we shall have the following preprocessed model:
 <p align="center">
-<img src="./img/tfjs_created_model.png" alt="models" width="400" >
+<img src="./img/keras_created_model.png" alt="models" width="400" >
 <br/>
 <b>Fig. 2</b> - Preprocessed Keras model
 </p>
