@@ -7,7 +7,7 @@ import shutil
 from tf.pb2json.pb2json_conversion import convert
 import subprocess
 
-input_format_config = '--input_format=tf_saved'
+input_format_config = '--input_format=tf_saved_model'
 
 
 def preprocess_saved_model(input_path, output_path, output_node_names):
