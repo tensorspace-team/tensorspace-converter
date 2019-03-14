@@ -1,7 +1,7 @@
 <p align="center">
 <img width=400 src="./img/tfjs.png">
 </p>
-<h1 align=center>TensorFlow.js Tutorial</h1>
+<h1 align=center>TensorFlow.js</h1>
 <p align=center><b>Visualize pre-trained TensorFlow.js model using TensorSpace and TensorSpace-Converter</b></p>
 
 ## Introduction
@@ -21,21 +21,33 @@ The sample files that are used in this tutorial are listed below:
 ## Preprocess
 
 First we will use TensorSpace-Converter to preprocess pre-trained TensorFlow.js model:
+
 ```shell
 $ tensorspace_converter \
     --input_model_from="tfjs" \
-    --output_layer_names='myPadding,myConv1,myMaxPooling1,myConv2,myMaxPooling2,myDense1,myDense2,myDense3' \
+    --output_layer_names="myPadding,myConv1,myMaxPooling1,myConv2,myMaxPooling2,myDense1,myDense2,myDense3" \
     ../originalModel/mnist.json \
     ../generatedModel/
 ```
 
-TensorSpace-Converter will generate preprocessed model into `generatedModel` folder, for tutorial propose, we have already generated a model which can be found in [this folder](https://github.com/tensorspace-team/tensorspace-converter/tree/master/examples/tfjs/generatedModel).
+**Note:**
+
+* Configure `input_model_from` to be `tfjs`.
+* A pre-trained model built by TensorFlow.js, may have a topology file `xxx.json` and a weights file `xxx.weight.bin`, the two files should be put in the same folder and set topology file's path to `input_path`.
+* Get out the layer names of model, and set to `output_layer_names` like `Fig. 1`.
+* TensorSpace-Converter will generate preprocessed model into `generatedModel` folder, for tutorial propose, we have already generated a model which can be found in [this folder](https://github.com/tensorspace-team/tensorspace-converter/tree/master/examples/tfjs/generatedModel).
+
+<p align="center">
+<img src="https://github.com/tensorspace-team/tensorspace-converter/blob/master/examples/tfjs/img/output_layer_names.png" alt="layernames" width="100%" >
+<br/>
+<b>Fig. 1</b> - Set layer names to output_layer_names
+</p>
 
 After converting, we shall have the following preprocessed model:
 <p align="center">
 <img src="./img/tfjs_created_model.png" alt="models" width="400" >
 <br/>
-<b>Fig. 1</b> - Preprocessed model
+<b>Fig. 2</b> - Preprocessed model
 </p>
 
 * There are two types of files created:
@@ -44,7 +56,7 @@ After converting, we shall have the following preprocessed model:
 
 ## Load and Visualize
 
-Apply TensorSpace API to construct visualization model.
+Then Apply TensorSpace API to construct visualization model.
 ```javascript
 let model = new TSP.models.Sequential( modelContainer );
 
@@ -78,5 +90,5 @@ If everything goes well, open the `index.html` file in browser, the model will d
 <p align="center">
 <img src="https://github.com/tensorspace-team/tensorspace/blob/master/assets/HelloWorld_5.jpg" alt="models" width="100%" >
 <br/>
-<b>Fig. 2</b> - TensorSpace LeNet with prediction data "5"
+<b>Fig. 3</b> - TensorSpace LeNet with prediction data "5"
 </p>
