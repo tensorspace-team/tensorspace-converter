@@ -70,7 +70,7 @@ $ tensorspacejs_converter \
 
 ### frozen model
 
-* For a TensorFlow saved model. Use the following convert script:
+* For a TensorFlow frozen model. Use the following convert script:
 
 ```shell
 $ tensorspacejs_converter \
@@ -92,7 +92,7 @@ $ tensorspacejs_converter \
 
 ### saved model
 
-* For a TensorFlow frozen model. Use the following convert script:
+* For a TensorFlow saved model. Use the following convert script:
 
 ```shell
 $ tensorspacejs_converter \

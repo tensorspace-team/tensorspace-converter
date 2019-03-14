@@ -151,7 +151,7 @@ $ tensorspacejs_converter \
     ./PATH/TO/SAVE/DIR
 ```
 
-对于模型结构和权重分开保存的 HDF5 模型，会有一个模型结构文件 `xxx.json` 和一个权重文件 `xxx.hdf5`。在配置 TensorSpace-Converter 转换脚本时，将 `input_model_format` 设置成 `tf_hdf5_separated_model`。对于这种模型类型，因为由两个模型文件，在设置 TensorSpace-Converter 的 `input_path` 时，合并两个文件的路径，并用英文半角逗号“,”分开，将 `.json` 文件的路径在前，`.h5` 文件的路径在后。示例转化脚本：
+对于模型结构和权重分开保存的 HDF5 模型，会有一个模型结构文件 `xxx.json` 和一个权重文件 `eee.h5`。在配置 TensorSpace-Converter 转换脚本时，将 `input_model_format` 设置成 `tf_hdf5_separated_model`。对于这种模型类型，因为由两个模型文件，在设置 TensorSpace-Converter 的 `input_path` 时，合并两个文件的路径，并用英文半角逗号“,”分开，将 `.json` 文件的路径在前，`.h5` 文件的路径在后。示例转化脚本：
 ```shell
 $ tensorspacejs_converter \
     --input_model_from="tensorflow" \

@@ -30,7 +30,7 @@ $ tensorspacejs_converter \
     ./convertedModel/
 ```
 
-**❗ 注意** 
+**❗ 注意:** 
 
 * 将 `input_model_from` 设置成 `tfjs`。
 * 当使用 TensorFlow.js 训练并保存一个模型后，会得到一个模型结构文件 `xxx.json` 和一些权重文件 `xxx.weight.bin`。将模型结构文件（xxx.json）和权重文件（xxx.weight.bin）放在同一个目录下，然后将模型结构文件的路径设置为 `input_path`。
@@ -50,7 +50,7 @@ $ tensorspacejs_converter \
 <b>图2</b> - 经过预处理的 TensorFlow.js 模型
 </p>
 
-**❗ 注意** 
+**❗ 注意:** 
 
 * 我们将会得到2种不同类型的文件：
     * `.json` 包含神经网络结构。
