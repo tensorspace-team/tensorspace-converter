@@ -50,6 +50,8 @@ After converting, we shall have the following preprocessed model:
 <b>Fig. 2</b> - Preprocessed model
 </p>
 
+**Note:**
+
 * There are two types of files created:
   * `.json` is for the model structure
   * `.bin` is the trained weights
