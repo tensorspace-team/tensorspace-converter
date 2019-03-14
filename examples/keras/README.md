@@ -8,13 +8,13 @@
 
 In the following chapter, we will introduce the usage and workflow of visualizing Keras model using TensorSpace and TensorSpace-Converter. In this tutorial, we will convert a Keras model with TensorSpace-Converter and visualize the converted model with TensorSpace.
 
-This example uses LeNet trained with MNIST dataset. If you do not have any existed model in hands, you can use this <a href="https://github.com/tensorspace-team/tensorspace-converter/tree/master/examples/keras/train/mnist.py">script</a> to train a LeNet TensorFlow.js model. We also provide [pre-trained Keras LeNet model](https://github.com/tensorspace-team/tensorspace-converter/tree/master/examples/keras/originalModel) for this example.
+This example uses LeNet trained with MNIST dataset. If you do not have any existed model in hands, you can use this <a href="https://github.com/tensorspace-team/tensorspace-converter/tree/master/examples/keras/train/mnist.py">script</a> to train a LeNet TensorFlow.js model. We also provide [pre-trained Keras LeNet model](https://github.com/tensorspace-team/tensorspace-converter/tree/master/examples/keras/rawModel) for this example.
 
 ## Sample files
 
 The sample files that are used in this tutorial are listed below:
 
-* pre-trained [Keras model](https://github.com/tensorspace-team/tensorspace-converter/tree/master/examples/keras/originalModel)
+* pre-trained [Keras model](https://github.com/tensorspace-team/tensorspace-converter/tree/master/examples/keras/rawModel)
 * [TensorSpace-Converter preprocess script](https://github.com/tensorspace-team/tensorspace-converter/blob/master/examples/keras/script)
 * [TensorSpace visualization code](https://github.com/tensorspace-team/tensorspace-converter/blob/master/examples/keras/index.html)
 
@@ -24,15 +24,15 @@ First we will use TensorSpace-Converter to preprocess pre-trained different form
 
 ### Combined .h5
 
-* For a Keras model, topology and weights may be saved in a single HDF5 file, i.e. xxx.h5. Use the following convert script:
+* For a Keras model, topology and weights may be saved in a single HDF5 file, i.e. `xxx.h5`. Use the following convert script:
 
 ```shell
 $ tensorspacejs_converter \
     --input_model_from="keras" \
     --input_model_format="topology_weights_combined" \
     --output_node_names='Conv2D_1,MaxPooling2D_1,Conv2D_2,MaxPooling2D_2,Dense_1,Dense_2,Softmax' \
-    ../originalModel/combined/mnist.h5 \
-    ../generatedModel/
+    ./rawModel/combined/mnist.h5 \
+    ./convertedModel/
 ```
 
 **Note:**
@@ -41,19 +41,19 @@ $ tensorspacejs_converter \
 * Set `input_model_format` to be `topology_weights_combined`.
 * Set `.h5` file's path to `input_path`.
 * Get out the `Keras layer names` of model, and set to `output_layer_names` like `Fig. 1`.
-* TensorSpace-Converter will generate preprocessed model into `generatedModel` folder, for tutorial propose, we have already generated a model which can be found in [this folder](https://github.com/tensorspace-team/tensorspace-converter/tree/master/examples/keras/generatedModel).
+* TensorSpace-Converter will generate preprocessed model into `convertedModel` folder, for tutorial propose, we have already generated a model which can be found in [this folder](https://github.com/tensorspace-team/tensorspace-converter/tree/master/examples/keras/convertedModel).
 
 ### Separated .json & .h5
 
-* For a Keras model, topology and weights may be saved in separated files, i.e. a topology file xxx.json and a weights file eee.h5. Use the following convert script:
+* For a Keras model, topology and weights may be saved in separated files, i.e. a topology file `xxx.json` and a weights file `eee.h5`. Use the following convert script:
 
 ```shell
 $ tensorspacejs_converter \
     --input_model_from="keras" \
     --input_model_format="topology_weights_separated" \
     --output_node_names='Conv2D_1,MaxPooling2D_1,Conv2D_2,MaxPooling2D_2,Dense_1,Dense_2,Softmax' \
-    ../originalModel/separated/topology.json,../originalModel/separated/weight.h5 \
-    ../generatedModel/
+    ./rawModel/separated/topology.json,./rawModel/separated/weight.h5 \
+    ./convertedModel/
 ```
 
 **Note:**
@@ -62,7 +62,7 @@ $ tensorspacejs_converter \
 * Set `input_model_format` to be `topology_weights_separated`.
 * In this case, the model have two input files, merge two file's paths and separate them with comma (`.json` first, `.h5` last), and then set the combined path to positional argument `input_path`.
 * Get out the `Keras layer names` of model, and set to `output_layer_names` like `Fig. 1`.
-* TensorSpace-Converter will generate preprocessed model into `generatedModel` folder, for tutorial propose, we have already generated a model which can be found in [this folder](https://github.com/tensorspace-team/tensorspace-converter/tree/master/examples/keras/generatedModel).
+* TensorSpace-Converter will generate preprocessed model into `convertedModel` folder, for tutorial propose, we have already generated a model which can be found in [this folder](https://github.com/tensorspace-team/tensorspace-converter/tree/master/examples/keras/convertedModel).
 
 <p align="center">
 <img src="https://github.com/tensorspace-team/tensorspace-converter/blob/master/examples/keras/img/output_layer_names.png" alt="layernames" width="100%" >
@@ -106,7 +106,7 @@ Load the model generated by TensorSpace-Converter and then initialize the Tensor
 ```javascript
 model.load( {
     type: "keras",
-    url: './generatedModel/model.json'
+    url: './convertedModel/model.json'
 } );
 
 model.init();

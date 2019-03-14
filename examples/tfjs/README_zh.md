@@ -8,13 +8,13 @@
 
 本教程展示如何使用 TensorSpace 和 TensorSpace-Converter 可视化 TensorFlow.js 模型。在接下来的教程中，可视化一个使用 MNIST 数据集和 LeNet 神经网络结构 构建的 TensorFlow.js 模型。
 
-若果您并没有任何可以直接使用的 `tfjs` 模型，可以使用 [这个](https://github.com/tensorspace-team/tensorspace-converter/blob/master/examples/tfjs/train/createModel.html) 脚本训练一个新的样例模型。当然，我们也提供了一个训练好的 `LeNet` 模型，在可以直接从 [这里](https://github.com/tensorspace-team/tensorspace-converter/tree/master/examples/tfjs/originalModel) 获得。
+若果您并没有任何可以直接使用的 `tfjs` 模型，可以使用 [这个](https://github.com/tensorspace-team/tensorspace-converter/blob/master/examples/tfjs/train/createModel.html) 脚本训练一个新的样例模型。当然，我们也提供了一个训练好的 `LeNet` 模型，在可以直接从 [这里](https://github.com/tensorspace-team/tensorspace-converter/tree/master/examples/tfjs/rawModel) 获得。
 
 ## 文件
 
 以下为本篇教程所使用的代码及模型文件:
 
-* TensorFlow.js 模型 ([mnist.json](https://github.com/tensorspace-team/tensorspace-converter/blob/master/examples/tfjs/originalModel/mnist.json) 和 [mnist.weight.bin](https://github.com/tensorspace-team/tensorspace-converter/blob/master/examples/tfjs/originalModel/mnist.weights.bin))
+* TensorFlow.js 模型 ([mnist.json](https://github.com/tensorspace-team/tensorspace-converter/blob/master/examples/tfjs/rawModel/mnist.json) 和 [mnist.weight.bin](https://github.com/tensorspace-team/tensorspace-converter/blob/master/examples/tfjs/rawModel/mnist.weights.bin))
 * [TensorSpace-Converter 预处理脚本](https://github.com/tensorspace-team/tensorspace-converter/blob/master/examples/tfjs/script/converter.sh)
 * [TensorSpace 可视化代码](https://github.com/tensorspace-team/tensorspace-converter/blob/master/examples/tfjs/index.html)
 
@@ -26,8 +26,8 @@
 $ tensorspacejs_converter \
     --input_model_from="tfjs" \
     --output_layer_names='myPadding,myConv1,myMaxPooling1,myConv2,myMaxPooling2,myDense1,myDense2,myDense3' \
-    ../originalModel/mnist.json \
-    ../generatedModel/
+    ./rawModel/mnist.json \
+    ./convertedModel/
 ```
 
 **❗ 注意** 
@@ -35,7 +35,7 @@ $ tensorspacejs_converter \
 * 将 `input_model_from` 设置成 `tfjs`。
 * 当使用 TensorFlow.js 训练并保存一个模型后，会得到一个模型结构文件 `xxx.json` 和一些权重文件 `xxx.weight.bin`。将模型结构文件（xxx.json）和权重文件（xxx.weight.bin）放在同一个目录下，然后将模型结构文件的路径设置为 `input_path`。
 * 取出 `TensorFlow.js` 模型的 `Layer` 名称 , 然后设置到 `output_layer_names` 中，如 `图1` 所示。
-* 以上 TensorSpace-Converter 预处理脚本将会在 `generatedModel` 文件夹中生成经过预处理的模型。在本教程中，我们已经生成了经过预处理的模型，模型文件可以在 [这个文件夹](https://github.com/tensorspace-team/tensorspace-converter/tree/master/examples/tfjs/generatedModel) 中找到。
+* 以上 TensorSpace-Converter 预处理脚本将会在 `convertedModel` 文件夹中生成经过预处理的模型。在本教程中，我们已经生成了经过预处理的模型，模型文件可以在 [这个文件夹](https://github.com/tensorspace-team/tensorspace-converter/tree/master/examples/tfjs/convertedModel) 中找到。
 
 <p align="center">
 <img src="./img/output_layer_names.png" alt="layernames" width="100%" >
@@ -80,7 +80,7 @@ model.add( new TSP.layers.Output1d( {
 ```javascript
 model.load( {
     type: "tfjs",
-    url: './generatedModel/model.json'
+    url: './convertedModel/model.json'
 } );
 
 model.init();

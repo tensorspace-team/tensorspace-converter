@@ -8,31 +8,31 @@
 
 本教程展示如何使用 TensorSpace 和 TensorSpace-Converter 可视化 Keras 模型。在接下来的教程中，可视化使用 MNIST 数据集和 LeNet 神经网络结构 构建的 Keras 模型。
 
-若果您并没有任何可以直接使用的 `Keras` 模型，可以使用 [这个](https://github.com/tensorspace-team/tensorspace-converter/tree/master/examples/keras/train/mnist.py) 脚本训练一个新的样例模型。当然，我们也提供了一个训练好的 `LeNet` 模型，在可以直接从 [这里](https://github.com/tensorspace-team/tensorspace-converter/tree/master/examples/keras/originalModel) 获得。
+若果您并没有任何可以直接使用的 `Keras` 模型，可以使用 [这个](https://github.com/tensorspace-team/tensorspace-converter/tree/master/examples/keras/train/mnist.py) 脚本训练一个新的样例模型。当然，我们也提供了一个训练好的 `LeNet` 模型，在可以直接从 [这里](https://github.com/tensorspace-team/tensorspace-converter/tree/master/examples/keras/rawModel) 获得。
 
 ## 文件
 
 以下为本篇教程所使用的代码及模型文件:
 
-* [Keras 模型](https://github.com/tensorspace-team/tensorspace-converter/tree/master/examples/keras/originalModel)
+* [Keras 模型](https://github.com/tensorspace-team/tensorspace-converter/tree/master/examples/keras/rawModel)
 * [TensorSpace-Converter 预处理脚本](https://github.com/tensorspace-team/tensorspace-converter/blob/master/examples/keras/script)
 * [TensorSpace 可视化代码](https://github.com/tensorspace-team/tensorspace-converter/blob/master/examples/keras/index.html)
 
 ## 预处理
 
-首先我们将会使用 TensorSpace-Converter 对一个 TensorFlow.js 模型进行预处理:
+首先我们将会使用 TensorSpace-Converter 对不同格式的 `Keras` 模型进行预处理。
 
 ### 模型结构和权重保存在一个HDF5文件
 
-对于一个 Keras 模型，如果模型结构和权重保存在同一个 HDF5 文件中，模型将会是 xxx.h5。可以使用以下 TensorSpace-Converter 脚本进行转化：
+对于一个 Keras 模型，如果模型结构和权重保存在同一个 HDF5 文件中，模型将会是 `xxx.h5`。可以使用以下 TensorSpace-Converter 脚本进行转化：
 
 ```shell
 $ tensorspacejs_converter \
     --input_model_from="keras" \
     --input_model_format="topology_weights_combined" \
     --output_node_names='Conv2D_1,MaxPooling2D_1,Conv2D_2,MaxPooling2D_2,Dense_1,Dense_2,Softmax' \
-    ../originalModel/combined/mnist.h5 \
-    ../generatedModel/
+    ./rawModel/combined/mnist.h5 \
+    ./generatedModel/
 ```
 
 **❗ 注意** 
@@ -45,22 +45,22 @@ $ tensorspacejs_converter \
 
 ### 模型结构和权重保存在不同的文件中
 
-对于一个 Keras 模型，如果模型结构和权重分开保存，那么会有一个模型结构文件 xxx.json 和一个模型权重文件 xxx.h5。可以使用以下 TensorSpace-Converter 脚本进行转化：
+对于一个 Keras 模型，如果模型结构和权重分开保存，那么会有一个模型结构文件 `xxx.json` 和一个模型权重文件 `eee.h5`。可以使用以下 TensorSpace-Converter 脚本进行转化：
 
 ```shell
 $ tensorspacejs_converter \
     --input_model_from="keras" \
     --input_model_format="topology_weights_separated" \
     --output_node_names='Conv2D_1,MaxPooling2D_1,Conv2D_2,MaxPooling2D_2,Dense_1,Dense_2,Softmax' \
-    ../originalModel/separated/topology.json,../originalModel/separated/weight.h5 \
-    ../generatedModel/
+    ./rawModel/separated/topology.json,./rawModel/separated/weight.h5 \
+    ./generatedModel/
 ```
 
 **❗ 注意** 
 
 * 将 `input_model_from` 设置成 `keras`。
 * 将 `input_model_format` 设置成 `topology_weights_separated`.
-* 对于这种模型类型，因为由两个模型文件，在设置 `TensorSpace-Converter` 的 `input_path` 时，合并两个文件的路径，并用英文半角逗号“,”分开，将 `.json` 文件的路径在前，`.h5` 文件的路径在后。
+* 对于这种模型类型，因为有两个模型文件，在设置 `TensorSpace-Converter` 的 `input_path` 时，合并两个文件的路径，并用英文半角逗号“,”分开，将 `.json` 文件的路径在前，`.h5` 文件的路径在后。
 * 取出 `Keras` 模型的 `Layer` 名称, 然后设置到 `output_layer_names` 中，如 `图1` 所示。
 * 以上 TensorSpace-Converter 预处理脚本将会在 `generatedModel` 文件夹中生成经过预处理的模型。在本教程中，我们已经生成了经过预处理的模型，模型文件可以在 [这个文件夹](https://github.com/tensorspace-team/tensorspace-converter/tree/master/examples/keras/generatedModel) 中找到。
 
