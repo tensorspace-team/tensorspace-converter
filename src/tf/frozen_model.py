@@ -8,7 +8,7 @@ import shutil
 from tf.pb2json.pb2json_conversion import convert
 
 
-input_format_config = '--input_format=tf_frozen_model'
+input_format_config = '--input_format=tf_frozen'
 
 
 def preprocess_frozen_model(input_path, output_path, output_node_names):

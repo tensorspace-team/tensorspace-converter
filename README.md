@@ -141,41 +141,41 @@ This section introduces the usage of TensorSpace-Converter for different types o
 
 A pre-trained model built by TensorFlow can be saved as saved model, frozen model, combined HDF5 model or separated HDF5 model. Use different TensorSpace-Converter commands for different kinds of TensorFlow model formats. TensorSpace-Converter collects the data from `tensor`, then use the outputs as the inputs of `layer` of TensorSpace visualization. The developer can collect all necessary tensor names and set the name list as `output_layer_names`.
 
-For a combined HDF5 model, topology and weights are saved in a combined HDF5 file `xxx.h5`. Set `input_model_format` to be `tf_hdf5_model`. The sample command script should be like:
+For a combined HDF5 model, topology and weights are saved in a combined HDF5 file `xxx.h5`. Set `input_model_format` to be `tf_keras`. The sample command script should be like:
 ```shell
 $ tensorspacejs_converter \
     --input_model_from="tensorflow" \
-    --input_model_format="tf_hdf5_model" \
+    --input_model_format="tf_keras" \
     --output_layer_names="layer1Name,layer2Name,layer3Name" \
     ./PATH/TO/MODEL/xxx.h5 \
     ./PATH/TO/SAVE/DIR
 ```
 
-For a separated HDF5 model, topology and weights are saved in separate files, topology file `xxx.json` and weights file `xxx.h5`. Set `input_model_format` to be `tf_hdf5_separated_model`. In this case, the model have two input files, merge two file's paths and separate them with comma (.json first, .h5 last), and then set the combined path to positional argument `input_path`. The sample command script should be like:
+For a separated HDF5 model, topology and weights are saved in separate files, topology file `xxx.json` and weights file `xxx.h5`. Set `input_model_format` to be `tf_keras_separated`. In this case, the model have two input files, merge two file's paths and separate them with comma (.json first, .h5 last), and then set the combined path to positional argument `input_path`. The sample command script should be like:
 ```shell
 $ tensorspacejs_converter \
     --input_model_from="tensorflow" \
-    --input_model_format="tf_hdf5_separated_model" \
+    --input_model_format="tf_keras_separated" \
     --output_layer_names="layer1Name,layer2Name,layer3Name" \
     ./PATH/TO/MODEL/xxx.json,./PATH/TO/MODEL/eee.h5 \
     ./PATH/TO/SAVE/DIR
 ```
 
-For a TensorFlow saved model. Set `input_model_format` to be `tf_saved_model`. The sample command script should be like:
+For a TensorFlow saved model. Set `input_model_format` to be `tf_saved`. The sample command script should be like:
 ```shell
 $ tensorspacejs_converter \
     --input_model_from="tensorflow" \
-    --input_model_format="tf_saved_model" \
+    --input_model_format="tf_saved" \
     --output_layer_names="layer1Name,layer2Name,layer3Name" \
     ./PATH/TO/SAVED/MODEL/FOLDER \
     ./PATH/TO/SAVE/DIR
 ```
 
-For a TensorFlow frozen model. Set `input_model_format` to be `tf_frozen_model`. The sample command script should be like:
+For a TensorFlow frozen model. Set `input_model_format` to be `tf_frozen`. The sample command script should be like:
 ```shell
 $ tensorspacejs_converter \
     --input_model_from="tensorflow" \
-    --input_model_format="tf_frozen_model" \
+    --input_model_format="tf_frozen" \
     --output_layer_names="layer1Name,layer2Name,layer3Name" \
     ./PATH/TO/MODEL/xxx.pb \
     ./PATH/TO/SAVE/DIR

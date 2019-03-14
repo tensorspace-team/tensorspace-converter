@@ -34,7 +34,7 @@ $ pip install tensorflowjs
 
 ```shell
 $ tensorflowjs_converter \
-    --input_format=tf_saved_model \
+    --input_format=tf_saved \
     --output_node_names=$onn \
     --saved_model_tags=serve \
     ../models/tensorflow_model \

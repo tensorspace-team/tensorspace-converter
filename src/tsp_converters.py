@@ -46,17 +46,17 @@ def main():
         required=False,
         choices=set(['topology_weights_combined',
                      'topology_weights_separated',
-                     'tf_saved_model',
-                     'tf_frozen_model',
-                     'tf_hdf5_model',
-                     'tf_hdf5_separated_model']),
+                     'tf_saved',
+                     'tf_frozen',
+                     'tf_keras',
+                     'tf_keras_separated']),
         help='Input format.\n'
              'For "topology_weights_combined", config for Keras model, input is .h5 saved by .save().\n'
              'For "topology_weights_separated", config for Keras model, inputs are topology+weights.\n'
-             'For "tf_saved_model", config for TensorFlow model, input is TensorFlow saved model.\n'
-             'For "tf_frozen_model", config for TensorFlow model, input is TensorFlow frozen model.\n'
-             'For "tf_hdf5_model", config for TensorFlow model, input is .h5 model.\n'
-             'For "tf_hdf5_separated_model", config for TensorFlow model, input is topology+weights.'
+             'For "tf_saved", config for TensorFlow model, input is TensorFlow saved model.\n'
+             'For "tf_frozen", config for TensorFlow model, input is TensorFlow frozen model.\n'
+             'For "tf_keras", config for TensorFlow model, input is .h5 model.\n'
+             'For "tf_keras_separated", config for TensorFlow model, input is topology+weights.'
     )
     parser.add_argument(
         '--output_layer_names',
@@ -111,13 +111,13 @@ def main():
 
     if flags.input_model_from == 'tensorflow'\
             and flags.input_model_format not in (
-            'tf_saved_model',
-            'tf_frozen_model',
-            'tf_hdf5_model',
-            'tf_hdf5_separated_model'):
+            'tf_saved',
+            'tf_frozen',
+            'tf_keras',
+            'tf_keras_separated'):
         raise ValueError(
             'For input_model_from == "tensorflow", the --input_model_format flag can only be set to'
-            '"tf_saved_model", "tf_frozen_model", "tf_checkpoint_model", "tf_hdf5_model", "tf_hdf5_separated_model" '
+            '"tf_saved", "tf_frozen", "tf_checkpoint_model", "tf_keras", "tf_keras_separated" '
             'but the current input model format is "%s".' % flags.input_model_format)
 
     if flags.show_model_summary:

@@ -33,7 +33,7 @@ First we will use TensorSpace-Converter to preprocess pre-trained different form
 ```shell
 $ tensorspacejs_converter \
       --input_model_from="tensorflow" \
-      --input_model_format="tf_hdf5_model" \
+      --input_model_format="tf_keras" \
       --output_layer_names="conv_1,maxpool_1,conv_2,maxpool_2,dense_1,dense_2,softmax" \
       ./rawModel/keras/tf_keras_model.h5 \
       ./convertedModel/layerModel
@@ -42,7 +42,7 @@ $ tensorspacejs_converter \
 **Note:**
 
 * Set `input_model_from` to be `tensorflow`.
-* Set `input_model_format` to be `tf_hdf5_model`.
+* Set `input_model_format` to be `tf_keras`.
 * Set `.h5` file's path to positional argument `input_path`.
 * Get out the `tf.keras layer names` of model, and set to `output_layer_names` like `Fig. 1`.
 * TensorSpace-Converter will generate preprocessed model into `convertedModel/layerModel` folder, for tutorial propose, we have already generated a model which can be found in [this folder](https://github.com/tensorspace-team/tensorspace-converter/tree/master/examples/tensorflow/convertedModel/layerModel).
@@ -54,7 +54,7 @@ $ tensorspacejs_converter \
 ```shell
 $ tensorspacejs_converter \
       --input_model_from="tensorflow" \
-      --input_model_format="tf_hdf5_separated_model" \
+      --input_model_format="tf_keras_separated" \
       --output_layer_names="Conv2D_1,MaxPooling2D_1,Conv2D_2,MaxPooling2D_2,Dense_1,Dense_2,Softmax" \
       ./rawModel/keras_separated/topology.json,./rawModel/keras_separated/weights.h5 \
       ./convertedModel/layerModel
@@ -63,7 +63,7 @@ $ tensorspacejs_converter \
 **Note:**
 
 * Set `input_model_from` to be `tensorflow`.
-* Set `input_model_format` to be `tf_hdf5_separated_model`.
+* Set `input_model_format` to be `tf_keras_separated`.
 * In this case, the model have two input files, merge two file's paths and separate them with comma (`.json` first, `.h5` last), and then set the combined path to positional argument `input_path`.
 * Get out the `tf.keras layer names` of model, and set to `output_layer_names` like `Fig. 1`.
 * TensorSpace-Converter will generate preprocessed model into `convertedModel/layerModel` folder, for tutorial propose, we have already generated a model which can be found in [this folder](https://github.com/tensorspace-team/tensorspace-converter/tree/master/examples/tensorflow/convertedModel/layerModel).
@@ -75,7 +75,7 @@ $ tensorspacejs_converter \
 ```shell
 $ tensorspacejs_converter \
       --input_model_from="tensorflow" \
-      --input_model_format="tf_frozen_model" \
+      --input_model_format="tf_frozen" \
       --output_layer_names="MyConv2D_1,MyMaxPooling2D_1,MyConv2D_2,MyMaxPooling2D_2,MyDense_1,MyDense_2,MySoftMax" \
       ./rawModel/frozen/frozen_model.pb \
       ./convertedModel/graphModel
@@ -84,7 +84,7 @@ $ tensorspacejs_converter \
 **Note:**
 
 * Set `input_model_from` to be `tensorflow`.
-* Set `input_model_format` to be `tf_frozen_model`.
+* Set `input_model_format` to be `tf_frozen`.
 * Set `.pb` file's path to positional argument `input_path`.
 * Get out the `TensorFlow node names`, and set to `output_layer_names` like `Fig. 2`.
 * TensorSpace-Converter will generate preprocessed model into `convertedModel/graphModel` folder, for tutorial propose, we have already generated a model which can be found in [this folder](https://github.com/tensorspace-team/tensorspace-converter/tree/master/examples/tensorflow/convertedModel/graphModel).
@@ -97,7 +97,7 @@ $ tensorspacejs_converter \
 ```shell
 $ tensorspacejs_converter \
       --input_model_from="tensorflow" \
-      --input_model_format="tf_saved_model" \
+      --input_model_format="tf_saved" \
       --output_layer_names="MyConv2D_1,MyMaxPooling2D_1,MyConv2D_2,MyMaxPooling2D_2,MyDense_1,MyDense_2,MySoftMax" \
       ./rawModel/saved \
       ./convertedModel/graphModel
@@ -106,7 +106,7 @@ $ tensorspacejs_converter \
 **Note:**
 
 * Set `input_model_from` to be `tensorflow`.
-* Set `input_model_format` to be `tf_saved_model`.
+* Set `input_model_format` to be `tf_saved`.
 * Set saved model's folder path to positional argument `input_path`.
 * Get out the `TensorFlow node names` of model, and set to `output_layer_names` like `Fig. 2`.
 * TensorSpace-Converter will generate preprocessed model into `convertedModel/graphModel` folder, for tutorial propose, we have already generated a model which can be found in [this folder](https://github.com/tensorspace-team/tensorspace-converter/tree/master/examples/tensorflow/convertedModel/graphModel).

@@ -18,25 +18,25 @@ def show_tf_model_summary(path_model):
 
 
 def preprocess_tensorflow_model(input_format, path_model, path_output_dir, output_node_names=None):
-    if input_format == "tf_saved_model":
+    if input_format == "tf_saved":
         preprocess_saved_model(
             path_model,
             path_output_dir,
             output_node_names
         )
-    elif input_format == "tf_frozen_model":
+    elif input_format == "tf_frozen":
         preprocess_frozen_model(
             path_model,
             path_output_dir,
             output_node_names
         )
-    elif input_format == "tf_hdf5_model":
+    elif input_format == "tf_keras":
         preprocess_hdf5_combined_model(
             path_model,
             path_output_dir,
             output_node_names
         )
-    elif input_format == "tf_hdf5_separated_model":
+    elif input_format == "tf_keras_separated":
         preprocess_hdf5_separated_model(
             path_model,
             path_output_dir,

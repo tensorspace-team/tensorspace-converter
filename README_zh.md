@@ -141,41 +141,41 @@ $ tensorspacejs_converter \
 
 当使用 TensorFlow 训练并保存一个模型时，TensorSpace-Converter 支持转化以下格式的模型：saved model，frozen model，模型结构权重合并的 HDF5，模型结构和权重分开保存的 HDF5。TensorSpace-Converter 使用不同的转换指令来转换这四种模型。在 TensorFlow 的图结构中，可能没有 `layer` 的概念，不过，一个特定的 `tensor` 可以对应一个 `layer` 的输出，在这种情况下，可以取出相对应的 `tensor` 名称，然后设置到 TensorSpace-Converter 的 `output_layer_names` 参数中。
 
-对于模型结构和权重合并保存的 HDF5 模型，会有一个 `xxx.h5` 文件。在配置 TensorSpace-Converter 转换脚本时，将 `input_model_format` 设置成 `tf_hdf5_model`。示例转化脚本：
+对于模型结构和权重合并保存的 HDF5 模型，会有一个 `xxx.h5` 文件。在配置 TensorSpace-Converter 转换脚本时，将 `input_model_format` 设置成 `tf_keras`。示例转化脚本：
 ```shell
 $ tensorspacejs_converter \
     --input_model_from="tensorflow" \
-    --input_model_format="tf_hdf5_model" \
+    --input_model_format="tf_keras" \
     --output_layer_names="layer1Name,layer2Name,layer3Name" \
     ./PATH/TO/MODEL/xxx.h5 \
     ./PATH/TO/SAVE/DIR
 ```
 
-对于模型结构和权重分开保存的 HDF5 模型，会有一个模型结构文件 `xxx.json` 和一个权重文件 `eee.h5`。在配置 TensorSpace-Converter 转换脚本时，将 `input_model_format` 设置成 `tf_hdf5_separated_model`。对于这种模型类型，因为由两个模型文件，在设置 TensorSpace-Converter 的 `input_path` 时，合并两个文件的路径，并用英文半角逗号“,”分开，将 `.json` 文件的路径在前，`.h5` 文件的路径在后。示例转化脚本：
+对于模型结构和权重分开保存的 HDF5 模型，会有一个模型结构文件 `xxx.json` 和一个权重文件 `eee.h5`。在配置 TensorSpace-Converter 转换脚本时，将 `input_model_format` 设置成 `tf_keras_separated`。对于这种模型类型，因为由两个模型文件，在设置 TensorSpace-Converter 的 `input_path` 时，合并两个文件的路径，并用英文半角逗号“,”分开，将 `.json` 文件的路径在前，`.h5` 文件的路径在后。示例转化脚本：
 ```shell
 $ tensorspacejs_converter \
     --input_model_from="tensorflow" \
-    --input_model_format="tf_hdf5_separated_model" \
+    --input_model_format="tf_keras_separated" \
     --output_layer_names="layer1Name,layer2Name,layer3Name" \
     ./PATH/TO/MODEL/xxx.json,./PATH/TO/MODEL/eee.h5 \
     ./PATH/TO/SAVE/DIR
 ```
 
-对于 TensorFlow saved model。在配置 TensorSpace-Converter 转换脚本时，将 `input_model_format` 设置成 `tf_saved_model`。示例转化脚本：
+对于 TensorFlow saved model。在配置 TensorSpace-Converter 转换脚本时，将 `input_model_format` 设置成 `tf_saved`。示例转化脚本：
 ```shell
 $ tensorspacejs_converter \
     --input_model_from="tensorflow" \
-    --input_model_format="tf_saved_model" \
+    --input_model_format="tf_saved" \
     --output_layer_names="layer1Name,layer2Name,layer3Name" \
     ./PATH/TO/SAVED/MODEL/FOLDER \
     ./PATH/TO/SAVE/DIR
 ```
 
-对于 TensorFlow frozen model。在配置 TensorSpace-Converter 转换脚本时，将 `input_model_format` 设置成 `tf_frozen_model`。示例转化脚本：
+对于 TensorFlow frozen model。在配置 TensorSpace-Converter 转换脚本时，将 `input_model_format` 设置成 `tf_frozen`。示例转化脚本：
 ```shell
 $ tensorspacejs_converter \
     --input_model_from="tensorflow" \
-    --input_model_format="tf_frozen_model" \
+    --input_model_format="tf_frozen" \
     --output_layer_names="layer1Name,layer2Name,layer3Name" \
     ./PATH/TO/MODEL/xxx.pb \
     ./PATH/TO/SAVE/DIR

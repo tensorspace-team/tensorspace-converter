@@ -33,7 +33,7 @@
 ```shell
 $ tensorspacejs_converter \
       --input_model_from="tensorflow" \
-      --input_model_format="tf_hdf5_model" \
+      --input_model_format="tf_keras" \
       --output_layer_names="conv_1,maxpool_1,conv_2,maxpool_2,dense_1,dense_2,softmax" \
       ./rawModel/keras/tf_keras_model.h5 \
       ./convertedModel/layerModel
@@ -42,7 +42,7 @@ $ tensorspacejs_converter \
 **❗ 注意:** 
 
 * 将 `input_model_from` 设置成 `tensorflow`。
-* 将 `input_model_format` 设置成 `tf_hdf5_model`。
+* 将 `input_model_format` 设置成 `tf_keras`。
 * 将 `.h5` 文件的路径设置到 `input_path` 中。
 * 取出 `tf.keras` 模型的 `Layer` 名称, 然后设置到 `output_layer_names` 中，如 `图1` 所示。
 * 以上 TensorSpace-Converter 预处理脚本将会在 `convertedModel/layerModel` 文件夹中生成经过预处理的模型。在本教程中，我们已经生成了经过预处理的模型，模型文件可以在 [这个文件夹](https://github.com/tensorspace-team/tensorspace-converter/tree/master/examples/tensorflow/convertedModel/layerModel) 中找到。
@@ -54,7 +54,7 @@ $ tensorspacejs_converter \
 ```shell
 $ tensorspacejs_converter \
       --input_model_from="tensorflow" \
-      --input_model_format="tf_hdf5_separated_model" \
+      --input_model_format="tf_keras_separated" \
       --output_layer_names="Conv2D_1,MaxPooling2D_1,Conv2D_2,MaxPooling2D_2,Dense_1,Dense_2,Softmax" \
       ./rawModel/keras_separated/topology.json,./rawModel/keras_separated/weights.h5 \
       ./convertedModel/layerModel
@@ -63,7 +63,7 @@ $ tensorspacejs_converter \
 **❗ 注意:** 
 
 * 将 `input_model_from` 设置成 `tensorflow`。
-* 将 `input_model_format` 设置成 `tf_hdf5_separated_model`。
+* 将 `input_model_format` 设置成 `tf_keras_separated`。
 * 对于这种模型类型，因为有两个模型文件，在设置 `TensorSpace-Converter` 的 `input_path` 时，合并两个文件的路径，并用英文半角逗号“,”分开，将 `.json` 文件的路径在前，`.h5` 文件的路径在后。
 * 取出 `tf.keras` 模型的 `Layer` 名称, 然后设置到 `output_layer_names` 中，如 `图1` 所示。
 * 以上 TensorSpace-Converter 预处理脚本将会在 `convertedModel/layerModel` 文件夹中生成经过预处理的模型。在本教程中，我们已经生成了经过预处理的模型，模型文件可以在 [这个文件夹](https://github.com/tensorspace-team/tensorspace-converter/tree/master/examples/tensorflow/convertedModel/layerModel) 中找到。
@@ -75,7 +75,7 @@ $ tensorspacejs_converter \
 ```shell
 $ tensorspacejs_converter \
       --input_model_from="tensorflow" \
-      --input_model_format="tf_frozen_model" \
+      --input_model_format="tf_frozen" \
       --output_layer_names="MyConv2D_1,MyMaxPooling2D_1,MyConv2D_2,MyMaxPooling2D_2,MyDense_1,MyDense_2,MySoftMax" \
       ./rawModel/frozen/frozen_model.pb \
       ./convertedModel/graphModel
@@ -84,7 +84,7 @@ $ tensorspacejs_converter \
 **❗ 注意:** 
 
 * Set `input_model_from` to be `tensorflow`.
-* Set `input_model_format` to be `tf_frozen_model`.
+* Set `input_model_format` to be `tf_frozen`.
 * Set `.pb` file's path to positional argument `input_path`.
 * Get out the `TensorFlow node names`, and set to `output_layer_names` like `Fig. 2`.
 * TensorSpace-Converter will generate preprocessed model into `convertedModel/graphModel` folder, for tutorial propose, we have already generated a model which can be found in [this folder](https://github.com/tensorspace-team/tensorspace-converter/tree/master/examples/tensorflow/convertedModel/graphModel).
@@ -97,7 +97,7 @@ $ tensorspacejs_converter \
 ```shell
 $ tensorspacejs_converter \
       --input_model_from="tensorflow" \
-      --input_model_format="tf_saved_model" \
+      --input_model_format="tf_saved" \
       --output_layer_names="MyConv2D_1,MyMaxPooling2D_1,MyConv2D_2,MyMaxPooling2D_2,MyDense_1,MyDense_2,MySoftMax" \
       ./rawModel/saved \
       ./convertedModel/graphModel
@@ -106,7 +106,7 @@ $ tensorspacejs_converter \
 **❗ 注意:** 
 
 * Set `input_model_from` to be `tensorflow`.
-* Set `input_model_format` to be `tf_saved_model`.
+* Set `input_model_format` to be `tf_saved`.
 * Set saved model's folder path to positional argument `input_path`.
 * Get out the `TensorFlow node names` of model, and set to `output_layer_names` like `Fig. 2`.
 * TensorSpace-Converter will generate preprocessed model into `convertedModel/graphModel` folder, for tutorial propose, we have already generated a model which can be found in [this folder](https://github.com/tensorspace-team/tensorspace-converter/tree/master/examples/tensorflow/convertedModel/graphModel).

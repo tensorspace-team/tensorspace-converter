@@ -36,7 +36,7 @@ $ pip install tensorflowjs
 
 ```shell
 $ tensorflowjs_converter \
-    --input_format=tf_saved_model \
+    --input_format=tf_saved \
     --output_node_names=$onn \
     --saved_model_tags=serve \
     ../models/tensorflow_model \
@@ -372,7 +372,7 @@ print(sess.run(outputs, feed_dict={x:x_test}))
 ```Bash
 onn='MyConv2D_1,MyMaxPooling2D_1,MyConv2D_2,MyMaxPooling2D_2,MyDense_1,MyDense_2,MySoftMax'
 tensorflowjs_converter \
-    --input_format=tf_saved_model \
+    --input_format=tf_saved \
     --output_node_names=$onn \
     --saved_model_tags=serve \
     ../models/tensorflow_model \
@@ -384,8 +384,8 @@ tensorflowjs_converter \
 * 请确认 tfjs-converter 正确安装（`tensorflowjs_converter --version`）。
 * 如果该网络保存为 Checkpoint，您需要先将其转换为 SavedModel 或者 FrozenModel。 tfjs-converter 暂时不支持 Checkpoint 格式。
 * 请根据所保存的预训练模型类型，选择合适的 `input_format`
-  * `input_format=tf_saved_model` 对应 `saved model`
-  * `input_format=tf_frozen_model` 对应`frozen model`
+  * `input_format=tf_saved` 对应 `saved model`
+  * `input_format=tf_frozen` 对应`frozen model`
 * 请添加所保存的 tensor 名称列表至 `onn`（**请勿包含任何空格或者引号**）。
 
 <p align="center">
