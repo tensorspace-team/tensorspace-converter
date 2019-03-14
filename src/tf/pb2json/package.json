@@ -1,7 +1,7 @@
 {
   "name": "pbtojson",
   "version": "0.0.1",
-  "description": "",
+  "description": "Minimum dependencies for pb2json, the script is from tfjs-converter/tools",
   "devDependencies": {
     "protobufjs": "~6.8.6",
     "ts-node": "~4.1.0",

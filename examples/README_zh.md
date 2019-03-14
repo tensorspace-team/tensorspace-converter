@@ -1,4 +1,4 @@
-# 模型预处理简介
+<h1 align=center>模型预处理简介</h1>
 
 “什么是模型预处理？”、“我们为什么要模型预处理？”、“我们该怎么模型预处理？”本篇模型预处理简介将解答这些问题。
 
@@ -40,9 +40,8 @@
 
 通过预处理，将传统单一输出的神经网络模型转换为拥有中间层输出的`TensorSpace`适配模型。
 
-基于不同的神经网络构造框架，细分了不同的预处理教程。
+基于不同的神经网络构造框架，细分了不同的预处理教程。教程介绍了如何使用 TensorSpace-Converter 来对模型进行预处理，然后使用 TensorSpace 来对经过预处理的模型可视化。
 
-* [TensorFlow 模型预处理](https://github.com/tensorspace-team/tensorspace/blob/master/docs/preprocess_zh/TensorFlow/README.md)
-* [Keras 模型预处理](https://github.com/tensorspace-team/tensorspace/blob/master/docs/preprocess_zh/Keras/README.md)
-* [tf.keras 模型预处理](https://github.com/tensorspace-team/tensorspace/blob/master/docs/preprocess_zh/tfKeras/README.md)
-* [TensorFlow.js 模型预处理](https://github.com/tensorspace-team/tensorspace/blob/master/docs/preprocess_zh/TensorFlowJS/README.md)
+* [TensorFlow 教程](https://github.com/tensorspace-team/tensorspace-converter/blob/master/examples/tensorflow/README_zh.md)
+* [Keras 教程](https://github.com/tensorspace-team/tensorspace-converter/blob/master/examples/keras/README_zh.md)
+* [TensorFlow.js 教程](https://github.com/tensorspace-team/tensorspace-converter/blob/master/examples/tfjs/README_zh.md)

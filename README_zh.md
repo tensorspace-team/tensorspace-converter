@@ -180,7 +180,7 @@ $ tensorspacejs_converter \
     ./PATH/TO/MODEL/xxx.pb \
     ./PATH/TO/SAVE/DIR
 ```
-这篇 [TensorFlow 教程](https://github.com/tensorspace-team/tensorspace-converter/tree/master/examples/tensorflow)，通过一个实际的例子，介绍了如何使用 TensorSpace-Converter 来预处理 TensorFlow 模型。
+这篇 [TensorFlow 教程](https://github.com/tensorspace-team/tensorspace-converter/tree/master/examples/tensorflow/README_zh.md)，通过一个实际的例子，介绍了如何使用 TensorSpace-Converter 来预处理 TensorFlow 模型。
 
 ### <div id="keras">Keras</div>
 
@@ -205,7 +205,7 @@ $ tensorspacejs_converter \
     ./PATH/TO/MODEL/xxx.json,./PATH/TO/MODEL/eee.h5 \
     ./PATH/TO/SAVE/DIR
 ```
-这篇 [Keras 教程](https://github.com/tensorspace-team/tensorspace-converter/tree/master/examples/keras)，通过一个实际的例子，介绍了如何使用 TensorSpace-Converter 来预处理 Keras 模型。
+这篇 [Keras 教程](https://github.com/tensorspace-team/tensorspace-converter/tree/master/examples/keras/README_zh.md)，通过一个实际的例子，介绍了如何使用 TensorSpace-Converter 来预处理 Keras 模型。
 
 ### <div id="tensorflowjs">TensorFlow.js</div>
 
@@ -218,7 +218,7 @@ $ tensorspacejs_converter \
     ./PATH/TO/MODEL/xxx.json \
     ./PATH/TO/SAVE/DIR
 ```
-这篇 [TensorFlow.js 教程](https://github.com/tensorspace-team/tensorspace-converter/tree/master/examples/tfjs)，通过一个实际的例子，介绍了如何使用 TensorSpace-Converter 来预处理 TensorFlow.js 模型。
+这篇 [TensorFlow.js 教程](https://github.com/tensorspace-team/tensorspace-converter/tree/master/examples/tfjs/README_zh.md)，通过一个实际的例子，介绍了如何使用 TensorSpace-Converter 来预处理 TensorFlow.js 模型。
 
 ## <div id="contributors">开发人员</div>
 

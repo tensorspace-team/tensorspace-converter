@@ -1,4 +1,4 @@
-## Introduction: Model Preprocessing
+<h1 align=center>Introduction: Model Preprocessing</h1>
 
 It is confusing for the new TensorSpace developer to preprocess the pre-trained models: "What is a model preprocessing?", "Why do we need to preprocess the model?" and " How can we make it?". Then this introduction should somehow help you to understand the preprocessing.
 
@@ -32,8 +32,8 @@ Hence, we need to find a way to collect the intermediate outputs from not only t
 
 
 **How do we preprocess a model?**<br/>
-To fully apply the core functionality of TensorSpace, we need to transfer the classic model (only returns the final output) into a new model (generates all intermediate outputs we want to present). For the following sections, we introduce how to preprocess the models built by TensorFlow, Keras, tf.Keras and TensorFlow.js.
+To fully apply the core functionality of TensorSpace, we need to transfer the classic model (only returns the final output) into a new model (generates all intermediate outputs we want to present). For the following sections, we introduce how to use TensorFlow-Converter to preprocess and use TensorSpace to visualize the preprocessed models built by TensorFlow, Keras, and TensorFlow.js.
 
-* [TensorFlow model preprocessing tutorial](https://github.com/tensorspace-team/tensorspace/tree/master/docs/preprocess/TensorFlow/README.md)
-* [Keras model preprocessing tutorial](https://github.com/tensorspace-team/tensorspace/tree/master/docs/preprocess/Keras/README.md)
-* [TensorFlow.js model preprocessing tutorial](https://github.com/tensorspace-team/tensorspace/tree/master/docs/preprocess/TensorFlowJS/README.md)
+* [TensorFlow tutorial](https://github.com/tensorspace-team/tensorspace-converter/tree/master/examples/tensorflow)
+* [Keras tutorial](https://github.com/tensorspace-team/tensorspace-converter/tree/master/examples/keras)
+* [TensorFlow.js tutorial](https://github.com/tensorspace-team/tensorspace-converter/tree/master/examples/tfjs)
