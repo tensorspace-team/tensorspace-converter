@@ -12,6 +12,9 @@ from tf.tensorflow_conversion import show_tf_model_summary, preprocess_tensorflo
 from krs.keras_conversion import show_keras_model_summary, preprocess_keras_model
 from tfjs.tfjs_conversion import show_tfjs_model_summary, process_tfjs_model
 from version import version
+from version import python_version
+from version import node_version
+from version import tensorflowjs_version
 
 
 def print_hello_world():
@@ -84,9 +87,9 @@ def main():
     if flags.show_version:
         print('\ntensorspacejs %s\n' % version)
         print('Dependency versions:')
-        print('(TBD)')
-        # print('  keras %s' % keras.__version__)
-        # print('  tensorflow %s' % tf.__version__)
+        print('python %s' % python_version)
+        print('node %s' % node_version)
+        print('tensorflowjs %s' % tensorflowjs_version)
         return
 
     if flags.input_path is None:
