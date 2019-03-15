@@ -17,6 +17,8 @@ def process_tfjs_model(path_input, path_output, output_names=None):
         output_names = "--output_layer_names=" + output_names
         subprocess.check_call(["node", MAIN_JS_PATH, output_names, path_input, path_output])
 
+    print("Mission Complete!!!")
+
 
 def show_tfjs_model_summary(path_input):
     import subprocess

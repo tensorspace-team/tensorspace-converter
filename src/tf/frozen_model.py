@@ -12,9 +12,10 @@ input_format_config = '--input_format=tf_frozen_model'
 
 
 def preprocess_frozen_model(input_path, output_path, output_node_names):
-    print("preprocessing tensorflow frozen model...")
+    print("Preprocessing tensorflow frozen model...")
     if not os.path.isdir:
         os.mkdir(output_path + '/tmp')
+    print("Converting frozen model to web friendly format...")
     subprocess.check_call([
         "tensorflowjs_converter",
         input_format_config,
@@ -28,8 +29,10 @@ def preprocess_frozen_model(input_path, output_path, output_node_names):
     absolute_output_path = os.getcwd()
     absolute_output_path_temp = absolute_output_path + '/tmp/'
     os.chdir(path_now)
+    print("Converting pb to json...")
     convert(
         absolute_output_path_temp,
         absolute_output_path
     )
+    print("Removing temp pb model...")
     shutil.rmtree(absolute_output_path_temp)

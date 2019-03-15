@@ -15,10 +15,12 @@ async function encapsulateModel(
 
 ) {
 
+	console.log( "Loading tfjs model..." );
     const model = await tf.loadLayersModel( input_path );
 
 	let encModel;
 
+	console.log( "Generating multi-output model..." );
 	if ( hasOutputConfig ) {
 
 		encModel = Wrapper.wrapWithName( model, output_layer_names );
@@ -29,6 +31,7 @@ async function encapsulateModel(
 
 	}
 
+	console.log( "Saving generated model..." );
 	await encModel.save( output_path );
 
 }

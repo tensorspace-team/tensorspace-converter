@@ -84,7 +84,7 @@ def convert_tfjs(path_output_dir):
 
 
 def clean_temp_file(path_output_dir):
-    print("Remove enc_model file...")
+    print("Removing enc_model file...")
     remove_file(path_output_dir + "/enc_model.h5")
 
 
