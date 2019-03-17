@@ -40,9 +40,9 @@ TensorSpace-Converter is a tool used to generate a TensorSpace compatible model 
 
 TensorSpace is a JavaScript framework used to 3D visualize pre-trained deep learning models built by TensorFlow, Keras and TensorFlow.js. Before applying TensorSpace to the pre-trained model, there is an important pipeline - TensorSpace model preprocessing ( Checkout this [article](https://tensorspace.org/html/docs/preIntro.html) for more information about TensorSpace preprocessing ). TensorSpace-Converter is designed to simplify the model preprocessing and generate a TensorSpace compatible model easily and quickly.
 
-Without TensorSpace-Converter, the developer needs to be expert on the pre-trained model and machine learning library the model used. For example, if the developer has an LeNet pre-trained model built by Keras, it is required to know the structure of the LeNet network as well as how to implement a new multi-output model by Keras. Now, with TensorSpace-Converter, it only needs some commands to complete the preprocessing process. For example, the developer only needs to use the [commands](#keras) to preprocess a Keras pre-trained model.
+Without TensorSpace-Converter, the developer needs to be expert on the pre-trained model and machine learning library the model used. For example, if the developer has an LeNet pre-trained model built by tf.keras, it is required to know the structure of the LeNet network as well as how to implement a new multi-output model by tf.keras. Now, with TensorSpace-Converter, it only needs some commands to complete the preprocessing process. For example, the developer only needs to use the [commands](#tensorflow) to preprocess a tf.keras pre-trained model.
 
-As a component of TensorSpace ecosystem, TensorSpace-Converter simplifies the TensorSpace preprocess, release the workloads from learning how to generate TensorSpace compatible model. As a development tool, TensorSpace-Converter helps to separate the work of `model training` and `model visuailization`.
+As a component of TensorSpace ecosystem, TensorSpace-Converter simplifies the TensorSpace preprocess, release the workloads from learning how to generate TensorSpace compatible model. As a development tool, TensorSpace-Converter helps to separate the work of `model training` and `model visualization`.
 
 <p align="center">
 <img width="100%" src="https://raw.githack.com/tensorspace-team/tensorspace/master/assets/tensorspace_lenet.gif">
@@ -73,14 +73,14 @@ If `tensorspacejs` is installed successfully, you can check the TensorSpace-Conv
 $ tensorspacejs_converter -v
 ```
 
-Then `init` TensorSpace Converter:
+Then `init` TensorSpace Converter (important step):
 ```shell
 $ tensorspacejs_converter -init
 ```
 
 * **Note**
 
-TensorSpace-Converter requires to run under Python 3.6, Node 11.3+. If you have other pre-installed Python version in your local environment, we suggest you to create a new virtual environment. For example, the <a href="https://anaconda.org/anaconda/conda">conda</a> commands is like:
+TensorSpace-Converter requires to run under Python 3.6, Node 11.3+, NPM 6.5+. If you have other pre-installed Python version in your local environment, we suggest you to create a new virtual environment. For example, the <a href="https://anaconda.org/anaconda/conda">conda</a> commands is like:
 ```shell
 $ conda create -n envname python=3.6
 $ source activate envname

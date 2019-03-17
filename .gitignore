@@ -22,5 +22,6 @@ tensorspacejs/tfjs/package-lock.json
 tensorspacejs/tfjs/test/model.json
 tensorspacejs/tfjs/test/weights.bin
 
+package.json
 package-lock.json
 node_modules/*

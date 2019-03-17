@@ -1,4 +1,10 @@
+"""
+@author zchholmes / https://github.com/zchholmes
+@author syt123450 / https://github.com/syt123450
+"""
+
 import os
+import subprocess
 from utility.file_utility import valid_file, valid_directory, show_invalid_message
 
 
@@ -8,11 +14,10 @@ MAIN_JS_PATH = os.path.abspath(
 
 
 def process_tfjs_model(path_input, path_output, output_names=None):
-    import subprocess
-    if (not valid_file(path_input)):
+    if not valid_file(path_input):
         show_invalid_message('input model file', path_input)
         return
-    if (not valid_directory(path_output)):
+    if not valid_directory(path_output):
         show_invalid_message('output directory', path_output)
         return
 
@@ -26,7 +31,6 @@ def process_tfjs_model(path_input, path_output, output_names=None):
 
 
 def show_tfjs_model_summary(path_input):
-    import subprocess
     if not valid_file(path_input):
         show_invalid_message('input model file', path_input)
         return

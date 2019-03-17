@@ -19,10 +19,7 @@ from tf.tensorflow_conversion import show_tf_model_summary, preprocess_tensorflo
 from krs.keras_conversion import show_keras_model_summary, preprocess_keras_model
 from tfjs.tfjs_conversion import show_tfjs_model_summary, process_tfjs_model
 from install import install
-from version import version
-from version import python_version
-from version import node_version
-from version import tensorflowjs_version
+from version import version, python_version, node_version, npm_version, tensorflow_version, keras_version, tensorflowjs_version
 
 
 def print_hello_world():
@@ -103,6 +100,9 @@ def main():
         print('Dependency versions:')
         print('python %s' % python_version)
         print('node %s' % node_version)
+        print('npm %s' % npm_version)
+        print('tensorflow %s' % tensorflow_version)
+        print('keras %s' % keras_version)
         print('tensorflowjs %s' % tensorflowjs_version)
         return
 

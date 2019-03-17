@@ -4,11 +4,11 @@
 
 from tf.saved_model import preprocess_saved_model
 from tf.frozen_model import preprocess_frozen_model
-from tf.hdf5_combined_model import preprocess_hdf5_combined_model
-from tf.hdf5_separated_model import preprocess_hdf5_separated_model
+from tf.keras_model import preprocess_hdf5_combined_model, preprocess_hdf5_separated_model
 
 
 def show_tf_model_summary(path_model):
+    # TODO: Add TensorFlow model summary
     print(path_model)
     print("tensorflow Model Summary...")
 

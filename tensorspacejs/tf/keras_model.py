@@ -7,18 +7,38 @@ import subprocess
 import tensorflow as tf
 
 
-temp_model_name = '/enc_model.h5'
+TEMP_MODEL_NAME = '/enc_model.h5'
+
+
+def preprocess_hdf5_combined_model(input_path, output_path, output_node_names):
+    print("Preprocessing hdf5 combined model...")
+    model = load_model(input_path)
+    temp_enc_model_path = output_path + TEMP_MODEL_NAME
+    enc_model = generate_encapsulate_model(model, output_node_names)
+    save(enc_model, temp_enc_model_path)
+    convert_h5_to_tfjs(temp_enc_model_path, output_path)
+    remove_temp_enc_model(temp_enc_model_path)
 
 
 def preprocess_hdf5_separated_model(input_path, output_path, output_node_names):
     print("Preprocessing hdf5 separated model.")
     model = load_separate_model(input_path)
 
-    temp_enc_model_path = output_path + temp_model_name
+    temp_enc_model_path = output_path + TEMP_MODEL_NAME
     enc_model = generate_encapsulate_model(model, output_node_names)
     save(enc_model, temp_enc_model_path)
     convert_h5_to_tfjs(temp_enc_model_path, output_path)
     remove_temp_enc_model(temp_enc_model_path)
+
+
+def load_model(name_path):
+    print("Loading .h5 model into memory...")
+    model = tf.keras.models.load_model(
+        name_path,
+        custom_objects=None,
+        compile=True
+    )
+    return model
 
 
 def load_separate_model(input_path):

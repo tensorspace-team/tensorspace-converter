@@ -40,7 +40,7 @@ TensorSpace-Converter 是 TensorSpace 预处理工具，提供对预训练的 Te
 
 TensorSpace 可以用于 TensorFlow, Keras, TensorFlow.js 模型3D可视化，而在应用 TensorSpace 可视化之前，需要完成一个重要的步骤————对预训练模型进行预处理（通过 [这篇介绍](https://tensorspace.org/html/docs/preIntro.html) 可以了解更多有关 TensorSpace 预处理的概念与原理）。TensorSpace-Converter 可以帮助开发者快速完成 TensorSpace 预处理过程的辅助工具。
 
-TensorSpace-Converter 对 TensorFlow、Keras、TensorFlow.js 提供开箱即用的支持，只需要几行简单的 TensorSpace-Converter 代码就可以完成 TensorSpace 预处理过程。在 TensorSpace-Converter 之前，对模型进行预处理，需要开发者熟悉掌握多个框架（TensorFlow，keras，tfjs-converter等）。举个小栗子，在没有 TensorSpace-Converter 的情况下，对 Keras 模型进行预处理时，除了需要准备一个预训练的 Keras 模型之外，还需要编写 Keras 代码将模型转化成多输出，以及使用 tfjs-converter 将模型转化为 TensorSpace 兼容的格式。而现在有了 TensorSpace-Converter 之后，只需要 [6行](keras) 简单的 TensorSpace-Converter 代码，就可以完成之前这个较为繁琐的工作。
+TensorSpace-Converter 对 TensorFlow、Keras、TensorFlow.js 提供开箱即用的支持，只需要几行简单的 TensorSpace-Converter 代码就可以完成 TensorSpace 预处理过程。在 TensorSpace-Converter 之前，对模型进行预处理，需要开发者熟悉掌握多个框架（TensorFlow，keras，tfjs-converter等）。举个小栗子，在没有 TensorSpace-Converter 的情况下，对 tf.keras 模型进行预处理时，除了需要准备一个预训练的 tf.keras 模型之外，还需要编写 tf.keras 代码将模型转化成多输出，以及使用 tfjs-converter 将模型转化为 TensorSpace 兼容的格式。而现在有了 TensorSpace-Converter 之后，只需要 [几行](#tensorflow) 简单的 TensorSpace-Converter 代码，就可以完成之前这个较为繁琐的工作。
 
 作为 TensorSpace 的生态组件，TensorSpace-Converter 简化了 TensorSpace 的开发过程，降低了 TensorSpace 学习曲线。作为可视化应用开发工具，TensorSpace-Converter 有助于分离 `后端模型训练` 与 `前端模型可视化` 的工作。
 
@@ -73,14 +73,14 @@ $ pip install tensorspacejs
 $ tensorspacejs_converter -v
 ```
 
-然后初始化 TensorSpace Converter:
+然后初始化 TensorSpace Converter (这步很重要哦~):
 ```shell
 $ tensorspacejs_converter -init
 ```
 
 * **注意**
 
-TensorSpace-Converter 必须运行在 `Python 3.6` 和 `Node 11.3+` 的环境中。如果在本地环境中已经下载了其他的 Python 版本，我们建议使用 <a href="https://anaconda.org/anaconda/conda">conda</a> 来创建一个纯净的 `Python 3.6` 环境：
+TensorSpace-Converter 必须运行在 `Python 3.6`, `Node 11.3+`, `NPM 6.5+` 的环境中。如果在本地环境中已经下载了其他的 Python 版本，我们建议使用 <a href="https://anaconda.org/anaconda/conda">conda</a> 来创建一个纯净的 `Python 3.6` 环境：
 ```shell
 $ conda create -n envname python=3.6
 $ source activate envname

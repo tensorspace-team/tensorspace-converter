@@ -1,5 +1,8 @@
+"""
+@author syt123450 / https://github.com/syt123450
+"""
+
 import os
-from utility.file_utility import valid_file, valid_directory, show_invalid_message
 
 TS_NODE_BIN_PATH = os.path.abspath(
     os.path.join(__file__, os.pardir, 'node_modules', '.bin', 'ts-node')

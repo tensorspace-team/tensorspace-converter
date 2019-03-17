@@ -3,6 +3,8 @@
 @author syt123450 / https://github.com/syt123450
 """
 
+from keras.models import Model, load_model, save_model, model_from_json
+from tensorflowjs.converters.converter import dispatch_keras_h5_to_tensorflowjs_conversion
 from utility.file_utility import remove_file, valid_file, valid_directory, show_invalid_message
 
 
@@ -24,13 +26,11 @@ def preprocess_keras_model(input_format, path_model, path_output_dir, output_nod
 
 
 def load_from_saved_model(path_model):
-    from keras.models import load_model
     model = load_model(path_model)
     return model
 
 
 def load_from_saved_weights(path_topology, path_weights):
-    from keras.models import model_from_json
     with open(path_topology, 'r') as f:
         model = model_from_json(f.read())
     model.load_weights(path_weights)
@@ -47,8 +47,6 @@ def generate_encapsulate_model(model, output_layer_names=None):
                 2.2.1 default to all tensors from original model
                 2.2.2 based on provided output_layer_names to look up specified layer.output tensors
     """
-    from keras.models import Model
-
     if output_layer_names is None:
         transfer_outputs = list(map(lambda layer: layer.output, model.layers[0:]))
     else:
@@ -69,13 +67,11 @@ def split_layer_name_list(output_node_names):
 
 
 def save_enc_model(path_output_dir, enc_model):
-    from keras.models import save_model
     print("Saving enc_model...")
     save_model(enc_model, path_output_dir+"/enc_model.h5")
 
 
 def convert_tfjs(path_output_dir):
-    from tensorflowjs.converters.converter import dispatch_keras_h5_to_tensorflowjs_conversion
     print("Saving converted tfjs model...")
     dispatch_keras_h5_to_tensorflowjs_conversion(
         path_output_dir + "/enc_model.h5",
@@ -96,7 +92,7 @@ def show_keras_model_summary(path_model):
     :param path_model: path to the single model file
     :return: should not return anything
     """
-    if (not valid_file(path_model)):
+    if not valid_file(path_model):
         show_invalid_message('input file', path_model)
         return
     print("show summary of keras saved model...")
@@ -113,10 +109,10 @@ def show_summary_weights(path_topology, path_weights):
     :param path_weights: path to model weights file
     :return: should not return anything
     """
-    if (not valid_file(path_topology)):
+    if not valid_file(path_topology):
         show_invalid_message('model topology file', path_topology)
         return
-    if (not valid_file(path_weights)):
+    if not valid_file(path_weights):
         show_invalid_message('model weights file', path_weights)
         return
     print("show summary of keras saved topology + weights...")
@@ -132,10 +128,10 @@ def preprocess_from_model(path_model, path_output_dir, output_node_names=None):
     :param output_node_names:
     :return: should not return anything
     """
-    if (not valid_file(path_model)):
+    if not valid_file(path_model):
         show_invalid_message('input file', path_model)
         return
-    if (not valid_directory(path_output_dir)):
+    if not valid_directory(path_output_dir):
         show_invalid_message('output directory', path_output_dir)
         return
 
@@ -158,13 +154,13 @@ def preprocess_from_weights(path_topology, path_weights, path_output_dir, output
     :param output_node_names:
     :return:
     """
-    if (not valid_file(path_topology)):
+    if not valid_file(path_topology):
         show_invalid_message('model topology file', path_topology)
         return
-    if (not valid_file(path_weights)):
+    if not valid_file(path_weights):
         show_invalid_message('model weights file', path_weights)
         return
-    if (not valid_directory(path_output_dir)):
+    if not valid_directory(path_output_dir):
         show_invalid_message('output directory', path_output_dir)
         return
 
