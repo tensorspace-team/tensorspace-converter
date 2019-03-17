@@ -31,6 +31,7 @@ TensorSpace-Converter is a tool used to generate a TensorSpace compatible model 
     * [TensorFlow](#tensorflow)
     * [Keras](#keras)
     * [TensorFlow.js](#tensorflowjs)
+* [Development Setup](#development)
 * [Contributors](#contributors)
 * [Contact](#contact)
 * [License](#license)
@@ -225,6 +226,27 @@ $ tensorspacejs_converter \
     ./PATH/TO/SAVE/DIR
 ```
 Checkout this [TensorFlow.js tutorial](https://github.com/tensorspace-team/tensorspace-converter/tree/master/examples/tfjs) for more practical usage of TensorSpace-Converter for TensorFlow.js models.
+
+## <div id="development">Development Setup</div>
+
+To setup a TensorSpace-Converter development environment:
+```shell
+git clone https://github.com/tensorspace-team/tensorspace-converter.git
+cd tensorspace-converter
+bash init-converter-dev.sh
+```
+
+To build TensorSpace-Converter pip package (Build files can be find in `dist` folder):
+```shell
+bash build-pip-package.sh
+```
+
+To install local build files:
+```shell
+pip install dist/tensorspacejs-VERSION-py3-none-any.whl
+tensorspacejs_converter -v
+```
+
 
 ## <div id="contributors">Contributors</div>
 

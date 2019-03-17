@@ -1,0 +1,1 @@
+python3 ./tensorspacejs/tsp_converters.py -init
