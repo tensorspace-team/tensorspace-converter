@@ -1,0 +1,3 @@
+recursive-include src *
+recursive-exclude src/tfjs/node_modules *
+recursive-exclude src/tf/pb2json/node_modules *

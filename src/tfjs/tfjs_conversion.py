@@ -1,4 +1,10 @@
+import os
 from utility.file_utility import valid_file, valid_directory, show_invalid_message
+
+
+MAIN_JS_PATH = os.path.abspath(
+    os.path.join(__file__, os.pardir, 'main.js')
+)
 
 
 def process_tfjs_model(path_input, path_output, output_names=None):
@@ -10,7 +16,6 @@ def process_tfjs_model(path_input, path_output, output_names=None):
         show_invalid_message('output directory', path_output)
         return
 
-    MAIN_JS_PATH = "./src/tfjs/main.js"
     if output_names is None:
         subprocess.check_call(["node", MAIN_JS_PATH, path_input, path_output])
     else:
@@ -26,5 +31,4 @@ def show_tfjs_model_summary(path_input):
         show_invalid_message('input model file', path_input)
         return
 
-    MAIN_JS_PATH = "./src/tfjs/main.js"
     subprocess.check_call(["node", MAIN_JS_PATH, "--summary", path_input])

@@ -1,7 +1,7 @@
 import os
 import setuptools
-
 from src import version
+
 
 def _get_requirements(requirements_file_name):
     "Collect required packages from provided file"
@@ -26,6 +26,7 @@ setuptools.setup(
     long_description_content_type="text/markdown",
     url="https://github.com/tensorspace-team/tensorspace-converter",
     packages=setuptools.find_packages(),
+    include_package_data=True,
     classifiers=[
         "Development Status :: 1 - Planning",
         "Intended Audience :: Developers",
@@ -42,7 +43,6 @@ setuptools.setup(
         "Topic :: Software Development :: Libraries",
         "Topic :: Software Development :: Libraries :: Python Modules"
     ],
-
     install_requires=_get_requirements('requirements.txt'),
     entry_points={
         "console_scripts": CONSOLE_SCRIPTS

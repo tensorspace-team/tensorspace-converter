@@ -4,13 +4,21 @@
 """
 
 import argparse
+import os
 import sys
 
-sys.path.insert(0, "./src")
+sys.path.append(
+    os.path.abspath(
+        os.path.join(
+            __file__, os.pardir
+        )
+    )
+)
 
 from tf.tensorflow_conversion import show_tf_model_summary, preprocess_tensorflow_model
 from krs.keras_conversion import show_keras_model_summary, preprocess_keras_model
 from tfjs.tfjs_conversion import show_tfjs_model_summary, process_tfjs_model
+from install import install
 from version import version
 from version import python_version
 from version import node_version
@@ -75,6 +83,12 @@ def main():
         help='Show versions of tensorspacejs and its dependencies'
     )
     parser.add_argument(
+        '-init',
+        dest='init',
+        action='store_true',
+        help='Init TensorSpace Converter'
+    )
+    parser.add_argument(
         '--summary',
         '-s',
         dest='show_model_summary',
@@ -90,6 +104,10 @@ def main():
         print('python %s' % python_version)
         print('node %s' % node_version)
         print('tensorflowjs %s' % tensorflowjs_version)
+        return
+
+    if flags.init:
+        install()
         return
 
     if flags.input_path is None:

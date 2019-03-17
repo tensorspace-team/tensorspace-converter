@@ -70,7 +70,12 @@ $ pip install tensorspacejs
 如果成功下载了 `tensorspacejs` 包，可以查看下载的 TensorSpace-Converter 版本：
 ```shell
 $ tensorspacejs_converter -v
-``` 
+```
+
+然后初始化 TensorSpace Converter:
+```shell
+$ tensorspacejs_converter -init
+```
 
 * **注意**
 

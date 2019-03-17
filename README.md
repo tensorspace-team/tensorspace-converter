@@ -72,6 +72,11 @@ If `tensorspacejs` is installed successfully, you can check the TensorSpace-Conv
 $ tensorspacejs_converter -v
 ```
 
+Then `init` TensorSpace Converter:
+```shell
+$ tensorspacejs_converter -init
+```
+
 * **Note**
 
 TensorSpace-Converter requires to run under Python 3.6, Node 11.3+. If you have other pre-installed Python version in your local environment, we suggest you to create a new virtual environment. For example, the <a href="https://anaconda.org/anaconda/conda">conda</a> commands is like:

@@ -2,14 +2,10 @@
 @author syt123450 / https://github.com/syt123450
 """
 
-import sys
-
-sys.path.insert(0, "./src/tf")
-
-from saved_model import preprocess_saved_model
-from frozen_model import preprocess_frozen_model
-from hdf5_combined_model import preprocess_hdf5_combined_model
-from hdf5_separated_model import preprocess_hdf5_separated_model
+from tf.saved_model import preprocess_saved_model
+from tf.frozen_model import preprocess_frozen_model
+from tf.hdf5_combined_model import preprocess_hdf5_combined_model
+from tf.hdf5_separated_model import preprocess_hdf5_separated_model
 
 
 def show_tf_model_summary(path_model):
