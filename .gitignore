@@ -15,12 +15,12 @@ dist/*
 models
 models/*
 
-src/tf/pb2json/node_modules/*
-src/tf/pb2json/package-lock.json
-src/tfjs/node_modules/*
-src/tfjs/package-lock.json
-src/tfjs/test/model.json
-src/tfjs/test/weights.bin
+tensorspacejs/tf/pb2json/node_modules/*
+tensorspacejs/tf/pb2json/package-lock.json
+tensorspacejs/tfjs/node_modules/*
+tensorspacejs/tfjs/package-lock.json
+tensorspacejs/tfjs/test/model.json
+tensorspacejs/tfjs/test/weights.bin
 
 package-lock.json
 node_modules/*

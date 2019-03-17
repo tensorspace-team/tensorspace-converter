@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-python ./src/tsp_converters.py \
+python ./tensorspacejs/tsp_converters.py \
     --input_model_from="tensorflow" \
     --input_model_format="tf_keras" \
     --output_layer_names="conv_1,maxpool_1,conv_2,maxpool_2,dense_1,dense_2,softmax" \

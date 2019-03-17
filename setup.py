@@ -1,6 +1,6 @@
 import os
 import setuptools
-from src import version
+from tensorspacejs import version
 
 
 def _get_requirements(requirements_file_name):
@@ -13,7 +13,7 @@ with open("README.md", "r") as fh:
     long_description = fh.read()
 
 CONSOLE_SCRIPTS = [
-    "tensorspacejs_converter = src.tsp_converters:main"
+    "tensorspacejs_converter = tensorspacejs.tsp_converters:main"
 ]
 
 setuptools.setup(

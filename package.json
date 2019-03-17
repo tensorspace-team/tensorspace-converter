@@ -3,7 +3,7 @@
   "version": "0.0.11",
   "description": "TensorSpace preprocess tool for pre-trained model from TensorFlow, Keras, TensorFlow.js",
   "directories": {
-    "src": "source code",
+    "tensorspacejs": "source code",
     "example": "TensorSpace-Converter usage examples",
     "test": "TensorSpace-Converter developmenet test cases",
     "deprecated": "deprecated docs for TensorSpace Preprocessing"
