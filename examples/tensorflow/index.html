@@ -102,21 +102,21 @@
 	} ) );
 
 	// Load layer model
+	// model.load( {
+    //
+	// 	type: "tensorflow",
+	// 	url: './convertedModel/layerModel/model.json'
+    //
+	// } );
+
+	// Load graph model
 	model.load( {
 
 		type: "tensorflow",
-		url: './convertedModel/layerModel/model.json'
+		url: './convertedModel/graphModel/model.json',
+		outputsName: ["MyConv2D_1", "MyMaxPooling2D_1", "MyConv2D_2", "MyMaxPooling2D_2", "MyDense_1", "MyDense_2", "MySoftMax"]
 
 	} );
-
-	// Load graph model
-//	model.load( {
-//
-//		type: "tensorflow",
-//		url: './convertedModel/graphModel/model.json',
-//		outputsName: ["MyConv2D_1", "MyMaxPooling2D_1", "MyConv2D_2", "MyMaxPooling2D_2", "MyDense_1", "MyDense_2", "MySoftMax"]
-//
-//	} );
 
 	model.init(function() {
 
@@ -129,6 +129,7 @@
 			success: function ( data ) {
 
 				model.predict( data );
+
 			}
 
 		} );
