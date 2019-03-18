@@ -1,10 +1,14 @@
 <p align="center">
-<img width=150 src="https://raw.githack.com/tensorspace-team/tensorspace/master/assets/logo_tsConverter.png">
+<img width=150 src="./assets/logo_tsConverter.png">
 </p>
 <h1 align="center">TensorSpace Converter</h1>
 
 <p align="center">
 <a href="https://github.com/tensorspace-team/tensorspace-converter/blob/master/README.md"><strong>English</strong></a> | <strong>中文</strong>
+</p>
+
+<p align="center">
+关于 TensorSpace 🤔:  <a href="https://github.com/tensorspace-team/tensorspace">TensorSpace Github</a>
 </p>
 
 <p align="center">
@@ -38,24 +42,17 @@ TensorSpace-Converter 是 TensorSpace 预处理工具，提供对预训练的 Te
 
 ## <div id="motivation">TensorSpace-Converter 使用场景</div>
 
-TensorSpace 可以用于 TensorFlow, Keras, TensorFlow.js 模型3D可视化，而在应用 TensorSpace 可视化之前，需要完成一个重要的步骤————对预训练模型进行预处理（通过 [这篇介绍](https://tensorspace.org/html/docs/preIntro.html) 可以了解更多有关 TensorSpace 预处理的概念与原理）。TensorSpace-Converter 可以帮助开发者快速完成 TensorSpace 预处理过程的辅助工具。
+[TensorSpace](https://github.com/tensorspace-team/tensorspace) 可以用于 TensorFlow, Keras, TensorFlow.js 模型3D可视化，而在应用 TensorSpace 可视化之前，需要完成一个重要的步骤————对预训练模型进行预处理（通过 [这篇介绍](https://tensorspace.org/html/docs/preIntro.html) 可以了解更多有关 TensorSpace 预处理的概念与原理）。TensorSpace-Converter 可以帮助开发者快速完成 TensorSpace 预处理过程的辅助工具。
 
 TensorSpace-Converter 对 TensorFlow、Keras、TensorFlow.js 提供开箱即用的支持，只需要几行简单的 TensorSpace-Converter 代码就可以完成 TensorSpace 预处理过程。在 TensorSpace-Converter 之前，对模型进行预处理，需要开发者熟悉掌握多个框架（TensorFlow，keras，tfjs-converter等）。举个小栗子，在没有 TensorSpace-Converter 的情况下，对 tf.keras 模型进行预处理时，除了需要准备一个预训练的 tf.keras 模型之外，还需要编写 tf.keras 代码将模型转化成多输出，以及使用 tfjs-converter 将模型转化为 TensorSpace 兼容的格式。而现在有了 TensorSpace-Converter 之后，只需要 [几行](#tensorflow) 简单的 TensorSpace-Converter 代码，就可以完成之前这个较为繁琐的工作。
 
 作为 TensorSpace 的生态组件，TensorSpace-Converter 简化了 TensorSpace 的开发过程，降低了 TensorSpace 学习曲线。作为可视化应用开发工具，TensorSpace-Converter 有助于分离 `后端模型训练` 与 `前端模型可视化` 的工作。
 
 <p align="center">
-<img width="100%" src="https://raw.githack.com/tensorspace-team/tensorspace/master/assets/tensorspace_lenet.gif">
+<img width="100%" src="./assets/tensorspace_lenet.gif">
 </p>
 <p align="center">
-<b>Fig. 1</b> - 使用 TensorSpace 构建的3D模型
-</p>
-
-<p align="center">
-<img width="100%" src="https://tensorspace.org/assets/img/docs/General/intro_preprocess_m.png">
-</p>
-<p align="center">
-<b>Fig. 2</b> - TensorSpace 预处理概念图解
+<b>图1</b> - 使用 TensorSpace-Converter
 </p>
 
 ## <div id="start">开始使用</div>
@@ -93,6 +90,13 @@ $ pip install tensorspacejs
 
 以下为使用的代码及文件：[tf.keras 模型](https://github.com/tensorspace-team/tensorspace-converter/tree/master/examples/tensorflow/rawModel/keras), [TensorSpace-Converter 脚本](https://github.com/tensorspace-team/tensorspace-converter/blob/master/examples/tensorflow/script/convertKeras.sh) and [TensorSpace 可视化代码](https://github.com/tensorspace-team/tensorspace-converter/blob/master/examples/tensorflow/index.html).
 
+<p align="center">
+<img width="100%" src="./assets/workflow_zh.png">
+</p>
+<p align="center">
+<b>图2</b> - TensorSpace-Converter 使用流程
+</p>
+
 #### 第一步：使用 TensorSpace-Converter 处理预训练的模型
 
 ```shell
@@ -112,6 +116,13 @@ model.load({
     url: "/PATH/TO/MODEL/model.json"
 });
 ```
+
+<p align="center">
+<img width="100%" src="./assets/data5.jpg">
+</p>
+<p align="center">
+<b>图3</b> - LeNet 模型 TensorSpace 可视化
+</p>
 
 ## <div id="api">TensorSpace-Converter API</div>
 
@@ -136,8 +147,8 @@ $ tensorspacejs_converter \
 | 可选参数 | 介绍
 |---|---|
 |`--input_model_from`     | 配置模型是使用哪种深度学习库训练并保存的，如果模型是使用TensorFlow 训练并保存的的，配置 `tensorflow`，如果模型是使用 Keras 训练并保存的，配置 `keras`，如果模型是使用 TensorFlow.js 训练并保存的，配置 `tfjs` |
-|`--input_model_format`     | 模型的保存格式 |
-|<nobr>`--output_layer_names`</nobr>| 输出希望在TensorSpace 中可视化的 layer，使用英文半角逗号“,”分割。如果不设置，会输出所有的 layer |
+|`--input_model_format`     | 模型的格式，在 [使用样例](#examples) 部分将介绍如何设置该属性。 |
+|<nobr>`--output_layer_names`</nobr>| 输出希望在TensorSpace 中可视化的 layer，使用英文半角逗号“,”分割。 |
 
 ## <div id="examples">TensorSpace-Converter 使用样例</div>
 
@@ -228,22 +239,29 @@ $ tensorspacejs_converter \
 
 ## <div id="development">开发环境创建</div>
 
-通过以下方式可以快速创建一个 TensorSpace-Converter 开发环境：
+* 配置一个 `python=3.6`, `node>=11.3`, `npm>=6.5` 环境。
+
+* 通过以下方式可以快速创建一个 TensorSpace-Converter 开发环境：
 ```shell
 git clone https://github.com/tensorspace-team/tensorspace-converter.git
 cd tensorspace-converter
 bash init-converter-dev.sh
 ```
 
-执行 build-pip-package.sh 来编译 TensorSpace-Converter `pip` 包（文件将会生成在 `dist` 目录下）：
+* 执行 build-pip-package.sh 来编译 TensorSpace-Converter `pip` 包（文件将会生成在 `dist` 目录下）：
 ```shell
 bash build-pip-package.sh
 ```
 
-安装测试生成的 `pip` 包：
+* 安装测试生成的 `pip` 包：
 ```shell
 pip install dist/tensorspacejs-VERSION-py3-none-any.whl
 tensorspacejs_converter -v
+```
+
+* 执行 `test` 文件夹中的 test case，比如 `tf.keras` test case：
+```shell
+bash ./test/tensorflow/combinedKeras/test.sh
 ```
 
 ## <div id="contributors">开发人员</div>

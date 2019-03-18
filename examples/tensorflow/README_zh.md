@@ -113,7 +113,7 @@ $ tensorspacejs_converter \
 
 
 <p align="center">
-<img src="./img/output_layer_names.png" alt="layernames" width="100%" >
+<img src="./img/output_layer_names.png" alt="layernames" width="80%" >
 <br/>
 <b>图1</b> - 将 tf.keras 模型 Layer 名取出并设置 output_layer_names
 </p>

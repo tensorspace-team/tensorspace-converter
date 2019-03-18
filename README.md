@@ -1,10 +1,15 @@
 <p align="center">
-<img width=150 src="https://raw.githack.com/tensorspace-team/tensorspace/master/assets/logo_tsConverter.png">
+<img width=150 src="./assets/logo_tsConverter.png">
 </p>
+
 <h1 align="center">TensorSpace Converter</h1>
 
 <p align="center">
 <strong>English</strong> | <a href="https://github.com/tensorspace-team/tensorspace-converter/blob/master/README_zh.md"><strong>中文</strong></a>
+</p>
+
+<p align="center">
+About TensorSpace 🤔: <a href="https://github.com/tensorspace-team/tensorspace">TensorSpace Github</a>
 </p>
 
 <p align="center">
@@ -38,24 +43,17 @@ TensorSpace-Converter is a tool used to generate a TensorSpace compatible model 
 
 ## <div id="motivation">Motivation</div>
 
-TensorSpace is a JavaScript framework used to 3D visualize pre-trained deep learning models built by TensorFlow, Keras and TensorFlow.js. Before applying TensorSpace to the pre-trained model, there is an important pipeline - TensorSpace model preprocessing ( Checkout this [article](https://tensorspace.org/html/docs/preIntro.html) for more information about TensorSpace preprocessing ). TensorSpace-Converter is designed to simplify the model preprocessing and generate a TensorSpace compatible model easily and quickly.
+[TensorSpace](https://github.com/tensorspace-team/tensorspace) is a JavaScript framework used to 3D visualize pre-trained deep learning models built by TensorFlow, Keras and TensorFlow.js. Before applying TensorSpace to the pre-trained model, there is an important pipeline - TensorSpace model preprocessing ( Checkout this [article](https://tensorspace.org/html/docs/preIntro.html) for more information about TensorSpace preprocessing ). TensorSpace-Converter is designed to simplify the model preprocessing and generate a TensorSpace compatible model easily and quickly.
 
 Without TensorSpace-Converter, the developer needs to be expert on the pre-trained model and machine learning library the model used. For example, if the developer has an LeNet pre-trained model built by tf.keras, it is required to know the structure of the LeNet network as well as how to implement a new multi-output model by tf.keras. Now, with TensorSpace-Converter, it only needs some commands to complete the preprocessing process. For example, the developer only needs to use the [commands](#tensorflow) to preprocess a tf.keras pre-trained model.
 
 As a component of TensorSpace ecosystem, TensorSpace-Converter simplifies the TensorSpace preprocess, release the workloads from learning how to generate TensorSpace compatible model. As a development tool, TensorSpace-Converter helps to separate the work of `model training` and `model visualization`.
 
 <p align="center">
-<img width="100%" src="https://raw.githack.com/tensorspace-team/tensorspace/master/assets/tensorspace_lenet.gif">
+<img width="100%" src="./assets/tensorspace_lenet.gif">
 </p>
 <p align="center">
-<b>Fig. 1</b> - TensorSpace LeNet
-</p>
-
-<p align="center">
-<img width="100%" src="https://tensorspace.org/assets/img/docs/General/intro_preprocess_m.png">
-</p>
-<p align="center">
-<b>Fig. 2</b> - TensorSpace Preprocess Concept
+<b>Fig. 1</b> - TensorSpace-Converter Usage
 </p>
 
 ## <div id="start">Getting Started</div>
@@ -88,11 +86,19 @@ $ pip install tensorspacejs
 ```
 
 ### <div id="usage">Usage</div>
+
 The following part introduces the usage and workflow on:
-* how to use TensorSpace-Converter to convert a pre-trained model;
-* how to apply TensorSpace to the converted model for model visualization.
+* How to use TensorSpace-Converter to convert a pre-trained model;
+* How to apply TensorSpace to the converted model for model visualization.
 
 An MNIST-digit tf.keras model is used as an example in the tutorial. The sample files used in the tutorial includes [pre-trained tf.keras model](https://github.com/tensorspace-team/tensorspace-converter/tree/master/examples/tensorflow/rawModel/keras), [TensorSpace-Converter script](https://github.com/tensorspace-team/tensorspace-converter/blob/master/examples/tensorflow/script/convertKeras.sh) and [TensorSpace visualization code](https://github.com/tensorspace-team/tensorspace-converter/blob/master/examples/tensorflow/index.html).
+
+<p align="center">
+<img width="100%" src="./assets/workflow.png">
+</p>
+<p align="center">
+<b>Fig. 2</b> - TensorSpace-Converter Workflow
+</p>
 
 #### Step 1: Use TensorSpace-Converter to preprocess pre-trained model
 
@@ -113,6 +119,13 @@ model.load({
 });
 ```
 
+<p align="center">
+<img width="100%" src="./assets/data5.jpg">
+</p>
+<p align="center">
+<b>Fig. 3</b> - LeNet Visualization
+</p>
+
 ## <div id="api">Converter API</div>
 
 Sample TensorSpace-Converter script:
@@ -129,15 +142,15 @@ Arguments explanation:
 
 |Positional Arguments | Description |
 |---|---|
-|`input_path`  | Full path of the saved model directory, session bundle directory, frozen model file or TensorFlow Hub module handle or path.|
-|`output_path` | Path for all output artifacts.|
+|`input_path`  | Path for model input artifacts. |
+|`output_path` | Path for all output artifacts. |
 
 
 | Options | Description
 |---|---|
-|`--input_model_from`     | Configure the training library for pre-trained model, use: `tensorflow` for TensorFlow, `keras` for Keras, `tfjs` for TensorFlow.js |
-|`--input_model_format`     | The format of input model, use |
-|<nobr>`--output_layer_names`</nobr>| The names of the layer which will be visualized in TensorSpace, separated by comma ",". If not set, converter will export all layers. |
+|`--input_model_from`     | Configure the training library for pre-trained model, use: `tensorflow` for TensorFlow, `keras` for Keras, `tfjs` for TensorFlow.js. |
+|`--input_model_format`     | The format of input model, checkout [Usage Example](#examples) for how to set this attribute for different kinds of models. |
+|<nobr>`--output_layer_names`</nobr>| The names of the layer which will be visualized in TensorSpace, separated by comma ",". |
 
 ## <div id="examples">Converter Usage Examples</div>
 
@@ -229,24 +242,30 @@ Checkout this [TensorFlow.js tutorial](https://github.com/tensorspace-team/tenso
 
 ## <div id="development">Development Setup</div>
 
-To setup a TensorSpace-Converter development environment:
+* Setup a `python=3.6`, `node>=11.3`, `npm>=6.5` environment.
+
+* To setup a TensorSpace-Converter development environment:
 ```shell
 git clone https://github.com/tensorspace-team/tensorspace-converter.git
 cd tensorspace-converter
 bash init-converter-dev.sh
 ```
 
-To build TensorSpace-Converter pip package (Build files can be find in `dist` folder):
+* To build TensorSpace-Converter pip package (Build files can be find in `dist` folder):
 ```shell
 bash build-pip-package.sh
 ```
 
-To install local build files:
+* To install local build files:
 ```shell
 pip install dist/tensorspacejs-VERSION-py3-none-any.whl
 tensorspacejs_converter -v
 ```
 
+* To run test script in `test` folder, for example, `tf.keras` test case:
+```shell
+bash ./test/tensorflow/combinedKeras/test.sh
+```
 
 ## <div id="contributors">Contributors</div>
 
