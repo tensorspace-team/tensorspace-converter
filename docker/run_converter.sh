@@ -10,7 +10,11 @@ fi
 
 echo "Start converting model..."
 
-docker run -d -it --mount type=bind,source="$(pwd)"/$base_dir,target=/data tensorspacejs
+docker run -d -it \
+    --mount type=bind,source="$(pwd)"/$base_dir,target=/data \
+    --name ts-convert \
+    tensorspacejs
 
+docker logs ts-convert
 echo "Model is saved to output folder"
 echo "Finished converting model!"
