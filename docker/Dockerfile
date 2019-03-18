@@ -21,5 +21,6 @@ RUN python3.6 -m pip install tensorspacejs
 RUN echo "alias python=python3.6" >> ~/.bash_aliases
 RUN . ~/.bash_aliases
 RUN tensorspacejs_converter -init
+WORKDIR /data
 
 CMD ["bash", "/data/converter.sh"]
