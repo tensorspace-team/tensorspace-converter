@@ -113,7 +113,7 @@ $ tensorspacejs_converter \
 
 
 <p align="center">
-<img src="./img/output_layer_names.png" alt="layernames" width="100%" >
+<img src="./img/output_layer_names.png" alt="layernames" width="80%" >
 <br/>
 <b>Fig. 1</b> - Set tf.keras layer names to output_layer_names
 </p>
