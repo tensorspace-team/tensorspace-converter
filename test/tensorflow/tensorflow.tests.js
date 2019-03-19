@@ -11,9 +11,11 @@ describe('Test Convert TensorFlow Models', function () {
 	it('Test Frozen model', async function () {
 
 	    const startMemory = await tf.memory();
-
+		
+		// Execute converter script to convert Frozen model.
 		shell.exec('./test/tensorflow/frozenModel/test.sh');
-
+		
+		// Load converted model for test,  frozen model will be converted to graph model.
 		const model = await tf.loadGraphModel('file://' + OUTPUT_DIR + 'model.json');
 
 		const randomInput = tf.randomNormal([1, 28, 28, 1]);
@@ -29,7 +31,8 @@ describe('Test Convert TensorFlow Models', function () {
 				"MySoftMax"
 			]
 		);
-
+		
+		// Test converted model outputs.
 		chai.expect( result[0].shape ).to.eql( [ 1, 24, 24, 6 ] );
 		chai.expect( result[1].shape ).to.eql( [ 1, 12, 12, 6 ] );
 		chai.expect( result[2].shape ).to.eql( [ 1, 8, 8, 16 ] );
@@ -41,11 +44,13 @@ describe('Test Convert TensorFlow Models', function () {
 		tf.dispose(model);
 		tf.dispose(randomInput);
 		tf.dispose(result);
-
+		
+		// Remove generated model files.
 		rimraf.sync(OUTPUT_DIR);
 
 		const endMemory = await tf.memory();
-
+		
+		// Ensure no memory leak.
 		chai.expect( startMemory.numTensors ).to.equal( endMemory.numTensors );
 
 	});
@@ -53,9 +58,11 @@ describe('Test Convert TensorFlow Models', function () {
 	it('Test Saved Model', async function () {
 
 	    const startMemory = await tf.memory();
-
+		
+		// Execute converter script to saved Frozen model.
 		shell.exec('./test/tensorflow/savedModel/test.sh');
-
+		
+		// Load converted model for test, saved model will be converted to graph model.
 		const model = await tf.loadGraphModel('file://' + OUTPUT_DIR + 'model.json');
 
 		const randomInput = tf.randomNormal([1, 28, 28, 1]);
@@ -71,7 +78,8 @@ describe('Test Convert TensorFlow Models', function () {
 				"MySoftMax"
 			]
 		);
-
+		
+		// Test converted model outputs.
 		chai.expect( result[0].shape ).to.eql( [ 1, 24, 24, 6 ] );
 		chai.expect( result[1].shape ).to.eql( [ 1, 12, 12, 6 ] );
 		chai.expect( result[2].shape ).to.eql( [ 1, 8, 8, 16 ] );
@@ -83,11 +91,13 @@ describe('Test Convert TensorFlow Models', function () {
 		tf.dispose(model);
 		tf.dispose(randomInput);
 		tf.dispose(result);
-
+		
+		// Remove generated model files.
 		rimraf.sync(OUTPUT_DIR);
 
 		const endMemory = await tf.memory();
-
+		
+		// Ensure no memory leak.
 		chai.expect( startMemory.numTensors ).to.equal( endMemory.numTensors );
 
 	});
@@ -95,14 +105,17 @@ describe('Test Convert TensorFlow Models', function () {
 	it('Test tf.keras Model', async function () {
 
 	    const startMemory = await tf.memory();
-
+		
+		// Execute converter script to tf.keras model.
 		shell.exec('./test/tensorflow/combinedKeras/test.sh');
-
+		
+		// Load converted model for test, tf.keras model will be converted to layer model.
 		const model = await tf.loadLayersModel('file://' + OUTPUT_DIR + 'model.json');
 
 		const randomInput = tf.randomNormal([1, 28, 28]);
 		const result = model.predict(randomInput);
-
+		
+		// Test converted model outputs.
 		chai.expect( result[0].shape ).to.eql( [ 1, 24, 24, 6 ] );
 		chai.expect( result[1].shape ).to.eql( [ 1, 12, 12, 6 ] );
 		chai.expect( result[2].shape ).to.eql( [ 1, 8, 8, 16 ] );
@@ -114,11 +127,13 @@ describe('Test Convert TensorFlow Models', function () {
 		tf.dispose(model);
 		tf.dispose(randomInput);
 		tf.dispose(result);
-
+		
+		// Remove generated model files.
 		rimraf.sync(OUTPUT_DIR);
 
 		const endMemory = await tf.memory();
-
+		
+		// Ensure no memory leak.
 		chai.expect( startMemory.numTensors ).to.equal( endMemory.numTensors );
 
 	});
@@ -126,14 +141,17 @@ describe('Test Convert TensorFlow Models', function () {
 	it('Test tf.keras Model, topology and weights saved in separated files', async function () {
 
 	    const startMemory = await tf.memory();
-
+		
+		// Execute converter script to tf.keras model.
 		shell.exec('./test/tensorflow/separatedKeras/test.sh');
-
+		
+		// Load converted model for test, tf.keras model will be converted to layer model.
 		const model = await tf.loadLayersModel('file://' + OUTPUT_DIR + 'model.json');
 
 		const randomInput = tf.randomNormal([1, 28, 28]);
 		const result = model.predict(randomInput);
-
+		
+		// Test converted model outputs.
 		chai.expect( result[0].shape ).to.eql( [ 1, 24, 24, 6 ] );
 		chai.expect( result[1].shape ).to.eql( [ 1, 12, 12, 6 ] );
 		chai.expect( result[2].shape ).to.eql( [ 1, 8, 8, 16 ] );
@@ -145,11 +163,13 @@ describe('Test Convert TensorFlow Models', function () {
 		tf.dispose(model);
 		tf.dispose(randomInput);
 		tf.dispose(result);
-
+		
+		// Remove generated model files.
 		rimraf.sync(OUTPUT_DIR);
 
 		const endMemory = await tf.memory();
-
+		
+		// Ensure no memory leak.
 		chai.expect( startMemory.numTensors ).to.equal( endMemory.numTensors );
 
 	});

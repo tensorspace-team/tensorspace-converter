@@ -36,7 +36,7 @@ TensorSpace-Converter is a tool used to generate a TensorSpace compatible model 
     * [TensorFlow](#tensorflow)
     * [Keras](#keras)
     * [TensorFlow.js](#tensorflowjs)
-* [Development Setup](#development)
+* [Development](#development)
 * [Contributors](#contributors)
 * [Contact](#contact)
 * [License](#license)
@@ -78,7 +78,7 @@ $ tensorspacejs_converter -init
 
 * **Note**
 
-TensorSpace-Converter requires to run under Python 3.6, Node 11.3+, NPM 6.5+. If you have other pre-installed Python version in your local environment, we suggest you to create a new virtual environment. For example, the <a href="https://anaconda.org/anaconda/conda">conda</a> commands is like:
+TensorSpace-Converter requires to run under Python 3.6, Node 11.3+, NPM 6.5+. If you have other pre-installed Python version in your local environment, we suggest you to create a new fresh virtual environment. For example, the <a href="https://anaconda.org/anaconda/conda">conda</a> commands is like:
 ```shell
 $ conda create -n envname python=3.6
 $ source activate envname
@@ -240,16 +240,21 @@ $ tensorspacejs_converter \
 ```
 Checkout this [TensorFlow.js tutorial](https://github.com/tensorspace-team/tensorspace-converter/tree/master/examples/tfjs) for more practical usage of TensorSpace-Converter for TensorFlow.js models.
 
-## <div id="development">Development Setup</div>
+## <div id="development">Development</div>
 
-* Setup a `python=3.6`, `node>=11.3`, `npm>=6.5` environment.
+* Ensure to have a fresh `python=3.6`, `node>=11.3`, `npm>=6.5`, `tensorflowjs=0.8.0` environment.
+
+### Setup
 
 * To setup a TensorSpace-Converter development environment:
 ```shell
 git clone https://github.com/tensorspace-team/tensorspace-converter.git
 cd tensorspace-converter
 bash init-converter-dev.sh
+npm install
 ```
+
+### Build
 
 * To build TensorSpace-Converter pip package (Build files can be find in `dist` folder):
 ```shell
@@ -262,9 +267,17 @@ pip install dist/tensorspacejs-VERSION-py3-none-any.whl
 tensorspacejs_converter -v
 ```
 
-* To run test script in `test` folder, for example, `tf.keras` test case:
+### Test
+
+* Grand permissions to test scripts before running test scripts:
+
 ```shell
-bash ./test/tensorflow/combinedKeras/test.sh
+bash ./test/grandPermission.sh
+```
+
+* To run end-to-end test (tests shall be run in pre-set environment):
+```shell
+npm run test
 ```
 
 ## <div id="contributors">Contributors</div>

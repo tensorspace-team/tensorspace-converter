@@ -11,14 +11,17 @@ describe('Test Convert Keras Models', function () {
 	it('Topology and weights saved in a same hdf5 file', async function () {
 
 	    const startMemory = await tf.memory();
-
+		
+		// Execute converter script to tf.keras model.
 		shell.exec('./test/keras/combined/test_with_oln.sh');
-
+		
+		// Load converted model for test, tf.keras model will be converted to layer model.
 		const model = await tf.loadLayersModel('file://' + OUTPUT_DIR + 'model.json');
 
 		const randomInput = tf.randomNormal([1, 28, 28]);
 		const result = model.predict(randomInput);
-
+		
+		// Test converted model outputs.
 		chai.expect( result[0].shape ).to.eql( [ 1, 24, 24, 6 ] );
 		chai.expect( result[1].shape ).to.eql( [ 1, 12, 12, 6 ] );
 		chai.expect( result[2].shape ).to.eql( [ 1, 8, 8, 16 ] );
@@ -30,11 +33,13 @@ describe('Test Convert Keras Models', function () {
 		tf.dispose(model);
 		tf.dispose(randomInput);
 		tf.dispose(result);
-
+		
+		// Remove generated model files.
 		rimraf.sync(OUTPUT_DIR);
 
 		const endMemory = await tf.memory();
-
+		
+		// Ensure no memory leak.
 		chai.expect( startMemory.numTensors ).to.equal( endMemory.numTensors );
 
 	});
@@ -42,14 +47,17 @@ describe('Test Convert Keras Models', function () {
 	it('Topology and weights saved in a separated files', async function () {
 
 	    const startMemory = await tf.memory();
-
+		
+		// Execute converter script to tf.keras model.
 		shell.exec('./test/keras/separated/test_separated.sh');
-
+		
+		// Load converted model for test, tf.keras model will be converted to layer model.
 		const model = await tf.loadLayersModel('file://' + OUTPUT_DIR + 'model.json');
 
 		const randomInput = tf.randomNormal([1, 28, 28]);
 		const result = model.predict(randomInput);
-
+		
+		// Test converted model outputs.
 		chai.expect( result[0].shape ).to.eql( [ 1, 24, 24, 6 ] );
 		chai.expect( result[1].shape ).to.eql( [ 1, 12, 12, 6 ] );
 		chai.expect( result[2].shape ).to.eql( [ 1, 8, 8, 16 ] );
@@ -61,11 +69,13 @@ describe('Test Convert Keras Models', function () {
 		tf.dispose(model);
 		tf.dispose(randomInput);
 		tf.dispose(result);
-
+		
+		// Remove generated model files.
 		rimraf.sync(OUTPUT_DIR);
 
 		const endMemory = await tf.memory();
-
+		
+		// Ensure no memory leak.
 		chai.expect( startMemory.numTensors ).to.equal( endMemory.numTensors );
 
 	});

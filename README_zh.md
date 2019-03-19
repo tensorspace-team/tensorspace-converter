@@ -35,7 +35,7 @@ TensorSpace-Converter 是 TensorSpace 预处理工具，提供对预训练的 Te
     * [TensorFlow](#tensorflow)
     * [Keras](#keras)
     * [TensorFlow.js](#tensorflowjs)
-* [开发环境创建](#development)
+* [开发设置](#development)
 * [开发人员](#contributors)
 * [联系方式](#contact)
 * [许可证](#license)
@@ -237,16 +237,21 @@ $ tensorspacejs_converter \
 ```
 这篇 [TensorFlow.js 教程](https://github.com/tensorspace-team/tensorspace-converter/tree/master/examples/tfjs/README_zh.md)，通过一个实际的例子，介绍了如何使用 TensorSpace-Converter 来预处理 TensorFlow.js 模型。
 
-## <div id="development">开发环境创建</div>
+## <div id="development">开发设置</div>
 
-* 配置一个 `python=3.6`, `node>=11.3`, `npm>=6.5` 环境。
+* 配置一个 `python=3.6`, `node>=11.3`, `npm>=6.5`, `tensorflowjs=0.8.0` 环境。
+
+### 开发环境创建
 
 * 通过以下方式可以快速创建一个 TensorSpace-Converter 开发环境：
 ```shell
 git clone https://github.com/tensorspace-team/tensorspace-converter.git
 cd tensorspace-converter
 bash init-converter-dev.sh
+npm install
 ```
+
+### 构建 pip 包
 
 * 执行 build-pip-package.sh 来编译 TensorSpace-Converter `pip` 包（文件将会生成在 `dist` 目录下）：
 ```shell
@@ -259,9 +264,17 @@ pip install dist/tensorspacejs-VERSION-py3-none-any.whl
 tensorspacejs_converter -v
 ```
 
-* 执行 `test` 文件夹中的 test case，比如 `tf.keras` test case：
+### 测试
+
+* 在执行测试之前，赋予测试脚本执行权限：
+
 ```shell
-bash ./test/tensorflow/combinedKeras/test.sh
+bash ./test/grandPermission.sh
+```
+
+* 执行 `test` 文件夹中的 end-to-end 测试脚本 （测试脚本需要在之前设置的开发环境中运行）：
+```shell
+npm run test
 ```
 
 ## <div id="contributors">开发人员</div>

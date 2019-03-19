@@ -2,9 +2,14 @@
   "name": "pbtojson",
   "version": "0.0.1",
   "description": "Minimum dependencies for pb2json, the script is from tfjs-converter/tools",
+  "license": "Apache-2.0",
   "devDependencies": {
     "protobufjs": "~6.8.6",
     "ts-node": "~4.1.0",
     "typescript": "~2.9.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tensorspace-team/tensorspace-converter.git"
   }
 }

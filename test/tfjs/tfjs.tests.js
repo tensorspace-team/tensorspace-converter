@@ -12,13 +12,16 @@ describe('Test Convert TensorFlow.js Models', function () {
 
 		const startMemory = await tf.memory();
 
+		// Execute converter script to convert TensorFlow.js model.
 		shell.exec('./test/tfjs/sequential/test.sh');
 
+		// Load converted model for test, TensorFlow.js model will be converted to layer model.
 		const model = await tf.loadLayersModel('file://' + OUTPUT_DIR + 'model.json');
 
 		const randomInput = tf.randomNormal([1, 28, 28, 1]);
 		const result = model.predict(randomInput);
 
+		// Test converted model outputs.
 		chai.expect( result[0].shape ).to.eql( [ 1, 32, 32, 1 ] );
 		chai.expect( result[1].shape ).to.eql( [ 1, 28, 28, 6 ] );
 		chai.expect( result[2].shape ).to.eql( [ 1, 14, 14, 6 ] );
@@ -32,10 +35,12 @@ describe('Test Convert TensorFlow.js Models', function () {
 		tf.dispose(randomInput);
 		tf.dispose(result);
 
+		// Remove generated model files.
 		rimraf.sync(OUTPUT_DIR);
 
 		const endMemory = await tf.memory();
 
+		// Ensure no memory leak.
 		chai.expect( startMemory.numTensors ).to.equal( endMemory.numTensors );
 
 	});
