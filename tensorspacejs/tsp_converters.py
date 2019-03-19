@@ -143,10 +143,16 @@ def main():
 
     if flags.show_model_summary:
         if flags.input_model_from == 'keras':
-            show_keras_model_summary(flags.input_path)
+            show_keras_model_summary(
+                flags.input_model_format,
+                flags.input_path
+            )
             return
         if flags.input_model_from == 'tensorflow':
-            show_tf_model_summary(flags.input_path)
+            show_tf_model_summary(
+                flags.input_model_format,
+                flags.input_path
+            )
             return
         if flags.input_model_from == "tfjs":
             show_tfjs_model_summary(flags.input_path)
