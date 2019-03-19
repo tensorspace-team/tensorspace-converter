@@ -57,9 +57,6 @@ def preprocess_from_model(path_model, path_output_dir, output_node_names=None):
     if not valid_file(path_model):
         show_invalid_message('input file', path_model)
         return
-    if not valid_directory(path_output_dir):
-        show_invalid_message('output directory', path_output_dir)
-        return
 
     model = load_from_saved_model(path_model)
     enc_model = generate_encapsulate_model(model, split_layer_name_list(output_node_names))
@@ -84,9 +81,6 @@ def preprocess_from_weights(path_topology, path_weights, path_output_dir, output
         return
     if not valid_file(path_weights):
         show_invalid_message('model weights file', path_weights)
-        return
-    if not valid_directory(path_output_dir):
-        show_invalid_message('output directory', path_output_dir)
         return
 
     model = load_from_saved_weights(path_topology, path_weights)

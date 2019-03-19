@@ -12,8 +12,7 @@ input_format_config = '--input_format=tf_saved_model'
 
 def preprocess_saved_model(input_path, output_path, output_node_names):
     print("Preprocessing tensorflow saved model...")
-    if not os.path.isdir:
-        os.mkdir(output_path + '/tmp')
+    os.makedirs(output_path + '/tmp', exist_ok=True)
     print("Converting saved model to web friendly format...")
     subprocess.check_call([
         "tensorflowjs_converter",

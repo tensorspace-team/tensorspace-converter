@@ -14,11 +14,9 @@ MAIN_JS_PATH = os.path.abspath(
 
 
 def process_tfjs_model(path_input, path_output, output_names=None):
+    os.makedirs(path_output, exist_ok=True)
     if not valid_file(path_input):
         show_invalid_message('input model file', path_input)
-        return
-    if not valid_directory(path_output):
-        show_invalid_message('output directory', path_output)
         return
 
     if output_names is None:

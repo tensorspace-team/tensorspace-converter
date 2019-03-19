@@ -13,8 +13,7 @@ input_format_config = '--input_format=tf_frozen_model'
 
 def preprocess_frozen_model(input_path, output_path, output_node_names):
     print("Preprocessing tensorflow frozen model...")
-    if not os.path.isdir:
-        os.mkdir(output_path + '/tmp')
+    os.makedirs(output_path + '/tmp', exist_ok=True)
     print("Converting frozen model to web friendly format...")
     subprocess.check_call([
         "tensorflowjs_converter",
