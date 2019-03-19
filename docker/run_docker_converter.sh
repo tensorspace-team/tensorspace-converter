@@ -10,14 +10,14 @@ fi
 
 echo "Start converting model..."
 
-docker rm -f ts-converter
+docker rm -f tsp-converter
 
 docker run -it \
     --mount type=bind,source="$(pwd)"/$base_dir,target=/data \
-    --name ts-converter \
+    --name tsp-converter \
     tensorspacejs
 
-docker logs ts-converter
+docker logs tsp-converter
 
 echo "Model is saved to output folder"
 echo "Finished converting model!"
