@@ -33,6 +33,25 @@
         "doc",
         "example"
       ]
+    },
+    {
+      "login": "lq3297401",
+      "name": "Qi(Nora)",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/19629037?v=4",
+      "profile": "https://github.com/lq3297401",
+        "contributions": [
+          "design"
+        ]
+    },
+    {
+      "login": "BoTime",
+      "name": "BoTime",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/25629006?s=400&v=4",
+      "profile": "https://github.com/BoTime",
+        "contributions": [
+          "code",
+          "example"
+        ]
     }
   ]
 }

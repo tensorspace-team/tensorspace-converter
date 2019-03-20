@@ -1,12 +1,13 @@
 {
   "name": "tensorspace-converter",
-  "version": "0.0.22",
   "description": "TensorSpace preprocess tool for pre-trained model from TensorFlow, Keras, TensorFlow.js",
   "directories": {
     "tensorspacejs": "source code",
     "example": "TensorSpace-Converter usage examples",
     "test": "TensorSpace-Converter developmenet test cases",
-    "deprecated": "deprecated docs for TensorSpace Preprocessing"
+    "deprecated": "deprecated docs for TensorSpace Preprocessing",
+    "assets": "static resource for github repo",
+    "docker": "TensorSpace docker scripts, documentation, and example"
   },
   "devDependencies": {
     "all-contributors-cli": "^5.3.0",
@@ -45,6 +46,15 @@
       "name": "syt123450",
       "email": "syt123450@gmail.com",
       "url": "https://github.com/syt123450"
+    },
+    {
+      "name": "lq3297401",
+      "email": "noraliu3648@gmail.com",
+      "url": "https://github.com/lq3297401"
+    },
+    {
+      "name": "BoTime",
+      "url": "https://github.com/BoTime"
     }
   ]
 }

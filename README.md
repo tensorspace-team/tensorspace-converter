@@ -43,7 +43,7 @@ TensorSpace-Converter is a tool used to generate a TensorSpace compatible model 
 
 ## <div id="motivation">Motivation</div>
 
-[TensorSpace](https://github.com/tensorspace-team/tensorspace) is a JavaScript framework used to 3D visualize pre-trained deep learning models built by TensorFlow, Keras and TensorFlow.js. Before applying TensorSpace to the pre-trained model, there is an important pipeline - TensorSpace model preprocessing ( Checkout this [article](https://tensorspace.org/html/docs/preIntro.html) for more information about TensorSpace preprocessing ). TensorSpace-Converter is designed to simplify the model preprocessing and generate a TensorSpace compatible model easily and quickly.
+[TensorSpace](https://github.com/tensorspace-team/tensorspace) is a JavaScript framework used to 3D visualize deep learning models built by TensorFlow, Keras and TensorFlow.js. Before applying TensorSpace to the pre-trained model, there is an important pipeline - TensorSpace model preprocessing ( Checkout this [article](https://tensorspace.org/html/docs/preIntro.html) for more information about TensorSpace preprocessing ). TensorSpace-Converter is designed to simplify the model preprocessing and generate a TensorSpace compatible model easily and quickly.
 
 Without TensorSpace-Converter, the developer needs to be expert on the pre-trained model and machine learning library the model used. For example, if the developer has an LeNet pre-trained model built by tf.keras, it is required to know the structure of the LeNet network as well as how to implement a new multi-output model by tf.keras. Now, with TensorSpace-Converter, it only needs some commands to complete the preprocessing process. For example, the developer only needs to use the [commands](#tensorflow) to preprocess a tf.keras pre-trained model.
 
@@ -60,7 +60,7 @@ As a component of TensorSpace ecosystem, TensorSpace-Converter simplifies the Te
 
 ### <div id="install">Install</div>
 
-Install the tensorspacejs pip package:
+Install the `tensorspacejs` pip package:
 
 ```shell
 $ pip install tensorspacejs
@@ -102,6 +102,8 @@ An MNIST-digit tf.keras model is used as an example in the tutorial. The sample 
 
 #### Step 1: Use TensorSpace-Converter to preprocess pre-trained model
 
+TensorSpace-Converter will convert an input model into a multi-output model, checkout this [article](https://tensorspace.org/html/docs/preIntro.html) for more information about multi-output model and model preprocessing. 
+
 ```shell
 $ tensorspacejs_converter \
     --input_model_from="tensorflow" \
@@ -110,6 +112,14 @@ $ tensorspacejs_converter \
     ./PATH/TO/MODEL/tf_keras_model.h5 \
     ./PATH/TO/SAVE/DIR
 ```
+
+<p align="center">
+<img width="100%" src="./assets/multi-output.png">
+</p>
+<p align="center">
+<b>Fig. 3</b> - converted multi-output model
+</p>
+
 #### Step 2: Apply TensorSpace for model visualization
 
 ```javascript
@@ -123,7 +133,7 @@ model.load({
 <img width="100%" src="./assets/data5.jpg">
 </p>
 <p align="center">
-<b>Fig. 3</b> - LeNet Visualization
+<b>Fig. 4</b> - LeNet Visualization
 </p>
 
 ## <div id="api">Converter API</div>
@@ -142,8 +152,8 @@ Arguments explanation:
 
 |Positional Arguments | Description |
 |---|---|
-|`input_path`  | Path for model input artifacts. |
-|`output_path` | Path for all output artifacts. |
+|`input_path`  | Path for model input artifacts. Checkout [Usage Example](#examples) for how to set this attribute for different kinds of models. |
+|`output_path` | Folder for all output artifacts.  |
 
 
 | Options | Description
@@ -286,8 +296,8 @@ Thanks goes to these wonderful people ([emoji key](https://github.com/kentcdodds
 
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
 <!-- prettier-ignore -->
-| [<img src="https://avatars3.githubusercontent.com/u/4524339?v=4" width="100px;"/><br /><sub><b>Chenhua Zhu</b></sub>](https://github.com/zchholmes)<br />[💻](https://github.com/tensorspace-team/tensorspace-converter/commits?author=zchholmes "Code") [🎨](#design-zchholmes "Design") [📖](https://github.com/tensorspace-team/tensorspace-converter/commits?author=zchholmes "Documentation") [💡](#example-zchholmes "Examples") | [<img src="https://avatars2.githubusercontent.com/u/7977100?v=4" width="100px;"/><br /><sub><b>syt123450</b></sub>](https://github.com/syt123450)<br />[💻](https://github.com/tensorspace-team/tensorspace-converter/commits?author=syt123450 "Code") [🎨](#design-syt123450 "Design") [📖](https://github.com/tensorspace-team/tensorspace-converter/commits?author=syt123450 "Documentation") [💡](#example-syt123450 "Examples") |
-| :---: | :---: |
+| [<img src="https://avatars3.githubusercontent.com/u/4524339?v=4" width="100px;"/><br /><sub><b>Chenhua Zhu</b></sub>](https://github.com/zchholmes)<br />[💻](https://github.com/tensorspace-team/tensorspace-converter/commits?author=zchholmes "Code") [🎨](#design-zchholmes "Design") [📖](https://github.com/tensorspace-team/tensorspace-converter/commits?author=zchholmes "Documentation") [💡](#example-zchholmes "Examples") | [<img src="https://avatars2.githubusercontent.com/u/7977100?v=4" width="100px;"/><br /><sub><b>syt123450</b></sub>](https://github.com/syt123450)<br />[💻](https://github.com/tensorspace-team/tensorspace-converter/commits?author=syt123450 "Code") [🎨](#design-syt123450 "Design") [📖](https://github.com/tensorspace-team/tensorspace-converter/commits?author=syt123450 "Documentation") [💡](#example-syt123450 "Examples") | [<img src="https://avatars2.githubusercontent.com/u/19629037?v=4" width="100px;"/><br /><sub><b>Qi(Nora)</b></sub>](https://github.com/lq3297401)<br />[🎨](#design-lq3297401 "Design") | [<img src="https://avatars3.githubusercontent.com/u/25629006?s=400&v=4" width="100px;"/><br /><sub><b>BoTime</b></sub>](https://github.com/BoTime)<br />[💻](https://github.com/tensorspace-team/tensorspace-converter/commits?author=BoTime "Code") [💡](#example-BoTime "Examples") |
+| :---: | :---: | :---: | :---: |
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
 ## <div id="contact">Contact</div>

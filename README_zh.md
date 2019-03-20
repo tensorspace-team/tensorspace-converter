@@ -42,7 +42,7 @@ TensorSpace-Converter 是 TensorSpace 预处理工具，提供对预训练的 Te
 
 ## <div id="motivation">TensorSpace-Converter 使用场景</div>
 
-[TensorSpace](https://github.com/tensorspace-team/tensorspace) 可以用于 TensorFlow, Keras, TensorFlow.js 模型3D可视化，而在应用 TensorSpace 可视化之前，需要完成一个重要的步骤————对预训练模型进行预处理（通过 [这篇介绍](https://tensorspace.org/html/docs/preIntro.html) 可以了解更多有关 TensorSpace 预处理的概念与原理）。TensorSpace-Converter 可以帮助开发者快速完成 TensorSpace 预处理过程的辅助工具。
+[TensorSpace](https://github.com/tensorspace-team/tensorspace) 可以用于 TensorFlow, Keras, TensorFlow.js 模型3D可视化，而在应用 TensorSpace 可视化之前，需要完成一个重要的步骤————对预训练模型进行预处理（通过 [这篇介绍](https://tensorspace.org/html/docs/preIntro_zh.html) 可以了解更多有关 TensorSpace 预处理的概念与原理）。TensorSpace-Converter 可以帮助开发者快速完成 TensorSpace 预处理过程的辅助工具。
 
 TensorSpace-Converter 对 TensorFlow、Keras、TensorFlow.js 提供开箱即用的支持，只需要几行简单的 TensorSpace-Converter 代码就可以完成 TensorSpace 预处理过程。在 TensorSpace-Converter 之前，对模型进行预处理，需要开发者熟悉掌握多个框架（TensorFlow，keras，tfjs-converter等）。举个小栗子，在没有 TensorSpace-Converter 的情况下，对 tf.keras 模型进行预处理时，除了需要准备一个预训练的 tf.keras 模型之外，还需要编写 tf.keras 代码将模型转化成多输出，以及使用 tfjs-converter 将模型转化为 TensorSpace 兼容的格式。而现在有了 TensorSpace-Converter 之后，只需要 [几行](#tensorflow) 简单的 TensorSpace-Converter 代码，就可以完成之前这个较为繁琐的工作。
 
@@ -59,7 +59,7 @@ TensorSpace-Converter 对 TensorFlow、Keras、TensorFlow.js 提供开箱即用�
 
 ### <div id="install">下载</div>
 
-通过 pip 下载 tensorspacejs 包:
+通过 pip 下载 `tensorspacejs` 包:
 
 ```shell
 $ pip install tensorspacejs
@@ -99,6 +99,8 @@ $ pip install tensorspacejs
 
 #### 第一步：使用 TensorSpace-Converter 处理预训练的模型
 
+TensorSpace-Converter 将会将一个模型转化并生成一个多输出模型，通过 [这篇介绍](https://tensorspace.org/html/docs/preIntro_zh.html) 可以了解更多有关 TensorSpace 预处理的概念与原理。
+
 ```shell
 $ tensorspacejs_converter \
     --input_model_from="tensorflow" \
@@ -107,6 +109,13 @@ $ tensorspacejs_converter \
     ./PATH/TO/MODEL/tf_keras_model.h5 \
     ./PATH/TO/SAVE/DIR
 ```
+
+<p align="center">
+<img width="100%" src="./assets/multi-output_zh.png">
+</p>
+<p align="center">
+<b>图3</b> - 经过 TensorSpace-Converter 转化生成的多输出模型
+</p>
 
 #### Step 2: 使用 TensorSpace 载入经过处理的模型
 
@@ -121,7 +130,7 @@ model.load({
 <img width="100%" src="./assets/data5.jpg">
 </p>
 <p align="center">
-<b>图3</b> - LeNet 模型 TensorSpace 可视化
+<b>图4</b> - LeNet 模型 TensorSpace 可视化
 </p>
 
 ## <div id="api">TensorSpace-Converter API</div>
@@ -140,8 +149,8 @@ $ tensorspacejs_converter \
 
 |Positional Arguments | 介绍 |
 |---|---|
-|`input_path`  | 模型输入路径|
-|`output_path` | 模型输出路径，TensorSpace-Converter 会将经过转化的模型输出到该路径中 |
+|`input_path`  | 模型输入路径，在 [使用样例](#examples) 部分将介绍如何设置该属性。|
+|`output_path` | 模型输出路径（文件夹），TensorSpace-Converter 会将经过转化的模型输出到该路径中 |
 
 
 | 可选参数 | 介绍
@@ -281,8 +290,8 @@ npm run test
 
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
 <!-- prettier-ignore -->
-| [<img src="https://avatars3.githubusercontent.com/u/4524339?v=4" width="100px;"/><br /><sub><b>Chenhua Zhu</b></sub>](https://github.com/zchholmes)<br />[💻](https://github.com/tensorspace-team/tensorspace-converter/commits?author=zchholmes "Code") [🎨](#design-zchholmes "Design") [📖](https://github.com/tensorspace-team/tensorspace-converter/commits?author=zchholmes "Documentation") [💡](#example-zchholmes "Examples") | [<img src="https://avatars2.githubusercontent.com/u/7977100?v=4" width="100px;"/><br /><sub><b>syt123450</b></sub>](https://github.com/syt123450)<br />[💻](https://github.com/tensorspace-team/tensorspace-converter/commits?author=syt123450 "Code") [🎨](#design-syt123450 "Design") [📖](https://github.com/tensorspace-team/tensorspace-converter/commits?author=syt123450 "Documentation") [💡](#example-syt123450 "Examples") |
-| :---: | :---: |
+| [<img src="https://avatars3.githubusercontent.com/u/4524339?v=4" width="100px;"/><br /><sub><b>Chenhua Zhu</b></sub>](https://github.com/zchholmes)<br />[💻](https://github.com/tensorspace-team/tensorspace-converter/commits?author=zchholmes "Code") [🎨](#design-zchholmes "Design") [📖](https://github.com/tensorspace-team/tensorspace-converter/commits?author=zchholmes "Documentation") [💡](#example-zchholmes "Examples") | [<img src="https://avatars2.githubusercontent.com/u/7977100?v=4" width="100px;"/><br /><sub><b>syt123450</b></sub>](https://github.com/syt123450)<br />[💻](https://github.com/tensorspace-team/tensorspace-converter/commits?author=syt123450 "Code") [🎨](#design-syt123450 "Design") [📖](https://github.com/tensorspace-team/tensorspace-converter/commits?author=syt123450 "Documentation") [💡](#example-syt123450 "Examples") | [<img src="https://avatars2.githubusercontent.com/u/19629037?v=4" width="100px;"/><br /><sub><b>Qi(Nora)</b></sub>](https://github.com/lq3297401)<br />[🎨](#design-lq3297401 "Design") | [<img src="https://avatars3.githubusercontent.com/u/25629006?s=400&v=4" width="100px;"/><br /><sub><b>BoTime</b></sub>](https://github.com/BoTime)<br />[💻](https://github.com/tensorspace-team/tensorspace-converter/commits?author=BoTime "Code") [💡](#example-BoTime "Examples") |
+| :---: | :---: | :---: | :---: |
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
 ## <div id="contact">联系方式</div>
