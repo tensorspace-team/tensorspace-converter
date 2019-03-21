@@ -1,6 +1,6 @@
 {
   "name": "tensorspace-converter",
-  "description": "TensorSpace preprocess tool for pre-trained model from TensorFlow, Keras, TensorFlow.js",
+  "description": "TensorSpace preprocess tool for pre-trained models from TensorFlow, Keras, TensorFlow.js",
   "directories": {
     "tensorspacejs": "source code",
     "example": "TensorSpace-Converter usage examples",
