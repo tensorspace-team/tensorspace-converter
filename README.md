@@ -31,6 +31,7 @@ TensorSpace-Converter is a tool used to generate a TensorSpace compatible model 
 * [Getting Started](#start)
     * [Install](#install)
     * [Usage](#usage)
+* [Running with Docker](#docker)
 * [Converter API](#api)
 * [Converter Usage Examples](#examples)
     * [TensorFlow](#tensorflow)
@@ -135,6 +136,28 @@ model.load({
 <p align="center">
 <b>Fig. 4</b> - LeNet Visualization
 </p>
+
+## <div id="docker">Running with Docker</div>
+
+Establishing `tensorflowjs` Python environment is a tedious topic? Dockerize it!
+
+Here is a TensorSpace-Converter [Dockerfile](https://github.com/tensorspace-team/tensorspace-converter/blob/master/docker/Dockerfile), you can use it to build a out-of-box TensorSpace-Converter `image`. We also provide some easy to use scripts to init ([init_docker_converter.sh](https://github.com/tensorspace-team/tensorspace-converter/blob/master/docker/init_docker_converter.sh)) and run ([run_docker_converter.sh](https://github.com/tensorspace-team/tensorspace-converter/blob/master/docker/run_docker_converter.sh)) `tensorspacejs` docker image. 
+
+* To init `tensorspacejs` Docker image (make sure start Docker daemon before init the image):
+```shell
+cd ./docker
+bash init_docker_converter.sh
+```
+
+* To run docker image
+
+Put TensorSpace-Converter script and model assets in a `WORK_DIR`, and execute `run_docker_converter.sh` to run `tensorspacejs` image:
+```shell
+cd ./docker
+bash run_docker_converter.sh --work_dir PATH/TO/WORK_DIR
+```
+
+Checkout this [Docker Example](https://github.com/tensorspace-team/tensorspace-converter/blob/master/docker/README.md) for more practical usage of running TensorSpace-Converter with Docker.
 
 ## <div id="api">Converter API</div>
 
