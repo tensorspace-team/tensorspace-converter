@@ -161,7 +161,7 @@ TensorSpace 在载入模型时，对于不同种类的 TensorFlow 模型，需�
 ```javascript
 model.load( {
     type: "tensorflow",
-    url: './convertedModel/layerModel/model.json'
+    url: "./convertedModel/layerModel/model.json"
 } );
 ```
 
@@ -170,7 +170,7 @@ model.load( {
 ```javascript
 model.load( {
     type: "tensorflow",
-    url: './convertedModel/graphModel/model.json',
+    url: "./convertedModel/graphModel/model.json",
     outputsName: ["MyConv2D_1", "MyMaxPooling2D_1", "MyConv2D_2", "MyMaxPooling2D_2", "MyDense_1", "MyDense_2", "MySoftMax"]
 } );
 ```

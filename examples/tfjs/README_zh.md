@@ -25,7 +25,7 @@
 ```shell
 $ tensorspacejs_converter \
     --input_model_from="tfjs" \
-    --output_layer_names='myPadding,myConv1,myMaxPooling1,myConv2,myMaxPooling2,myDense1,myDense2,myDense3' \
+    --output_layer_names="myPadding,myConv1,myMaxPooling1,myConv2,myMaxPooling2,myDense1,myDense2,myDense3" \
     ./rawModel/mnist.json \
     ./convertedModel/
 ```
@@ -80,7 +80,7 @@ model.add( new TSP.layers.Output1d( {
 ```javascript
 model.load( {
     type: "tfjs",
-    url: './convertedModel/model.json'
+    url: "./convertedModel/model.json"
 } );
 
 model.init();
