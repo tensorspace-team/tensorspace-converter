@@ -1,5 +1,5 @@
 # tensorspacejs version
-version = '0.0.23'
+version = '0.1.0'
 # dependencies version
 python_version = '3.6'
 node_version = '11.3+'
