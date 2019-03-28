@@ -50,7 +50,7 @@ TensorSpace-Converter 对 TensorFlow、Keras、TensorFlow.js 提供开箱即用�
 作为 TensorSpace 的生态组件，TensorSpace-Converter 简化了 TensorSpace 的开发过程，降低了 TensorSpace 学习曲线。作为可视化应用开发工具，TensorSpace-Converter 有助于分离 `后端模型训练` 与 `前端模型可视化` 的工作。
 
 <p align="center">
-<img width="100%" src="./assets/tensorspace_lenet.gif">
+<img width="80%" src="./assets/hello_converter.gif">
 </p>
 <p align="center">
 <b>图1</b> - 使用 TensorSpace-Converter
@@ -118,7 +118,7 @@ $ tensorspacejs_converter \
 <b>图3</b> - 经过 TensorSpace-Converter 转化生成的多输出模型
 </p>
 
-#### Step 2: 使用 TensorSpace 载入经过处理的模型
+#### 第二步: 使用 TensorSpace 载入经过处理的模型
 
 ```javascript
 model.load({
@@ -128,7 +128,7 @@ model.load({
 ```
 
 <p align="center">
-<img width="100%" src="./assets/data5.jpg">
+<img width="100%" src="./assets/demo.gif">
 </p>
 <p align="center">
 <b>图4</b> - LeNet 模型 TensorSpace 可视化

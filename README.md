@@ -51,7 +51,7 @@ Without TensorSpace-Converter, the developer needs to be expert on the pre-train
 As a component of TensorSpace ecosystem, TensorSpace-Converter simplifies the TensorSpace preprocess, release the workloads from learning how to generate TensorSpace compatible model. As a development tool, TensorSpace-Converter helps to separate the work of `model training` and `model visualization`.
 
 <p align="center">
-<img width="100%" src="./assets/tensorspace_lenet.gif">
+<img width="80%" src="./assets/hello_converter.gif">
 </p>
 <p align="center">
 <b>Fig. 1</b> - TensorSpace-Converter Usage
@@ -131,7 +131,7 @@ model.load({
 ```
 
 <p align="center">
-<img width="100%" src="./assets/data5.jpg">
+<img width="100%" src="./assets/demo.gif">
 </p>
 <p align="center">
 <b>Fig. 4</b> - LeNet Visualization
