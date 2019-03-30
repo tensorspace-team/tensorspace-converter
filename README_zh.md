@@ -58,29 +58,26 @@ TensorSpace-Converter 对 TensorFlow、Keras、TensorFlow.js 提供开箱即用�
 
 <table>
    <tr>
-      <td>使用框架</td>
-      <td>不使用TensorSpace_Converter</td>
-      <td>使用 TensorSpace_Converter</td>
+      <th>使用框架</th>
+      <th>不使用TensorSpace_Converter</th>
+      <th>使用 TensorSpace_Converter</th>
    </tr>
    <tr>
       <td>tf.keras</td>
       <td>安装 TensorFlow ，构建环境<br />① 训练/加载模型<br />② 添加中间层输出<br />③ 保存嵌入后的多输出模型<br />④ 转换为 TensorSpace 适配的模型</td>
-      <td rowspan="4">① 理解模型结构，对每一层输出进行命名<br />② 使用 TensorSpace_Converter<br />快速输出 TensorSpace 适配的模型</td>
+      <td rowspan="4">① 理解模型结构，对每一层输出进行命名<br />② 使用 TensorSpace_Converter 快速输出 TensorSpace 适配的模型</td>
    </tr>
    <tr>
       <td>TensorFlow</td>
       <td>① 训练/加载模型<br />② 找出中间层 tensor 名称 <br />③ 转换为 TensorSpace 适配的模型</td>
-      <td></td>
    </tr>
    <tr>
       <td>Keras</td>
       <td>① 训练/加载模型<br />② 添加中间层输出<br />③ 保存嵌入的多输出模型<br />④ 转换为 TensorSpace 适配的模型</td>
-      <td></td>
    </tr>
    <tr>
       <td>tensorflwojs</td>
       <td>① 训练 TensorSpace 适配的模型<br />② 转换 tfjs 模型以适配 TensorSpace</td>
-      <td></td>
    </tr>
 </table>
 
