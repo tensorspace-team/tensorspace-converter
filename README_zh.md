@@ -56,7 +56,7 @@ TensorSpace-Converter 对 TensorFlow、Keras、TensorFlow.js 提供开箱即用�
 <b>图1</b> - 使用 TensorSpace-Converter
 </p>
 
-<table>
+<table align="center" width="95%">
    <tr>
       <th>使用框架</th>
       <th>不使用TensorSpace_Converter</th>
