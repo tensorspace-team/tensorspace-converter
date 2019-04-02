@@ -36,6 +36,7 @@ TensorSpace-Converter 是 TensorSpace 预处理工具，提供对预训练的 Te
     * [TensorFlow](#tensorflow)
     * [Keras](#keras)
     * [TensorFlow.js](#tensorflowjs)
+* [对比](#comparison)
 * [开发设置](#development)
 * [开发人员](#contributors)
 * [联系方式](#contact)
@@ -55,31 +56,6 @@ TensorSpace-Converter 对 TensorFlow、Keras、TensorFlow.js 提供开箱即用�
 <p align="center">
 <b>图1</b> - 使用 TensorSpace-Converter
 </p>
-
-<table align="center" width="95%">
-   <tr>
-      <th>使用框架</th>
-      <th>不使用TensorSpace_Converter</th>
-      <th>使用 TensorSpace_Converter</th>
-   </tr>
-   <tr>
-      <td>tf.keras</td>
-      <td>安装 TensorFlow ，构建环境<br />① 训练/加载模型<br />② 添加中间层输出<br />③ 保存嵌入后的多输出模型<br />④ 转换为 TensorSpace 适配的模型</td>
-      <td rowspan="4">① 理解模型结构，对每一层输出进行命名<br />② 使用 TensorSpace_Converter <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;快速输出 TensorSpace 适配的模型</td>
-   </tr>
-   <tr>
-      <td>TensorFlow</td>
-      <td>① 训练/加载模型<br />② 找出中间层 tensor 名称 <br />③ 转换为 TensorSpace 适配的模型</td>
-   </tr>
-   <tr>
-      <td>Keras</td>
-      <td>① 训练/加载模型<br />② 添加中间层输出<br />③ 保存嵌入的多输出模型<br />④ 转换为 TensorSpace 适配的模型</td>
-   </tr>
-   <tr>
-      <td>tensorflwojs</td>
-      <td>① 训练 TensorSpace 适配的模型<br />② 转换 tfjs 模型以适配 TensorSpace</td>
-   </tr>
-</table>
 
 ## <div id="start">开始使用</div>
 
@@ -294,6 +270,33 @@ $ tensorspacejs_converter \
     ./PATH/TO/SAVE/DIR
 ```
 这篇 [TensorFlow.js 教程](https://github.com/tensorspace-team/tensorspace-converter/tree/master/examples/tfjs/README_zh.md)，通过一个实际的例子，介绍了如何使用 TensorSpace-Converter 来预处理 TensorFlow.js 模型。
+
+## <div id="comparison">对比</div>
+
+<table align="center" width="95%">
+   <tr>
+      <th>使用框架</th>
+      <th>不使用TensorSpace_Converter</th>
+      <th>使用 TensorSpace_Converter</th>
+   </tr>
+   <tr>
+      <td>tf.keras</td>
+      <td>安装 TensorFlow ，构建环境<br />① 训练/加载模型<br />② 添加中间层输出<br />③ 保存嵌入后的多输出模型<br />④ 转换为 TensorSpace 适配的模型</td>
+      <td rowspan="4">① 理解模型结构，对每一层输出进行命名<br />② 使用 TensorSpace_Converter <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;快速输出 TensorSpace 适配的模型</td>
+   </tr>
+   <tr>
+      <td>TensorFlow</td>
+      <td>① 训练/加载模型<br />② 找出中间层 tensor 名称 <br />③ 转换为 TensorSpace 适配的模型</td>
+   </tr>
+   <tr>
+      <td>Keras</td>
+      <td>① 训练/加载模型<br />② 添加中间层输出<br />③ 保存嵌入的多输出模型<br />④ 转换为 TensorSpace 适配的模型</td>
+   </tr>
+   <tr>
+      <td>tensorflwojs</td>
+      <td>① 训练 TensorSpace 适配的模型<br />② 转换 tfjs 模型以适配 TensorSpace</td>
+   </tr>
+</table>
 
 ## <div id="development">开发设置</div>
 
