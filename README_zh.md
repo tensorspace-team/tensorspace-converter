@@ -137,6 +137,10 @@ model.load({
 
 ## <div id="docker">通过 Docker 运行 TensorSpace-Converter</div>
 
+<p align="center">
+<img width=200 src="./assets/docker.png">
+</p>
+
 配置一个适合 `tensorspacejs` 运行环境有点复杂？不妨试试在 Docker 中运行吧！
 
 TensorSpace-Converter 提供了一个 [Dockerfile](https://github.com/tensorspace-team/tensorspace-converter/blob/master/docker/Dockerfile) 来创建 `tensorspacejs` Docker镜像。`tensorspacejs` 镜像是一个开箱即用的 TensorSpace-Converter 运行环境。为了让这个 `tensorspacejs` 镜像更易用，我们提供了脚本来 `创建` ([init_docker_converter.sh](https://github.com/tensorspace-team/tensorspace-converter/blob/master/docker/init_docker_converter.sh)) 与 `运行` ([run_docker_converter.sh](https://github.com/tensorspace-team/tensorspace-converter/blob/master/docker/run_docker_converter.sh)) 它。
@@ -190,6 +194,10 @@ $ tensorspacejs_converter \
 
 ### <div id="tensorflow">TensorFlow</div>
 
+<p align="center">
+<img width=60% src="./assets/converter_logo_tf.png">
+</p>
+
 当使用 TensorFlow 训练并保存一个模型时，TensorSpace-Converter 支持转化以下格式的模型：saved model，frozen model，模型结构权重合并的 HDF5，模型结构和权重分开保存的 HDF5。TensorSpace-Converter 使用不同的转换指令来转换这四种模型。在 TensorFlow 的图结构中，可能没有 `layer` 的概念，不过，一个特定的 `tensor` 可以对应一个 `layer` 的输出，在这种情况下，可以取出相对应的 `tensor` 名称，然后设置到 TensorSpace-Converter 的 `output_layer_names` 参数中。
 
 对于模型结构和权重合并保存的 HDF5 模型，会有一个 `xxx.h5` 文件。在配置 TensorSpace-Converter 转换脚本时，将 `input_model_format` 设置成 `tf_keras`。示例转化脚本：
@@ -235,6 +243,10 @@ $ tensorspacejs_converter \
 
 ### <div id="keras">Keras</div>
 
+<p align="center">
+<img width=60% src="./assets/converter_logo_keras.png">
+</p>
+
 当使用 Keras 训练并生成一个模型时，模型有两种保存形式：模型结构和权重保存在一个HDF5文件，模型结构和权重保存在不同的文件中。TensorSpace-Converter 使用不同的转换指令来转换这两种模型。
 
 对于一个 Keras 模型，如果模型结构和权重保存在同一个 HDF5 文件中，模型将会是 `xxx.h5`。在配置 TensorSpace-Converter 转换脚本时，将 `input_model_format` 设置成 `topology_weights_combined`。示例转换代码：
@@ -259,6 +271,10 @@ $ tensorspacejs_converter \
 这篇 [Keras 教程](https://github.com/tensorspace-team/tensorspace-converter/tree/master/examples/keras/README_zh.md)，通过一个实际的例子，介绍了如何使用 TensorSpace-Converter 来预处理 Keras 模型。
 
 ### <div id="tensorflowjs">TensorFlow.js</div>
+
+<p align="center">
+<img width=60% src="./assets/converter_logo_tfjs.png">
+</p>
 
 当使用 TensorFlow.js 训练并保存一个模型后，会得到一个模型结构文件 `xxx.json` 和一些权重文件 `xxx.weight.bin`。当使用 TensorSpace-Converter 来预处理这类模型时，需要将模型结构文件（xxx.json）和权重文件（xxx.weight.bin）放在同一个目录下，然后将模型结构文件的路径设置为 `input_path`。示例转换代码：
 

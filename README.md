@@ -139,6 +139,10 @@ model.load({
 
 ## <div id="docker">Running with Docker</div>
 
+<p align="center">
+<img width=200 src="./assets/docker.png">
+</p>
+
 Establishing `tensorflowjs` environment is a tedious topic? Dockerize it!
 
 Here is a TensorSpace-Converter [Dockerfile](https://github.com/tensorspace-team/tensorspace-converter/blob/master/docker/Dockerfile), you can use it to build a out-of-box TensorSpace-Converter `image`. We also provide some easy to use scripts to init ([init_docker_converter.sh](https://github.com/tensorspace-team/tensorspace-converter/blob/master/docker/init_docker_converter.sh)) and run ([run_docker_converter.sh](https://github.com/tensorspace-team/tensorspace-converter/blob/master/docker/run_docker_converter.sh)) `tensorspacejs` docker image. 
@@ -191,6 +195,10 @@ This section introduces the usage of TensorSpace-Converter for different types o
 
 ### <div id="tensorflow">TensorFlow</div>
 
+<p align="center">
+<img width=60% src="./assets/converter_logo_tf.png">
+</p>
+
 A pre-trained model built by TensorFlow can be saved as saved model, frozen model, combined HDF5 model or separated HDF5 model. Use different TensorSpace-Converter commands for different kinds of TensorFlow model formats. TensorSpace-Converter collects the data from `tensor`, then use the outputs as the inputs of `layer` of TensorSpace visualization. The developer can collect all necessary tensor names and set the name list as `output_layer_names`.
 
 For a combined HDF5 model, topology and weights are saved in a combined HDF5 file `xxx.h5`. Set `input_model_format` to be `tf_keras`. The sample command script should be like:
@@ -237,6 +245,10 @@ Checkout this [TensorFlow Tutorial](https://github.com/tensorspace-team/tensorsp
 
 ### <div id="keras">Keras</div>
 
+<p align="center">
+<img width=60% src="./assets/converter_logo_keras.png">
+</p>
+
 A pre-trained model built by Keras, may have two formats: topology and weights are saved in a single HDF5 file, or topology and weights are saved in separated files. Use different TensorSpace-Converter commands for these two saved Keras models.
 
 For a Keras model, topology and weights are saved in a single HDF5 file, i.e. `xxx.h5`. Set `input_model_format` to be `topology_weights_combined`. The sample command script should be like:
@@ -261,6 +273,10 @@ $ tensorspacejs_converter \
 Checkout this [Keras Tutorial](https://github.com/tensorspace-team/tensorspace-converter/tree/master/examples/keras) for more practical usage of TensorSpace-Converter for Keras models.
 
 ### <div id="tensorflowjs">TensorFlow.js</div>
+
+<p align="center">
+<img width=60% src="./assets/converter_logo_tfjs.png">
+</p>
 
 A pre-trained model built by TensorFlow.js, may have a topology file `xxx.json` and a weights file `xxx.weight.bin`. To converter the model with TensorSpace-Converter, the two files should be put in the same folder and set topology file's path to `input_path`. The sample command script should be like:
 
