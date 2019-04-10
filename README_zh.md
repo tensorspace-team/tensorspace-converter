@@ -309,7 +309,7 @@ $ tensorspacejs_converter \
       <td>① 训练/加载模型<br />② 添加中间层输出<br />③ 保存嵌入的多输出模型<br />④ 转换为 TensorSpace 适配的模型</td>
    </tr>
    <tr>
-      <td>tensorflwojs</td>
+      <td>TensorFlow.js</td>
       <td>① 训练 TensorSpace 适配的模型<br />② 转换 tfjs 模型以适配 TensorSpace</td>
    </tr>
 </table>
