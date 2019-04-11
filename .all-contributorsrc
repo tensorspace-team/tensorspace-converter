@@ -39,9 +39,9 @@
       "name": "Qi(Nora)",
       "avatar_url": "https://avatars2.githubusercontent.com/u/19629037?v=4",
       "profile": "https://github.com/lq3297401",
-        "contributions": [
-          "design"
-        ]
+      "contributions": [
+       "design"
+      ]
     },
     {
       "login": "BoTime",
@@ -52,6 +52,16 @@
           "code",
           "example"
         ]
+    },
+    {
+      "login": "CharlesLiuyx",
+      "name": "YaoXing Liu",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/21956621?v=4",
+      "profile": "https://charlesliuyx.github.io/",
+      "contributions": [
+        "doc",
+        "design"
+      ]
     }
   ]
 }
