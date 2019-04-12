@@ -143,7 +143,7 @@ model.load({
 <img width=200 src="./assets/docker.png">
 </p>
 
-Establishing `tensorflowjs` environment is a tedious topic? Dockerize it!
+Establishing `TensorSpace-Converter` runtime environment is a tedious topic? Dockerize it!
 
 Here is a TensorSpace-Converter [Dockerfile](https://github.com/tensorspace-team/tensorspace-converter/blob/master/docker/Dockerfile), you can use it to build a out-of-box TensorSpace-Converter `image`. We also provide some easy to use scripts to init ([init_docker_converter.sh](https://github.com/tensorspace-team/tensorspace-converter/blob/master/docker/init_docker_converter.sh)) and run ([run_docker_converter.sh](https://github.com/tensorspace-team/tensorspace-converter/blob/master/docker/run_docker_converter.sh)) `tensorspacejs` docker image. 
 

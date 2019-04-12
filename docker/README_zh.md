@@ -3,7 +3,7 @@
 </p>
 <h1 align=center>通过 Docker 运行 TensorSpace-Converter</h1>
 
-配置一个适合 `tensorspacejs` 运行环境有点复杂？不妨试试在 Docker 中运行吧！
+配置一个适合 `TensorSpace-Converter` 运行环境有点复杂？不妨试试在 Docker 中运行吧！
 
 TensorSpace-Converter 提供了一个 [Dockerfile](https://github.com/tensorspace-team/tensorspace-converter/blob/master/docker/Dockerfile)，你可以通过它快速创建一个开箱即用的 TensorSpace-Converter 镜像。为了让这个 `tensorspacejs` 镜像更易用，我们提供了脚本来 `创建` ([init_docker_converter.sh](https://github.com/tensorspace-team/tensorspace-converter/blob/master/docker/init_docker_converter.sh)) 与 `运行` ([run_docker_converter.sh](https://github.com/tensorspace-team/tensorspace-converter/blob/master/docker/run_docker_converter.sh)) 它。
 
