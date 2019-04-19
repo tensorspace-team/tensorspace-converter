@@ -72,7 +72,7 @@ $ pip install tensorspacejs
 $ tensorspacejs_converter -v
 ```
 
-然后初始化 TensorSpace Converter (这步很重要哦~):
+然后初始化 TensorSpace Converter:
 ```shell
 $ tensorspacejs_converter -init
 ```
