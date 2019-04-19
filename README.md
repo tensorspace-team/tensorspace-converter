@@ -1,5 +1,5 @@
 <p align="center">
-<img width=150 src="./assets/logo_tsConverter.png">
+<img width=150 src="https://raw.githack.com/tensorspace-team/tensorspace-converter/master/assets/logo_tsConverter.png">
 </p>
 
 <h1 align="center">TensorSpace Converter</h1>
@@ -51,7 +51,7 @@ Without TensorSpace-Converter, the developer needs to be expert on the pre-train
 As a component of TensorSpace ecosystem, TensorSpace-Converter simplifies the TensorSpace preprocess, release the workloads from learning how to generate TensorSpace compatible model. As a development tool, TensorSpace-Converter helps to separate the work of `model training` and `model visualization`.
 
 <p align="center">
-<img width="80%" src="./assets/hello_converter.gif">
+<img width="80%" src="https://raw.githack.com/tensorspace-team/tensorspace-converter/master/assets/hello_converter.gif">
 </p>
 <p align="center">
 <b>Fig. 1</b> - TensorSpace-Converter Usage
@@ -95,7 +95,7 @@ The following part introduces the usage and workflow on:
 An MNIST-digit tf.keras model is used as an example in the tutorial. The sample files used in the tutorial includes [pre-trained tf.keras model](https://github.com/tensorspace-team/tensorspace-converter/tree/master/examples/tensorflow/rawModel/keras), [TensorSpace-Converter script](https://github.com/tensorspace-team/tensorspace-converter/blob/master/examples/tensorflow/script/convertKeras.sh) and [TensorSpace visualization code](https://github.com/tensorspace-team/tensorspace-converter/blob/master/examples/tensorflow/index.html).
 
 <p align="center">
-<img width="100%" src="./assets/workflow.png">
+<img width="100%" src="https://raw.githack.com/tensorspace-team/tensorspace-converter/master/assets/workflow.png">
 </p>
 <p align="center">
 <b>Fig. 2</b> - TensorSpace-Converter Workflow
@@ -115,7 +115,7 @@ $ tensorspacejs_converter \
 ```
 
 <p align="center">
-<img width="100%" src="./assets/multi-output.png">
+<img width="100%" src="https://raw.githack.com/tensorspace-team/tensorspace-converter/master/assets/multi-output.png">
 </p>
 <p align="center">
 <b>Fig. 3</b> - converted multi-output model
@@ -131,7 +131,7 @@ model.load({
 ```
 
 <p align="center">
-<img width="100%" src="./assets/demo.gif">
+<img width="100%" src="https://raw.githack.com/tensorspace-team/tensorspace-converter/master/assets/demo.gif">
 </p>
 <p align="center">
 <b>Fig. 4</b> - LeNet Visualization
@@ -140,7 +140,7 @@ model.load({
 ## <div id="docker">Running with Docker</div>
 
 <p align="center">
-<img width=200 src="./assets/docker.png">
+<img width=200 src="https://raw.githack.com/tensorspace-team/tensorspace-converter/master/assets/docker.png">
 </p>
 
 Establishing `TensorSpace-Converter` runtime environment is a tedious topic? Dockerize it!
@@ -196,7 +196,7 @@ This section introduces the usage of TensorSpace-Converter for different types o
 ### <div id="tensorflow">TensorFlow</div>
 
 <p align="center">
-<img width=60% src="./assets/converter_logo_tf.png">
+<img width=60% src="https://raw.githack.com/tensorspace-team/tensorspace-converter/master/assets/converter_logo_tf.png">
 </p>
 
 A pre-trained model built by TensorFlow can be saved as saved model, frozen model, combined HDF5 model or separated HDF5 model. Use different TensorSpace-Converter commands for different kinds of TensorFlow model formats. TensorSpace-Converter collects the data from `tensor`, then use the outputs as the inputs of `layer` of TensorSpace visualization. The developer can collect all necessary tensor names and set the name list as `output_layer_names`.
@@ -246,7 +246,7 @@ Checkout this [TensorFlow Tutorial](https://github.com/tensorspace-team/tensorsp
 ### <div id="keras">Keras</div>
 
 <p align="center">
-<img width=60% src="./assets/converter_logo_keras.png">
+<img width=60% src="https://raw.githack.com/tensorspace-team/tensorspace-converter/master/assets/converter_logo_keras.png">
 </p>
 
 A pre-trained model built by Keras, may have two formats: topology and weights are saved in a single HDF5 file, or topology and weights are saved in separated files. Use different TensorSpace-Converter commands for these two saved Keras models.
@@ -275,7 +275,7 @@ Checkout this [Keras Tutorial](https://github.com/tensorspace-team/tensorspace-c
 ### <div id="tensorflowjs">TensorFlow.js</div>
 
 <p align="center">
-<img width=60% src="./assets/converter_logo_tfjs.png">
+<img width=60% src="https://raw.githack.com/tensorspace-team/tensorspace-converter/master/assets/converter_logo_tfjs.png">
 </p>
 
 A pre-trained model built by TensorFlow.js, may have a topology file `xxx.json` and a weights file `xxx.weight.bin`. To converter the model with TensorSpace-Converter, the two files should be put in the same folder and set topology file's path to `input_path`. The sample command script should be like:

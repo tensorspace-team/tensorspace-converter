@@ -1,5 +1,5 @@
 <p align="center">
-<img width=150 src="./assets/logo_tsConverter.png">
+<img width=150 src="https://raw.githack.com/tensorspace-team/tensorspace-converter/master/assets/logo_tsConverter.png">
 </p>
 <h1 align="center">TensorSpace Converter</h1>
 
@@ -51,7 +51,7 @@ TensorSpace-Converter 对 TensorFlow、Keras、TensorFlow.js 提供开箱即用�
 作为 TensorSpace 的生态组件，TensorSpace-Converter 简化了 TensorSpace 的开发过程，降低了 TensorSpace 学习曲线。作为可视化应用开发工具，TensorSpace-Converter 有助于分离 `后端模型训练` 与 `前端模型可视化` 的工作。
 
 <p align="center">
-<img width="80%" src="./assets/hello_converter.gif">
+<img width="80%" src="https://raw.githack.com/tensorspace-team/tensorspace-converter/master/assets/hello_converter.gif">
 </p>
 <p align="center">
 <b>图1</b> - 使用 TensorSpace-Converter
@@ -93,7 +93,7 @@ $ pip install tensorspacejs
 以下为使用的代码及文件：[tf.keras 模型](https://github.com/tensorspace-team/tensorspace-converter/tree/master/examples/tensorflow/rawModel/keras), [TensorSpace-Converter 脚本](https://github.com/tensorspace-team/tensorspace-converter/blob/master/examples/tensorflow/script/convertKeras.sh) and [TensorSpace 可视化代码](https://github.com/tensorspace-team/tensorspace-converter/blob/master/examples/tensorflow/index.html).
 
 <p align="center">
-<img width="100%" src="./assets/workflow_zh.png">
+<img width="100%" src="https://raw.githack.com/tensorspace-team/tensorspace-converter/master/assets/workflow_zh.png">
 </p>
 <p align="center">
 <b>图2</b> - TensorSpace-Converter 使用流程
@@ -113,7 +113,7 @@ $ tensorspacejs_converter \
 ```
 
 <p align="center">
-<img width="100%" src="./assets/multi-output_zh.png">
+<img width="100%" src="https://raw.githack.com/tensorspace-team/tensorspace-converter/master/assets/multi-output_zh.png">
 </p>
 <p align="center">
 <b>图3</b> - 经过 TensorSpace-Converter 转化生成的多输出模型
@@ -129,7 +129,7 @@ model.load({
 ```
 
 <p align="center">
-<img width="100%" src="./assets/demo.gif">
+<img width="100%" src="https://raw.githack.com/tensorspace-team/tensorspace-converter/master/assets/demo.gif">
 </p>
 <p align="center">
 <b>图4</b> - LeNet 模型 TensorSpace 可视化
@@ -138,7 +138,7 @@ model.load({
 ## <div id="docker">通过 Docker 运行 TensorSpace-Converter</div>
 
 <p align="center">
-<img width=200 src="./assets/docker.png">
+<img width=200 src="https://raw.githack.com/tensorspace-team/tensorspace-converter/master/assets/docker.png">
 </p>
 
 配置一个适合 `TensorSpace-Converter` 运行环境有点复杂？不妨试试在 Docker 中运行吧！
@@ -195,7 +195,7 @@ $ tensorspacejs_converter \
 ### <div id="tensorflow">TensorFlow</div>
 
 <p align="center">
-<img width=60% src="./assets/converter_logo_tf.png">
+<img width=60% src="https://raw.githack.com/tensorspace-team/tensorspace-converter/master/assets/converter_logo_tf.png">
 </p>
 
 当使用 TensorFlow 训练并保存一个模型时，TensorSpace-Converter 支持转化以下格式的模型：saved model，frozen model，模型结构权重合并的 HDF5，模型结构和权重分开保存的 HDF5。TensorSpace-Converter 使用不同的转换指令来转换这四种模型。在 TensorFlow 的图结构中，可能没有 `layer` 的概念，不过，一个特定的 `tensor` 可以对应一个 `layer` 的输出，在这种情况下，可以取出相对应的 `tensor` 名称，然后设置到 TensorSpace-Converter 的 `output_layer_names` 参数中。
@@ -244,7 +244,7 @@ $ tensorspacejs_converter \
 ### <div id="keras">Keras</div>
 
 <p align="center">
-<img width=60% src="./assets/converter_logo_keras.png">
+<img width=60% src="https://raw.githack.com/tensorspace-team/tensorspace-converter/master/assets/converter_logo_keras.png">
 </p>
 
 当使用 Keras 训练并生成一个模型时，模型有两种保存形式：模型结构和权重保存在一个HDF5文件，模型结构和权重保存在不同的文件中。TensorSpace-Converter 使用不同的转换指令来转换这两种模型。
@@ -273,7 +273,7 @@ $ tensorspacejs_converter \
 ### <div id="tensorflowjs">TensorFlow.js</div>
 
 <p align="center">
-<img width=60% src="./assets/converter_logo_tfjs.png">
+<img width=60% src="https://raw.githack.com/tensorspace-team/tensorspace-converter/master/assets/converter_logo_tfjs.png">
 </p>
 
 当使用 TensorFlow.js 训练并保存一个模型后，会得到一个模型结构文件 `xxx.json` 和一些权重文件 `xxx.weight.bin`。当使用 TensorSpace-Converter 来预处理这类模型时，需要将模型结构文件（xxx.json）和权重文件（xxx.weight.bin）放在同一个目录下，然后将模型结构文件的路径设置为 `input_path`。示例转换代码：
