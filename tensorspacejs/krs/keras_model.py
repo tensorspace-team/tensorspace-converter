@@ -4,7 +4,7 @@
 """
 
 from keras.models import Model, load_model, save_model, model_from_json
-from tensorflowjs.converters.converter import dispatch_keras_h5_to_tensorflowjs_conversion
+from tensorflowjs.converters.converter import dispatch_keras_h5_to_tfjs_layers_model_conversion
 from utility.file_utility import remove_file, valid_file, valid_directory, show_invalid_message
 
 TEMP_MODEL_NAME = '/enc_model.h5'
